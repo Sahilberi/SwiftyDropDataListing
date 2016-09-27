@@ -7,19 +7,34 @@
 //
 
 import UIKit
+import SwiftyDropbox
+
 
 class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
-  }
 
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
+    NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.refreshDropboxList), name: "Dropboxlistrefresh", object: nil)
 
+  }
+  
+  
+  
+  func refreshDropboxList() {
+
+    self.performSegueWithIdentifier("DropboxListingViewController", sender: nil)
+  }
+ 
+  @IBAction func linkToDropboxClicked(sender: AnyObject) {
+  
+    if (Dropbox.authorizedClient == nil) {
+      Dropbox.authorizeFromController(self)
+    } else {
+      print("User is already authorized!")
+      self.refreshDropboxList()
+    }
+  }
 
 }
 

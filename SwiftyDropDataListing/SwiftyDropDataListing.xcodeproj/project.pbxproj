@@ -14,6 +14,8 @@
 		BA54D0C01D9A42D5005E94C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA54D0BE1D9A42D5005E94C4 /* LaunchScreen.storyboard */; };
 		BA54D0CB1D9A42D5005E94C4 /* SwiftyDropDataListingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0CA1D9A42D5005E94C4 /* SwiftyDropDataListingTests.swift */; };
 		BA54D0D61D9A42D5005E94C4 /* SwiftyDropDataListingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0D51D9A42D5005E94C4 /* SwiftyDropDataListingUITests.swift */; };
+		BA54D0E41D9A726B005E94C4 /* DropboxListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0E31D9A726B005E94C4 /* DropboxListingViewController.swift */; };
+		BA54D0E81D9A73DB005E94C4 /* DropboxListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0E61D9A73DB005E94C4 /* DropboxListingCell.swift */; };
 		C4028E81E1F67A89C6132EAD /* Pods_SwiftyDropDataListing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0C22FF376856294A1FEE61 /* Pods_SwiftyDropDataListing.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,8 @@
 		BA54D0D11D9A42D5005E94C4 /* SwiftyDropDataListingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyDropDataListingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA54D0D51D9A42D5005E94C4 /* SwiftyDropDataListingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyDropDataListingUITests.swift; sourceTree = "<group>"; };
 		BA54D0D71D9A42D5005E94C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA54D0E31D9A726B005E94C4 /* DropboxListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropboxListingViewController.swift; sourceTree = "<group>"; };
+		BA54D0E61D9A73DB005E94C4 /* DropboxListingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropboxListingCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +95,7 @@
 		BA54D0A91D9A42D4005E94C4 = {
 			isa = PBXGroup;
 			children = (
+				BA54D0E51D9A73B5005E94C4 /* customViews */,
 				BA54D0B41D9A42D4005E94C4 /* SwiftyDropDataListing */,
 				BA54D0C91D9A42D5005E94C4 /* SwiftyDropDataListingTests */,
 				BA54D0D41D9A42D5005E94C4 /* SwiftyDropDataListingUITests */,
@@ -115,6 +120,7 @@
 			children = (
 				BA54D0B51D9A42D4005E94C4 /* AppDelegate.swift */,
 				BA54D0B71D9A42D4005E94C4 /* ViewController.swift */,
+				BA54D0E31D9A726B005E94C4 /* DropboxListingViewController.swift */,
 				BA54D0B91D9A42D5005E94C4 /* Main.storyboard */,
 				BA54D0BC1D9A42D5005E94C4 /* Assets.xcassets */,
 				BA54D0BE1D9A42D5005E94C4 /* LaunchScreen.storyboard */,
@@ -139,6 +145,15 @@
 				BA54D0D71D9A42D5005E94C4 /* Info.plist */,
 			);
 			path = SwiftyDropDataListingUITests;
+			sourceTree = "<group>";
+		};
+		BA54D0E51D9A73B5005E94C4 /* customViews */ = {
+			isa = PBXGroup;
+			children = (
+				BA54D0E61D9A73DB005E94C4 /* DropboxListingCell.swift */,
+			);
+			name = customViews;
+			path = SwiftyDropDataListing/customViews;
 			sourceTree = "<group>";
 		};
 		CE4BFA0D1249FC26FC3ADDB5 /* Frameworks */ = {
@@ -336,6 +351,8 @@
 			files = (
 				BA54D0B81D9A42D4005E94C4 /* ViewController.swift in Sources */,
 				BA54D0B61D9A42D4005E94C4 /* AppDelegate.swift in Sources */,
+				BA54D0E41D9A726B005E94C4 /* DropboxListingViewController.swift in Sources */,
+				BA54D0E81D9A73DB005E94C4 /* DropboxListingCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
