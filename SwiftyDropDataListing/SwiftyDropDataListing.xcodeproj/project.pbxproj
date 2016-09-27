@@ -16,6 +16,7 @@
 		BA54D0D61D9A42D5005E94C4 /* SwiftyDropDataListingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0D51D9A42D5005E94C4 /* SwiftyDropDataListingUITests.swift */; };
 		BA54D0E41D9A726B005E94C4 /* DropboxListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0E31D9A726B005E94C4 /* DropboxListingViewController.swift */; };
 		BA54D0E81D9A73DB005E94C4 /* DropboxListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0E61D9A73DB005E94C4 /* DropboxListingCell.swift */; };
+		BA54D0EB1D9A8A14005E94C4 /* FileViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0EA1D9A8A14005E94C4 /* FileViewerViewController.swift */; };
 		C4028E81E1F67A89C6132EAD /* Pods_SwiftyDropDataListing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0C22FF376856294A1FEE61 /* Pods_SwiftyDropDataListing.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		BA54D0D71D9A42D5005E94C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA54D0E31D9A726B005E94C4 /* DropboxListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropboxListingViewController.swift; sourceTree = "<group>"; };
 		BA54D0E61D9A73DB005E94C4 /* DropboxListingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropboxListingCell.swift; sourceTree = "<group>"; };
+		BA54D0EA1D9A8A14005E94C4 /* FileViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileViewerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 				BA54D0BC1D9A42D5005E94C4 /* Assets.xcassets */,
 				BA54D0BE1D9A42D5005E94C4 /* LaunchScreen.storyboard */,
 				BA54D0C11D9A42D5005E94C4 /* Info.plist */,
+				BA54D0EA1D9A8A14005E94C4 /* FileViewerViewController.swift */,
 			);
 			path = SwiftyDropDataListing;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 			files = (
 				BA54D0B81D9A42D4005E94C4 /* ViewController.swift in Sources */,
 				BA54D0B61D9A42D4005E94C4 /* AppDelegate.swift in Sources */,
+				BA54D0EB1D9A8A14005E94C4 /* FileViewerViewController.swift in Sources */,
 				BA54D0E41D9A726B005E94C4 /* DropboxListingViewController.swift in Sources */,
 				BA54D0E81D9A73DB005E94C4 /* DropboxListingCell.swift in Sources */,
 			);

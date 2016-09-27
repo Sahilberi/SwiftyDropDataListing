@@ -136,11 +136,45 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="8Z1-ij-rrU" id="DnP-ug-mOh"/>
+                        <segue destination="Ni0-LE-z2Y" kind="show" identifier="FileViewerViewController" id="tQb-bh-RLP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mnc-um-jL5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="556" y="-115"/>
+        </scene>
+        <!--File Viewer View Controller-->
+        <scene sceneID="jq2-JE-RhZ">
+            <objects>
+                <viewController id="Ni0-LE-z2Y" customClass="FileViewerViewController" customModule="SwiftyDropDataListing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Jm-R9-RUI"/>
+                        <viewControllerLayoutGuide type="bottom" id="B29-Ln-pwL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EVj-pi-Moo">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIp-I5-GOs">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bIp-I5-GOs" secondAttribute="trailing" id="JNe-xD-wX3"/>
+                            <constraint firstItem="B29-Ln-pwL" firstAttribute="top" secondItem="bIp-I5-GOs" secondAttribute="bottom" id="ejk-v6-YtA"/>
+                            <constraint firstItem="bIp-I5-GOs" firstAttribute="top" secondItem="3Jm-R9-RUI" secondAttribute="bottom" id="fcm-tr-EEs"/>
+                            <constraint firstItem="bIp-I5-GOs" firstAttribute="leading" secondItem="EVj-pi-Moo" secondAttribute="leading" id="lMw-5H-DJD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="bIp-I5-GOs" id="kHC-z0-Gkg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P2Q-rD-gLB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1254" y="-107"/>
         </scene>
     </scenes>
     <resources>

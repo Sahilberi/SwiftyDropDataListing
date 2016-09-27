@@ -56,6 +56,8 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
       cell.listImageView.image = UIImage(named: "pdf_icon")
     } else if pathExtension == "doc" {
       cell.listImageView.image = UIImage(named: "doc_icon")
+    } else if pathExtension == "png" ||  pathExtension == "jpg" || pathExtension == "jpeg" {
+      cell.listImageView.image = UIImage(named: "Image_icon")
     } else {
       cell.listImageView.image = UIImage(named: "folder_icon")
     }
@@ -95,7 +97,8 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
               let pathExtension = str.pathExtension
               
               // check pathExtension of entity's and append data
-              if pathExtension == "pdf" ||  pathExtension == "doc" || pathExtension == "" {
+              if pathExtension == "pdf" ||  pathExtension == "doc" || pathExtension == "" || pathExtension == "png" ||  pathExtension == "jpg" || pathExtension == "jpeg" {
+              
                 self.dropboxDataPath.append(entry.pathLower)
                 self.dropboxData.append(entry.name)
               }
@@ -104,8 +107,7 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
             self.tableView.reloadData()
           } else {
 
-          //TODO: show message here to user
-          
+            //TODO: show message here to user
           }
         }
       }
@@ -120,8 +122,7 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
           let directoryURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
           
           let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-          
-          
+
           let documentsDirectory: AnyObject = paths[0]
           let dataPath = documentsDirectory.stringByAppendingPathComponent("Resumes")
           
@@ -162,25 +163,21 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
             
             self.fileUrl = url
             self.fileName = metadata.name
+
             let data = NSData(contentsOfURL: url)
             print("Downloaded file name: \(metadata.name)")
             print("Downloaded file url: \(url)")
             print("Downloaded file data: \(data)")
-            // segue ResumeOpenViewController
-//            self.performSegueWithIdentifier("openfile", sender: nil)
+            self.performSegueWithIdentifier("FileViewerViewController", sender: nil)
           } else {
-  
-            
-            
-           // Utilities.showAlertForMessage(message: (error?.description)!)
+            // Utilities.showAlertForMessage(message: (error?.description)!)
           }
         }
-        
-      }
     }
   }
 
-  
+  }
+
   /// show dropbox data in tableview
   func showDropboxData() {
     
@@ -211,7 +208,7 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
             let pathExtension = entryName.pathExtension
             
             // check pathExtension of entity's and append data
-            if pathExtension == "pdf" ||  pathExtension == "doc" || pathExtension == "" {
+            if pathExtension == "pdf" ||  pathExtension == "doc" || pathExtension == "" || pathExtension == "png" ||  pathExtension == "jpg" || pathExtension == "jpeg" {
               self.dropboxDataPath.append(entry.pathLower)
               self.dropboxData.append(entry.name)
             }
@@ -223,6 +220,20 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
           print("error")
         }
       }
+    }
+  }
+
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+  
+  
+    if segue.identifier == "FileViewerViewController" {
+      
+      if let destVC = segue.destinationViewController as?  FileViewerViewController {
+      
+        destVC.fileUrl = self.fileUrl
+      }
+
     }
   }
 
