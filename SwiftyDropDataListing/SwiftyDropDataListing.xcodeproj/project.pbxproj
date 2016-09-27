@@ -14,6 +14,7 @@
 		BA54D0C01D9A42D5005E94C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA54D0BE1D9A42D5005E94C4 /* LaunchScreen.storyboard */; };
 		BA54D0CB1D9A42D5005E94C4 /* SwiftyDropDataListingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0CA1D9A42D5005E94C4 /* SwiftyDropDataListingTests.swift */; };
 		BA54D0D61D9A42D5005E94C4 /* SwiftyDropDataListingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0D51D9A42D5005E94C4 /* SwiftyDropDataListingUITests.swift */; };
+		C4028E81E1F67A89C6132EAD /* Pods_SwiftyDropDataListing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0C22FF376856294A1FEE61 /* Pods_SwiftyDropDataListing.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17EBA3EF498056777C8D9CBD /* Pods-SwiftyDropDataListing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyDropDataListing.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyDropDataListing/Pods-SwiftyDropDataListing.release.xcconfig"; sourceTree = "<group>"; };
+		4F0C22FF376856294A1FEE61 /* Pods_SwiftyDropDataListing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyDropDataListing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		748C9475532E29CE43CEACBB /* Pods-SwiftyDropDataListing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyDropDataListing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyDropDataListing/Pods-SwiftyDropDataListing.debug.xcconfig"; sourceTree = "<group>"; };
 		BA54D0B21D9A42D4005E94C4 /* SwiftyDropDataListing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyDropDataListing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA54D0B51D9A42D4005E94C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA54D0B71D9A42D4005E94C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4028E81E1F67A89C6132EAD /* Pods_SwiftyDropDataListing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		94FEACE09C15FAFE8127D4B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				748C9475532E29CE43CEACBB /* Pods-SwiftyDropDataListing.debug.xcconfig */,
+				17EBA3EF498056777C8D9CBD /* Pods-SwiftyDropDataListing.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		BA54D0A91D9A42D4005E94C4 = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +95,8 @@
 				BA54D0C91D9A42D5005E94C4 /* SwiftyDropDataListingTests */,
 				BA54D0D41D9A42D5005E94C4 /* SwiftyDropDataListingUITests */,
 				BA54D0B31D9A42D4005E94C4 /* Products */,
+				94FEACE09C15FAFE8127D4B8 /* Pods */,
+				CE4BFA0D1249FC26FC3ADDB5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +141,14 @@
 			path = SwiftyDropDataListingUITests;
 			sourceTree = "<group>";
 		};
+		CE4BFA0D1249FC26FC3ADDB5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4F0C22FF376856294A1FEE61 /* Pods_SwiftyDropDataListing.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA54D0DA1D9A42D5005E94C4 /* Build configuration list for PBXNativeTarget "SwiftyDropDataListing" */;
 			buildPhases = (
+				BE540E00317BFD7AD04D6BBD /* Check Pods Manifest.lock */,
 				BA54D0AE1D9A42D4005E94C4 /* Sources */,
 				BA54D0AF1D9A42D4005E94C4 /* Frameworks */,
 				BA54D0B01D9A42D4005E94C4 /* Resources */,
+				5B1AA097B995A4270A998EED /* Embed Pods Frameworks */,
+				45AB49977BE79486334DF060 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -254,6 +281,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		45AB49977BE79486334DF060 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyDropDataListing/Pods-SwiftyDropDataListing-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5B1AA097B995A4270A998EED /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyDropDataListing/Pods-SwiftyDropDataListing-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE540E00317BFD7AD04D6BBD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BA54D0AE1D9A42D4005E94C4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -352,7 +427,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -392,7 +467,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -402,6 +477,7 @@
 		};
 		BA54D0DB1D9A42D5005E94C4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 748C9475532E29CE43CEACBB /* Pods-SwiftyDropDataListing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SwiftyDropDataListing/Info.plist;
@@ -413,6 +489,7 @@
 		};
 		BA54D0DC1D9A42D5005E94C4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17EBA3EF498056777C8D9CBD /* Pods-SwiftyDropDataListing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SwiftyDropDataListing/Info.plist;
@@ -487,6 +564,7 @@
 				BA54D0DC1D9A42D5005E94C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BA54D0DD1D9A42D5005E94C4 /* Build configuration list for PBXNativeTarget "SwiftyDropDataListingTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +573,7 @@
 				BA54D0DF1D9A42D5005E94C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BA54D0E01D9A42D5005E94C4 /* Build configuration list for PBXNativeTarget "SwiftyDropDataListingUITests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +582,7 @@
 				BA54D0E21D9A42D5005E94C4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
