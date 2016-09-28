@@ -80,7 +80,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Z1-ij-rrU">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
+                                <rect key="frame" x="0.0" y="44" width="600" height="448"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DropboxListingCell" id="hXA-Bb-bJp" customClass="DropboxListingCell" customModule="SwiftyDropDataListing" customModuleProvider="target">
@@ -123,14 +123,33 @@
                                     <outlet property="delegate" destination="eVH-A5-Osj" id="DwA-wa-HKa"/>
                                 </connections>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="oYS-i7-HLG">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Jcf-eB-DZN"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eVH-A5-Osj" id="EVc-Yi-az6"/>
+                                </connections>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="zAy-Zn-EVl" firstAttribute="top" secondItem="8Z1-ij-rrU" secondAttribute="bottom" id="053-2O-uf6"/>
                             <constraint firstAttribute="trailing" secondItem="8Z1-ij-rrU" secondAttribute="trailing" id="1Vr-qL-a18"/>
+                            <constraint firstItem="oYS-i7-HLG" firstAttribute="top" secondItem="xBq-mq-bgP" secondAttribute="bottom" id="9ro-Fd-UVg"/>
+                            <constraint firstItem="8Z1-ij-rrU" firstAttribute="top" secondItem="oYS-i7-HLG" secondAttribute="bottom" id="AgE-Jz-InD"/>
                             <constraint firstItem="8Z1-ij-rrU" firstAttribute="leading" secondItem="JSO-PM-y5H" secondAttribute="leading" id="NsV-hr-S6Y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oYS-i7-HLG" secondAttribute="trailing" constant="-20" id="gMz-tZ-lUo"/>
+                            <constraint firstItem="oYS-i7-HLG" firstAttribute="leading" secondItem="JSO-PM-y5H" secondAttribute="leadingMargin" constant="-20" id="m99-rc-Tbs"/>
                             <constraint firstItem="8Z1-ij-rrU" firstAttribute="top" secondItem="xBq-mq-bgP" secondAttribute="bottom" id="xN3-dM-WDh"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="xN3-dM-WDh"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>

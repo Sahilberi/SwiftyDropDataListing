@@ -123,9 +123,9 @@
 				BA54D0B51D9A42D4005E94C4 /* AppDelegate.swift */,
 				BA54D0B71D9A42D4005E94C4 /* ViewController.swift */,
 				BA54D0E31D9A726B005E94C4 /* DropboxListingViewController.swift */,
+				BA54D0BE1D9A42D5005E94C4 /* LaunchScreen.storyboard */,
 				BA54D0B91D9A42D5005E94C4 /* Main.storyboard */,
 				BA54D0BC1D9A42D5005E94C4 /* Assets.xcassets */,
-				BA54D0BE1D9A42D5005E94C4 /* LaunchScreen.storyboard */,
 				BA54D0C11D9A42D5005E94C4 /* Info.plist */,
 				BA54D0EA1D9A8A14005E94C4 /* FileViewerViewController.swift */,
 			);

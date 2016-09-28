@@ -9,38 +9,53 @@
 import UIKit
 import SwiftyDropbox
 
-class DropboxListingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-  
+class DropboxListingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
   
   var fileUrl:NSURL?
   var fileName :String?
-
+  
   ///store dropbox entity's namek
   var dropboxData = [String]()
   
   ///store dropbox entity's path
   var dropboxDataPath = [String]()
   
+  var searchActive : Bool = false
+  
+  var filtered:[String] = []
+  var filteredDataPath = [String]()
+  
+  
   @IBOutlet weak var tableView: UITableView!
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    
     self.showDropboxData()
     
   }
   
   //MARK: UITableViewDataSource and UITableViewDelegate methods
-
+  
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+    if self.searchActive {
+      return self.filtered.count
+    }
     return dropboxData.count
   }
-
+  
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
     let cell = tableView.dequeueReusableCellWithIdentifier("DropboxListingCell") as! DropboxListingCell
+    var currentfile = ""
 
-    // get current file name
-    let currentfile = dropboxData[indexPath.row]
+    if self.searchActive {
+      currentfile = filtered[indexPath.row]
+    } else {
+      // get current file name
+      currentfile = dropboxData[indexPath.row]
+    }
+    
     // get current file extension
     let currentfileExtension = currentfile as NSString
     
@@ -61,15 +76,24 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
     } else {
       cell.listImageView.image = UIImage(named: "folder_icon")
     }
-
+    
     return cell
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    // get current file name
-    let currentFile = dropboxData[indexPath.row]
-    // get currentfile path
-    let path = dropboxDataPath[indexPath.row]
+    
+    var currentFile = ""
+    var path = ""
+    
+    if self.searchActive {
+      currentFile = filtered[indexPath.row]
+      path = filteredDataPath[indexPath.row]
+    } else {
+      // get current file name
+      currentFile = dropboxData[indexPath.row]
+      // get currentfile path
+      path = dropboxDataPath[indexPath.row]
+    }
     
     // get current file as NSString to check extension
     let filename = currentFile as NSString
@@ -79,7 +103,7 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
     // else download the file from dropbox
     if filename.pathExtension == "" {
       if let client = Dropbox.authorizedClient {
-
+        
         // List folder
         client.files.listFolder(path: path).response { response, error in
           // delet old data
@@ -98,7 +122,7 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
               
               // check pathExtension of entity's and append data
               if pathExtension == "pdf" ||  pathExtension == "doc" || pathExtension == "" || pathExtension == "png" ||  pathExtension == "jpg" || pathExtension == "jpeg" {
-              
+                
                 self.dropboxDataPath.append(entry.pathLower)
                 self.dropboxData.append(entry.name)
               }
@@ -106,7 +130,7 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
             //reload tableview
             self.tableView.reloadData()
           } else {
-
+            
             //TODO: show message here to user
           }
         }
@@ -122,7 +146,7 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
           let directoryURL = fileManager.URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
           
           let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)
-
+          
           let documentsDirectory: AnyObject = paths[0]
           let dataPath = documentsDirectory.stringByAppendingPathComponent("Resumes")
           
@@ -163,21 +187,23 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
             
             self.fileUrl = url
             self.fileName = metadata.name
-
+            
             let data = NSData(contentsOfURL: url)
             print("Downloaded file name: \(metadata.name)")
             print("Downloaded file url: \(url)")
             print("Downloaded file data: \(data)")
             self.performSegueWithIdentifier("FileViewerViewController", sender: nil)
           } else {
+            print(error?.description)
+            
             // Utilities.showAlertForMessage(message: (error?.description)!)
           }
         }
+      }
     }
+    
   }
-
-  }
-
+  
   /// show dropbox data in tableview
   func showDropboxData() {
     
@@ -222,19 +248,57 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
       }
     }
   }
+  
+  //MARK: UISearchbarDelegate methods
+ 
+  func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+    searchActive = false
+  }
+  
+  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    searchActive = false
+  }
+  
+  func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+    searchActive = false
+  }
+  
+  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    
+    self.searchActive = true
 
+    self.filteredDataPath.removeAll()
+    
+    filtered = self.dropboxData.filter(
+      { (text) -> Bool in
+        let tmp: NSString = text
+        let range = tmp.rangeOfString(searchText, options: NSStringCompareOptions.CaseInsensitiveSearch)
+        print(range)
+        return range.location != NSNotFound
+    })
+    
+    for element in self.filtered {
+      let index = self.dropboxData.indexOf(element)
+      self.filteredDataPath.append(self.dropboxDataPath[index!])
+    }
+
+    print(filtered.count)
+    
+    if(filtered.count == 0) {
+      searchActive = false
+    } else {
+      searchActive = true
+    }
+    self.tableView.reloadData()
+  }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-  
-  
+    
     if segue.identifier == "FileViewerViewController" {
-      
       if let destVC = segue.destinationViewController as?  FileViewerViewController {
-      
         destVC.fileUrl = self.fileUrl
       }
-
     }
   }
-
+  
 }
