@@ -2,6 +2,8 @@
 
 This Project is link our app to the dropbox and fetching dropbox data with in your app and showing them in a list.
 
+and in this project we showing only "jpg", "jpeg", "png", "doc", and pdf.
+
 ![alt tag] (https://cloud.githubusercontent.com/assets/7422405/18901371/fcc26ae2-8567-11e6-8db6-c20ae2f7f0e7.png) 
 
 ![alt tag] (https://cloud.githubusercontent.com/assets/7422405/18901375/0354aa64-8568-11e6-9667-b38d73eb165d.png)
