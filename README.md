@@ -10,13 +10,7 @@ Key Features of SwiftDropDataListing are listed below. It has a great interface 
 SwiftyDropDataListing has a beautiful and simple interface similar to that of the actual Dropbox App. The interface is built for iOS 7. You can get all dropbox data with in your app simply by after autenticate in dropbox.
 
 
-![alt tag] (https://cloud.githubusercontent.com/assets/7422405/18901371/fcc26ae2-8567-11e6-8db6-c20ae2f7f0e7.png) 
-
-![alt tag] (https://cloud.githubusercontent.com/assets/7422405/18901375/0354aa64-8568-11e6-9667-b38d73eb165d.png)
-
-![alt tag] (https://cloud.githubusercontent.com/assets/7422405/18901389/17fab490-8568-11e6-87b1-3216d6024a8d.png)
-
-![alt tag] (https://cloud.githubusercontent.com/assets/7422405/18901383/0ea3e2f4-8568-11e6-828d-a4cd43b88424.png)
+![alt tag] (https://cloud.githubusercontent.com/assets/7422405/21468458/20db5754-ca37-11e6-8a2b-7200affdffa0.jpg) 
 
 # Development
 
