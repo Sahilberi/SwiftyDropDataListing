@@ -28,6 +28,18 @@ Requires Xcode 7 for use in any iOS Project. Requires a minimum of iOS 8.0 as th
 
 Any contribution is more than welcome! You can contribute through pull requests and issues on GitHub.
 
+# Setup
+
+To properly integrate DropboxBrowser into your project follow the instructions below. Use the included Example Project as a guide for setting up your own project.
+
+1. Add the SwiftyDropbox SDK to your project using CocoaPods
+
+follow this link step by step.
+[Absolute README link] https://blogs.dropbox.com/developers/2015/05/try-out-swiftydropbox-the-new-swift-sdk-for-dropbox-api-v2/
+
+
+
+
 # If you like don't forget to give the star!!!
 
  
