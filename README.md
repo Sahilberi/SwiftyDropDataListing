@@ -35,7 +35,7 @@ To properly integrate DropboxBrowser into your project follow the instructions b
 1. Add the SwiftyDropbox SDK to your project using CocoaPods
 
 follow this link step by step.
-[Absolute README link] https://blogs.dropbox.com/developers/2015/05/try-out-swiftydropbox-the-new-swift-sdk-for-dropbox-api-v2/
+[Read more words!](https://blogs.dropbox.com/developers/2015/05/try-out-swiftydropbox-the-new-swift-sdk-for-dropbox-api-v2/)
 
 
 
