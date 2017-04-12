@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IVi-GB-a4N">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="d8E-Gb-KQ9">
+            <objects>
+                <navigationController id="IVi-GB-a4N" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="dFH-58-aRg">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.7843137255" green="0.7843137255" blue="0.18663485739999999" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="4JP-Fl-3kz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jWw-0Y-0fZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-960" y="-78"/>
+        </scene>
+        <!--DropboxList-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SwiftyDropDataListing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u4V-y2-mKM">
+                                <rect key="frame" x="194" y="253" width="213" height="30"/>
+                                <color key="backgroundColor" red="0.25882352939999997" green="0.64313725489999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="213" id="N1O-d0-AZX"/>
+                                    <constraint firstAttribute="height" constant="30" id="qoF-OV-8I0"/>
+                                </constraints>
+                                <state key="normal" title="Link to dropbox">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="linkToDropboxClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OXp-xu-aea"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="u4V-y2-mKM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="9dp-T7-rDM"/>
+                            <constraint firstItem="u4V-y2-mKM" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ONb-9U-RJc"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="DropboxList" id="aam-x9-1pP">
+                        <barButtonItem key="rightBarButtonItem" id="hBf-Ha-qan"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="eVH-A5-Osj" kind="show" identifier="DropboxListingViewController" id="vy2-kp-wdL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-180" y="-115"/>
+        </scene>
+        <!--Dropbox Listing View Controller-->
+        <scene sceneID="V69-dV-GeP">
+            <objects>
+                <viewController id="eVH-A5-Osj" customClass="DropboxListingViewController" customModule="SwiftyDropDataListing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xBq-mq-bgP"/>
+                        <viewControllerLayoutGuide type="bottom" id="zAy-Zn-EVl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JSO-PM-y5H">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Z1-ij-rrU">
+                                <rect key="frame" x="0.0" y="44" width="600" height="448"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DropboxListingCell" id="hXA-Bb-bJp" customClass="DropboxListingCell" customModule="SwiftyDropDataListing" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hXA-Bb-bJp" id="LB3-fK-fWU">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SMK-Dd-Btc">
+                                                    <rect key="frame" x="68" y="18" width="514" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder_icon" translatesAutoresizingMaskIntoConstraints="NO" id="HTP-Oq-XFu">
+                                                    <rect key="frame" x="18" y="8" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="Ze3-B5-key"/>
+                                                        <constraint firstAttribute="width" constant="40" id="nQH-Nz-0uc"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="SMK-Dd-Btc" secondAttribute="trailing" constant="10" id="CrO-e6-8aj"/>
+                                                <constraint firstItem="HTP-Oq-XFu" firstAttribute="leading" secondItem="LB3-fK-fWU" secondAttribute="leadingMargin" constant="10" id="PeE-Ch-GbU"/>
+                                                <constraint firstItem="HTP-Oq-XFu" firstAttribute="top" secondItem="LB3-fK-fWU" secondAttribute="topMargin" id="Vqq-ag-iYw"/>
+                                                <constraint firstItem="SMK-Dd-Btc" firstAttribute="top" secondItem="LB3-fK-fWU" secondAttribute="topMargin" constant="10" id="bug-Le-PvH"/>
+                                                <constraint firstItem="SMK-Dd-Btc" firstAttribute="leading" secondItem="HTP-Oq-XFu" secondAttribute="trailing" constant="10" id="p5Q-5g-lDk"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="fileName" destination="SMK-Dd-Btc" id="XfT-Rz-ki3"/>
+                                            <outlet property="listImageView" destination="HTP-Oq-XFu" id="sof-ZL-Hih"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="eVH-A5-Osj" id="bdd-cM-Fdt"/>
+                                    <outlet property="delegate" destination="eVH-A5-Osj" id="DwA-wa-HKa"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="oYS-i7-HLG">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Jcf-eB-DZN"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="eVH-A5-Osj" id="EVc-Yi-az6"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zAy-Zn-EVl" firstAttribute="top" secondItem="8Z1-ij-rrU" secondAttribute="bottom" id="053-2O-uf6"/>
+                            <constraint firstAttribute="trailing" secondItem="8Z1-ij-rrU" secondAttribute="trailing" id="1Vr-qL-a18"/>
+                            <constraint firstItem="oYS-i7-HLG" firstAttribute="top" secondItem="xBq-mq-bgP" secondAttribute="bottom" id="9ro-Fd-UVg"/>
+                            <constraint firstItem="8Z1-ij-rrU" firstAttribute="top" secondItem="oYS-i7-HLG" secondAttribute="bottom" id="AgE-Jz-InD"/>
+                            <constraint firstItem="8Z1-ij-rrU" firstAttribute="leading" secondItem="JSO-PM-y5H" secondAttribute="leading" id="NsV-hr-S6Y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oYS-i7-HLG" secondAttribute="trailing" constant="-20" id="gMz-tZ-lUo"/>
+                            <constraint firstItem="oYS-i7-HLG" firstAttribute="leading" secondItem="JSO-PM-y5H" secondAttribute="leadingMargin" constant="-20" id="m99-rc-Tbs"/>
+                            <constraint firstItem="8Z1-ij-rrU" firstAttribute="top" secondItem="xBq-mq-bgP" secondAttribute="bottom" id="xN3-dM-WDh"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="xN3-dM-WDh"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="8Z1-ij-rrU" id="DnP-ug-mOh"/>
+                        <segue destination="Ni0-LE-z2Y" kind="show" identifier="FileViewerViewController" id="tQb-bh-RLP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mnc-um-jL5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="556" y="-115"/>
+        </scene>
+        <!--File Viewer View Controller-->
+        <scene sceneID="jq2-JE-RhZ">
+            <objects>
+                <viewController id="Ni0-LE-z2Y" customClass="FileViewerViewController" customModule="SwiftyDropDataListing" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3Jm-R9-RUI"/>
+                        <viewControllerLayoutGuide type="bottom" id="B29-Ln-pwL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EVj-pi-Moo">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIp-I5-GOs">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="492"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bIp-I5-GOs" secondAttribute="trailing" id="JNe-xD-wX3"/>
+                            <constraint firstItem="B29-Ln-pwL" firstAttribute="top" secondItem="bIp-I5-GOs" secondAttribute="bottom" id="ejk-v6-YtA"/>
+                            <constraint firstItem="bIp-I5-GOs" firstAttribute="top" secondItem="3Jm-R9-RUI" secondAttribute="bottom" id="fcm-tr-EEs"/>
+                            <constraint firstItem="bIp-I5-GOs" firstAttribute="leading" secondItem="EVj-pi-Moo" secondAttribute="leading" id="lMw-5H-DJD"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="bIp-I5-GOs" id="kHC-z0-Gkg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P2Q-rD-gLB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1254" y="-107"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="folder_icon" width="20" height="20"/>
+    </resources>
+</document>
