@@ -1,0 +1,623 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		341CCAC3FF565459E24937C1 /* Pods_SwiftyDropDataListing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6C25AEFB8B35D4A86EBDC /* Pods_SwiftyDropDataListing.framework */; };
+		BA54D0B61D9A42D4005E94C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0B51D9A42D4005E94C4 /* AppDelegate.swift */; };
+		BA54D0B81D9A42D4005E94C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0B71D9A42D4005E94C4 /* ViewController.swift */; };
+		BA54D0BB1D9A42D5005E94C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA54D0B91D9A42D5005E94C4 /* Main.storyboard */; };
+		BA54D0BD1D9A42D5005E94C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA54D0BC1D9A42D5005E94C4 /* Assets.xcassets */; };
+		BA54D0C01D9A42D5005E94C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA54D0BE1D9A42D5005E94C4 /* LaunchScreen.storyboard */; };
+		BA54D0CB1D9A42D5005E94C4 /* SwiftyDropDataListingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0CA1D9A42D5005E94C4 /* SwiftyDropDataListingTests.swift */; };
+		BA54D0D61D9A42D5005E94C4 /* SwiftyDropDataListingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0D51D9A42D5005E94C4 /* SwiftyDropDataListingUITests.swift */; };
+		BA54D0E41D9A726B005E94C4 /* DropboxListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0E31D9A726B005E94C4 /* DropboxListingViewController.swift */; };
+		BA54D0E81D9A73DB005E94C4 /* DropboxListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0E61D9A73DB005E94C4 /* DropboxListingCell.swift */; };
+		BA54D0EB1D9A8A14005E94C4 /* FileViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0EA1D9A8A14005E94C4 /* FileViewerViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BA54D0C71D9A42D5005E94C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA54D0AA1D9A42D4005E94C4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA54D0B11D9A42D4005E94C4;
+			remoteInfo = SwiftyDropDataListing;
+		};
+		BA54D0D21D9A42D5005E94C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BA54D0AA1D9A42D4005E94C4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BA54D0B11D9A42D4005E94C4;
+			remoteInfo = SwiftyDropDataListing;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3B0FB27FBD93072A57E9CBBC /* Pods-SwiftyDropDataListing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyDropDataListing.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyDropDataListing/Pods-SwiftyDropDataListing.release.xcconfig"; sourceTree = "<group>"; };
+		BA54D0B21D9A42D4005E94C4 /* SwiftyDropDataListing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyDropDataListing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA54D0B51D9A42D4005E94C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BA54D0B71D9A42D4005E94C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BA54D0BA1D9A42D5005E94C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BA54D0BC1D9A42D5005E94C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BA54D0BF1D9A42D5005E94C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BA54D0C11D9A42D5005E94C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA54D0C61D9A42D5005E94C4 /* SwiftyDropDataListingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyDropDataListingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA54D0CA1D9A42D5005E94C4 /* SwiftyDropDataListingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyDropDataListingTests.swift; sourceTree = "<group>"; };
+		BA54D0CC1D9A42D5005E94C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA54D0D11D9A42D5005E94C4 /* SwiftyDropDataListingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyDropDataListingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BA54D0D51D9A42D5005E94C4 /* SwiftyDropDataListingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyDropDataListingUITests.swift; sourceTree = "<group>"; };
+		BA54D0D71D9A42D5005E94C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BA54D0E31D9A726B005E94C4 /* DropboxListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropboxListingViewController.swift; sourceTree = "<group>"; };
+		BA54D0E61D9A73DB005E94C4 /* DropboxListingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropboxListingCell.swift; sourceTree = "<group>"; };
+		BA54D0EA1D9A8A14005E94C4 /* FileViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileViewerViewController.swift; sourceTree = "<group>"; };
+		CCA6C25AEFB8B35D4A86EBDC /* Pods_SwiftyDropDataListing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyDropDataListing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4D339E5767275C64B7AACDE /* Pods-SwiftyDropDataListing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyDropDataListing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyDropDataListing/Pods-SwiftyDropDataListing.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BA54D0AF1D9A42D4005E94C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				341CCAC3FF565459E24937C1 /* Pods_SwiftyDropDataListing.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA54D0C31D9A42D5005E94C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA54D0CE1D9A42D5005E94C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		01E4FBFA16F228CFC3DC7057 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D4D339E5767275C64B7AACDE /* Pods-SwiftyDropDataListing.debug.xcconfig */,
+				3B0FB27FBD93072A57E9CBBC /* Pods-SwiftyDropDataListing.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A36E7FFD9AA55BA161DEE9FA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CCA6C25AEFB8B35D4A86EBDC /* Pods_SwiftyDropDataListing.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BA54D0A91D9A42D4005E94C4 = {
+			isa = PBXGroup;
+			children = (
+				BA54D0E51D9A73B5005E94C4 /* customViews */,
+				BA54D0B41D9A42D4005E94C4 /* SwiftyDropDataListing */,
+				BA54D0C91D9A42D5005E94C4 /* SwiftyDropDataListingTests */,
+				BA54D0D41D9A42D5005E94C4 /* SwiftyDropDataListingUITests */,
+				BA54D0B31D9A42D4005E94C4 /* Products */,
+				01E4FBFA16F228CFC3DC7057 /* Pods */,
+				A36E7FFD9AA55BA161DEE9FA /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BA54D0B31D9A42D4005E94C4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BA54D0B21D9A42D4005E94C4 /* SwiftyDropDataListing.app */,
+				BA54D0C61D9A42D5005E94C4 /* SwiftyDropDataListingTests.xctest */,
+				BA54D0D11D9A42D5005E94C4 /* SwiftyDropDataListingUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BA54D0B41D9A42D4005E94C4 /* SwiftyDropDataListing */ = {
+			isa = PBXGroup;
+			children = (
+				BA54D0B51D9A42D4005E94C4 /* AppDelegate.swift */,
+				BA54D0B71D9A42D4005E94C4 /* ViewController.swift */,
+				BA54D0E31D9A726B005E94C4 /* DropboxListingViewController.swift */,
+				BA54D0BE1D9A42D5005E94C4 /* LaunchScreen.storyboard */,
+				BA54D0B91D9A42D5005E94C4 /* Main.storyboard */,
+				BA54D0BC1D9A42D5005E94C4 /* Assets.xcassets */,
+				BA54D0C11D9A42D5005E94C4 /* Info.plist */,
+				BA54D0EA1D9A8A14005E94C4 /* FileViewerViewController.swift */,
+			);
+			path = SwiftyDropDataListing;
+			sourceTree = "<group>";
+		};
+		BA54D0C91D9A42D5005E94C4 /* SwiftyDropDataListingTests */ = {
+			isa = PBXGroup;
+			children = (
+				BA54D0CA1D9A42D5005E94C4 /* SwiftyDropDataListingTests.swift */,
+				BA54D0CC1D9A42D5005E94C4 /* Info.plist */,
+			);
+			path = SwiftyDropDataListingTests;
+			sourceTree = "<group>";
+		};
+		BA54D0D41D9A42D5005E94C4 /* SwiftyDropDataListingUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BA54D0D51D9A42D5005E94C4 /* SwiftyDropDataListingUITests.swift */,
+				BA54D0D71D9A42D5005E94C4 /* Info.plist */,
+			);
+			path = SwiftyDropDataListingUITests;
+			sourceTree = "<group>";
+		};
+		BA54D0E51D9A73B5005E94C4 /* customViews */ = {
+			isa = PBXGroup;
+			children = (
+				BA54D0E61D9A73DB005E94C4 /* DropboxListingCell.swift */,
+			);
+			name = customViews;
+			path = SwiftyDropDataListing/customViews;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BA54D0B11D9A42D4005E94C4 /* SwiftyDropDataListing */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA54D0DA1D9A42D5005E94C4 /* Build configuration list for PBXNativeTarget "SwiftyDropDataListing" */;
+			buildPhases = (
+				1AFC91B458ADBE1A160EC102 /* [CP] Check Pods Manifest.lock */,
+				BA54D0AE1D9A42D4005E94C4 /* Sources */,
+				BA54D0AF1D9A42D4005E94C4 /* Frameworks */,
+				BA54D0B01D9A42D4005E94C4 /* Resources */,
+				A598A93DFABB80A48FB96CF2 /* [CP] Embed Pods Frameworks */,
+				33FDBF78FF25DF0E1A43DE6A /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftyDropDataListing;
+			productName = SwiftyDropDataListing;
+			productReference = BA54D0B21D9A42D4005E94C4 /* SwiftyDropDataListing.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BA54D0C51D9A42D5005E94C4 /* SwiftyDropDataListingTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA54D0DD1D9A42D5005E94C4 /* Build configuration list for PBXNativeTarget "SwiftyDropDataListingTests" */;
+			buildPhases = (
+				BA54D0C21D9A42D5005E94C4 /* Sources */,
+				BA54D0C31D9A42D5005E94C4 /* Frameworks */,
+				BA54D0C41D9A42D5005E94C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA54D0C81D9A42D5005E94C4 /* PBXTargetDependency */,
+			);
+			name = SwiftyDropDataListingTests;
+			productName = SwiftyDropDataListingTests;
+			productReference = BA54D0C61D9A42D5005E94C4 /* SwiftyDropDataListingTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BA54D0D01D9A42D5005E94C4 /* SwiftyDropDataListingUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BA54D0E01D9A42D5005E94C4 /* Build configuration list for PBXNativeTarget "SwiftyDropDataListingUITests" */;
+			buildPhases = (
+				BA54D0CD1D9A42D5005E94C4 /* Sources */,
+				BA54D0CE1D9A42D5005E94C4 /* Frameworks */,
+				BA54D0CF1D9A42D5005E94C4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BA54D0D31D9A42D5005E94C4 /* PBXTargetDependency */,
+			);
+			name = SwiftyDropDataListingUITests;
+			productName = SwiftyDropDataListingUITests;
+			productReference = BA54D0D11D9A42D5005E94C4 /* SwiftyDropDataListingUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BA54D0AA1D9A42D4005E94C4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = SammyOne;
+				TargetAttributes = {
+					BA54D0B11D9A42D4005E94C4 = {
+						CreatedOnToolsVersion = 7.3;
+						LastSwiftMigration = 0830;
+					};
+					BA54D0C51D9A42D5005E94C4 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 48CBLKETF2;
+						LastSwiftMigration = 0830;
+						TestTargetID = BA54D0B11D9A42D4005E94C4;
+					};
+					BA54D0D01D9A42D5005E94C4 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 48CBLKETF2;
+						LastSwiftMigration = 0830;
+						TestTargetID = BA54D0B11D9A42D4005E94C4;
+					};
+				};
+			};
+			buildConfigurationList = BA54D0AD1D9A42D4005E94C4 /* Build configuration list for PBXProject "SwiftyDropDataListing" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BA54D0A91D9A42D4005E94C4;
+			productRefGroup = BA54D0B31D9A42D4005E94C4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BA54D0B11D9A42D4005E94C4 /* SwiftyDropDataListing */,
+				BA54D0C51D9A42D5005E94C4 /* SwiftyDropDataListingTests */,
+				BA54D0D01D9A42D5005E94C4 /* SwiftyDropDataListingUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BA54D0B01D9A42D4005E94C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA54D0C01D9A42D5005E94C4 /* LaunchScreen.storyboard in Resources */,
+				BA54D0BD1D9A42D5005E94C4 /* Assets.xcassets in Resources */,
+				BA54D0BB1D9A42D5005E94C4 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA54D0C41D9A42D5005E94C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA54D0CF1D9A42D5005E94C4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1AFC91B458ADBE1A160EC102 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		33FDBF78FF25DF0E1A43DE6A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyDropDataListing/Pods-SwiftyDropDataListing-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A598A93DFABB80A48FB96CF2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftyDropDataListing/Pods-SwiftyDropDataListing-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BA54D0AE1D9A42D4005E94C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA54D0B81D9A42D4005E94C4 /* ViewController.swift in Sources */,
+				BA54D0B61D9A42D4005E94C4 /* AppDelegate.swift in Sources */,
+				BA54D0EB1D9A8A14005E94C4 /* FileViewerViewController.swift in Sources */,
+				BA54D0E41D9A726B005E94C4 /* DropboxListingViewController.swift in Sources */,
+				BA54D0E81D9A73DB005E94C4 /* DropboxListingCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA54D0C21D9A42D5005E94C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA54D0CB1D9A42D5005E94C4 /* SwiftyDropDataListingTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BA54D0CD1D9A42D5005E94C4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA54D0D61D9A42D5005E94C4 /* SwiftyDropDataListingUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BA54D0C81D9A42D5005E94C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA54D0B11D9A42D4005E94C4 /* SwiftyDropDataListing */;
+			targetProxy = BA54D0C71D9A42D5005E94C4 /* PBXContainerItemProxy */;
+		};
+		BA54D0D31D9A42D5005E94C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BA54D0B11D9A42D4005E94C4 /* SwiftyDropDataListing */;
+			targetProxy = BA54D0D21D9A42D5005E94C4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BA54D0B91D9A42D5005E94C4 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA54D0BA1D9A42D5005E94C4 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BA54D0BE1D9A42D5005E94C4 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BA54D0BF1D9A42D5005E94C4 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BA54D0D81D9A42D5005E94C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BA54D0D91D9A42D5005E94C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BA54D0DB1D9A42D5005E94C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4D339E5767275C64B7AACDE /* Pods-SwiftyDropDataListing.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = SwiftyDropDataListing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sammy.SwiftyDropDataListing;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		BA54D0DC1D9A42D5005E94C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B0FB27FBD93072A57E9CBBC /* Pods-SwiftyDropDataListing.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = SwiftyDropDataListing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sammy.SwiftyDropDataListing;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		BA54D0DE1D9A42D5005E94C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SwiftyDropDataListingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sammy.SwiftyDropDataListingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftyDropDataListing.app/SwiftyDropDataListing";
+			};
+			name = Debug;
+		};
+		BA54D0DF1D9A42D5005E94C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SwiftyDropDataListingTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sammy.SwiftyDropDataListingTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SwiftyDropDataListing.app/SwiftyDropDataListing";
+			};
+			name = Release;
+		};
+		BA54D0E11D9A42D5005E94C4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SwiftyDropDataListingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sammy.SwiftyDropDataListingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SwiftyDropDataListing;
+			};
+			name = Debug;
+		};
+		BA54D0E21D9A42D5005E94C4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = SwiftyDropDataListingUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = sammy.SwiftyDropDataListingUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SwiftyDropDataListing;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BA54D0AD1D9A42D4005E94C4 /* Build configuration list for PBXProject "SwiftyDropDataListing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA54D0D81D9A42D5005E94C4 /* Debug */,
+				BA54D0D91D9A42D5005E94C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA54D0DA1D9A42D5005E94C4 /* Build configuration list for PBXNativeTarget "SwiftyDropDataListing" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA54D0DB1D9A42D5005E94C4 /* Debug */,
+				BA54D0DC1D9A42D5005E94C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA54D0DD1D9A42D5005E94C4 /* Build configuration list for PBXNativeTarget "SwiftyDropDataListingTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA54D0DE1D9A42D5005E94C4 /* Debug */,
+				BA54D0DF1D9A42D5005E94C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BA54D0E01D9A42D5005E94C4 /* Build configuration list for PBXNativeTarget "SwiftyDropDataListingUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BA54D0E11D9A42D5005E94C4 /* Debug */,
+				BA54D0E21D9A42D5005E94C4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BA54D0AA1D9A42D4005E94C4 /* Project object */;
+}
