@@ -10,7 +10,7 @@ import UIKit
 import SwiftyDropbox
 
 
-class ViewController: UIViewController, SelectedData {
+class ViewController: UIViewController, SelectedDropboxData {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,13 @@ class ViewController: UIViewController, SelectedData {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "DropboxListingViewController"{
+        if segue.identifier == "TableViewController"{
+            
+            let tableViewController = segue.destination  as! TableViewController
+            tableViewController.delegate = self
+            tableViewController.showDropboxData()
+        }
+        /*if segue.identifier == "DropboxListingViewController"{
             let dropboxListingViewController = segue.destination  as! DropboxListingViewController
             dropboxListingViewController.delegate = self
             //            dropboxListingViewController.getSelectedData = { pathArr in
@@ -32,7 +38,7 @@ class ViewController: UIViewController, SelectedData {
             dropboxListingViewController.showDropboxData()
             
             
-        }
+        }*/
     }
     
     func getDropboxSelectedData(_ dataArr: [String]){
@@ -42,7 +48,7 @@ class ViewController: UIViewController, SelectedData {
     
     func refreshDropboxList() {
         
-        self.performSegue(withIdentifier: "DropboxListingViewController", sender: nil)
+        self.performSegue(withIdentifier: "TableViewController", sender: nil)
     }
     
     @IBAction func linkToDropboxClicked(_ sender: AnyObject) {

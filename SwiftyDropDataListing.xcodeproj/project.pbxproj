@@ -18,7 +18,7 @@
 		BA54D0E41D9A726B005E94C4 /* DropboxListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0E31D9A726B005E94C4 /* DropboxListingViewController.swift */; };
 		BA54D0E81D9A73DB005E94C4 /* DropboxListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0E61D9A73DB005E94C4 /* DropboxListingCell.swift */; };
 		BA54D0EB1D9A8A14005E94C4 /* FileViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0EA1D9A8A14005E94C4 /* FileViewerViewController.swift */; };
-		C34C314C1EA4D8E100F325D8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C34C314B1EA4D8E100F325D8 /* MBProgressHUD.m */; };
+		C375A84C1EA62BDE00062BD5 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C375A84B1EA62BDE00062BD5 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +57,7 @@
 		BA54D0E61D9A73DB005E94C4 /* DropboxListingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropboxListingCell.swift; sourceTree = "<group>"; };
 		BA54D0EA1D9A8A14005E94C4 /* FileViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileViewerViewController.swift; sourceTree = "<group>"; };
 		C34C31491EA4D8E100F325D8 /* SwiftyDropDataListing-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SwiftyDropDataListing-Bridging-Header.h"; sourceTree = "<group>"; };
-		C34C314A1EA4D8E100F325D8 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
-		C34C314B1EA4D8E100F325D8 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		C375A84B1EA62BDE00062BD5 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		CCA6C25AEFB8B35D4A86EBDC /* Pods_SwiftyDropDataListing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyDropDataListing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D339E5767275C64B7AACDE /* Pods-SwiftyDropDataListing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyDropDataListing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyDropDataListing/Pods-SwiftyDropDataListing.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,8 +108,6 @@
 		BA54D0A91D9A42D4005E94C4 = {
 			isa = PBXGroup;
 			children = (
-				C34C314A1EA4D8E100F325D8 /* MBProgressHUD.h */,
-				C34C314B1EA4D8E100F325D8 /* MBProgressHUD.m */,
 				BA54D0E51D9A73B5005E94C4 /* customViews */,
 				BA54D0B41D9A42D4005E94C4 /* SwiftyDropDataListing */,
 				BA54D0C91D9A42D5005E94C4 /* SwiftyDropDataListingTests */,
@@ -143,6 +140,7 @@
 				BA54D0BC1D9A42D5005E94C4 /* Assets.xcassets */,
 				BA54D0C11D9A42D5005E94C4 /* Info.plist */,
 				BA54D0EA1D9A8A14005E94C4 /* FileViewerViewController.swift */,
+				C375A84B1EA62BDE00062BD5 /* TableViewController.swift */,
 			);
 			path = SwiftyDropDataListing;
 			sourceTree = "<group>";
@@ -362,7 +360,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA54D0B81D9A42D4005E94C4 /* ViewController.swift in Sources */,
-				C34C314C1EA4D8E100F325D8 /* MBProgressHUD.m in Sources */,
+				C375A84C1EA62BDE00062BD5 /* TableViewController.swift in Sources */,
 				BA54D0B61D9A42D4005E94C4 /* AppDelegate.swift in Sources */,
 				BA54D0EB1D9A8A14005E94C4 /* FileViewerViewController.swift in Sources */,
 				BA54D0E41D9A726B005E94C4 /* DropboxListingViewController.swift in Sources */,

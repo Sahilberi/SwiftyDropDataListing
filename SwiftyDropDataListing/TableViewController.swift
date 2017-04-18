@@ -1,86 +1,66 @@
 //
-//  DropboxListingViewController.swift
+//  TableViewController.swift
 //  SwiftyDropDataListing
 //
-//  Created by Sahil on 27/09/16.
-//  Copyright © 2016 SammyOne. All rights reserved.
+//  Created by Administrator on 18/04/17.
+//  Copyright © 2017 SammyOne. All rights reserved.
 //
 
 import UIKit
 import SwiftyDropbox
 
-
-protocol SelectedData {
+protocol SelectedDropboxData {
     func getDropboxSelectedData(_ dataArr: [String])
 }
 
 
-
-class DropboxListingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class TableViewController: UITableViewController, UISearchBarDelegate {
     
-    var fileUrl:URL?
-    var fileName :String?
     var filesArr: [Files.Metadata] = []
-    
-    ///store dropbox entity's namek
-    var dropboxData = [String]()
-    
-    ///store dropbox entity's path
-    var dropboxDataPath = [String]()
-    
     var searchActive : Bool = false
-    
-    var filtered:[String] = []
-    var filteredDataPath = [String]()
-    var getSelectedData:(([String])->())?
-    var delegate:SelectedData?
-    var downloadData:[Files.Metadata] = []
-    /*
-     Files.FileMetadataSerializer
-     Files.DownloadErrorSerializer
-     */
+    var delegate:SelectedDropboxData?
     var request: DownloadRequestFile<Files.FileMetadataSerializer, Files.DownloadErrorSerializer>?
     var cache:NSCache<AnyObject, AnyObject> = NSCache()
-    
-    
-    @IBOutlet weak var tableView: UITableView!
-    // @IBOutlet weak var  downloadButton: GBKUIButtonProgressView!// *downloadButton;
-    @IBOutlet weak var loaderBGView: UIView!
-    @IBOutlet weak var progressBar: UIProgressView!
-    @IBOutlet weak var lblProgress: UILabel!
+    var loaderBGView: UIView!
+    var progressView: UIProgressView!
+    var lblPercentage: UILabel!
+    var cancelBtn: UIButton!
+    var searchBar:UISearchBar!
 
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //self.showDropboxData()
-        
+        addSearchBar()
+        makeLoader()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        loaderBGView.isHidden = true
-        //  downloadButton.isHidden = true
+    
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
-    
-    //MARK: UITableViewDataSource and UITableViewDelegate methods
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+
+    // MARK: - Table view data source
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
         if self.searchActive {
-            return self.filtered.count
+            return 0//self.filtered.count
         }
         return filesArr.count//dropboxData.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "DropboxListingCell") as! DropboxListingCell
-        
-        var currentfile = ""
-        
         cell.listImageView.image = UIImage(named: "folder_icon")
-        
         let fileInfo = filesArr[indexPath.row]
         
         switch (fileInfo.name as NSString).pathExtension {
@@ -104,32 +84,31 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
         
-        var currentFile = ""
-        var path = ""
-        
-        if self.searchActive {
+       /* if self.searchActive {
             currentFile = filtered[indexPath.row]
             path = filteredDataPath[indexPath.row]
         } else {
             currentFile = filesArr[indexPath.row].name
             path = filesArr[indexPath.row].pathLower!
-        }
+        }*/
         
         
         
         // get current file as NSString to check extension
-        let filename = currentFile as NSString
+    //    let filename = currentFile as NSString
         
         // if fileExtenstion is folder
         // add folder's data in dropboxData and dropboxDataPath variable and delete old data.
-        // else download the file from dropbox
-        if filename.pathExtension == "" {
+        // else download the file from dropbox'
+        
+        if (filesArr[indexPath.row].name as NSString).pathExtension == "" {
             if let client = DropboxClientsManager.authorizedClient {
                 
                 // List folder
-                client.files.listFolder(path: path).response { response, error in
+                client.files.listFolder(path: filesArr[indexPath.row].pathLower!).response { response, error in
                     // delet old data
                     //          self.dropboxData.removeAll()
                     //          self.dropboxDataPath.removeAll()
@@ -139,7 +118,7 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
                     if let result = response {
                         print(result)
                         print("Folder contents:")
-                        let dropboxListingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "DropboxListingViewController") as! DropboxListingViewController
+                        let dropboxListingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TableViewController") as! TableViewController
                         dropboxListingViewController.filesArr = result.entries
                         self.navigationController?.pushViewController(dropboxListingViewController, animated: true)
                     } else {
@@ -150,21 +129,14 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
             }
         } else {
             loaderBGView.isHidden = false
-            progressBar.progress = 0
-            lblProgress.text = "\(progressBar.progress) %"
+            progressView.progress = 0
+            lblPercentage.text = "\(progressView.progress) %"
             
             //[self.downloadButton startProgressing];
             if let client = DropboxClientsManager.authorizedClient {
-                // Download a file
-                
-                // create  unique destination for file.
                 let destination : (URL, HTTPURLResponse) -> URL = { temporaryURL, response in
                     let fileManager = FileManager.default
                     let directoryURL = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-                    
-                    //          let paths = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)
-                    //
-                    //          let documentsDirectory: AnyObject = paths[0] as AnyObject
                     let dataPath = directoryURL.appendingPathComponent("Resumes")
                     
                     if !FileManager.default.fileExists(atPath: dataPath.path) {
@@ -177,7 +149,7 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
                     }
                     
                     let pathComponent = directoryURL.appendingPathComponent("Resumes")
-                    let path = pathComponent.appendingPathComponent(filename as String)
+                    let path = pathComponent.appendingPathComponent(self.filesArr[indexPath.row].name)
                     print(path)
                     
                     // if file is already exist then delete it first
@@ -200,34 +172,27 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
                 
                 // let request =
                 
-                request = client.files.download(path: path, destination: destination)
+                request = client.files.download(path: self.filesArr[indexPath.row].pathLower!, destination: destination)
                 
                 
                 
                 
                 request?.progress{ progressData in
-                    
-                  
-                    
-                    self.progressBar.progress = Float(progressData.fractionCompleted)
-                    self.lblProgress.text = String(format: "%.0f %%", (progressData.fractionCompleted*100))
-                    
-                    
+                    self.progressView.progress = Float(progressData.fractionCompleted)
+                    self.lblPercentage.text = String(format: "%.0f %%", (progressData.fractionCompleted*100))
                 }
                 
                 
                 
                 request?.response { response, error in
-                   // self.hud?.hide(animated: true)
                     self.loaderBGView.isHidden = true
                     if let (metadata, url) = response {
-                        print("*** Download file ***")
                         
                         print(url.pathExtension)
                         print(url)
                         
-                        self.fileUrl = url
-                        self.fileName = metadata.name
+                       // self.fileUrl = url
+                        //self.fileName = metadata.name
                         
                         let data = try? Data(contentsOf: url)
                         print("Downloaded file name: \(metadata.name)")
@@ -264,45 +229,20 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
                     print(error!)
                 }
             }
-//            client.files.listFolder(path: "", recursive: false, includeMediaInfo: true, includeDeleted: false, includeHasExplicitSharedMembers: true)
-            client.files.listFolder(path: "")//getMetadata(path: "/")
-                //client.files.listFolder(path: "")
-                
+            
+            client.files.listFolder(path: "", recursive: false, includeMediaInfo: true, includeDeleted: false, includeHasExplicitSharedMembers: true)
                 .response { response, error in
                     print("*** List folder ***")
-                    print(response)
                     
                     if let result = response {
                         print("Folder contents:")
-                       
                         self.filesArr = result.entries
-                        for entry in result.entries {
-                            let entryName  = entry.name as NSString
-                            let pathExtension = entryName.pathExtension
-                            
-                            // check pathExtension of entity's and append data
-                            // filesArr =
-                            if pathExtension == "pdf" ||  pathExtension == "doc" || pathExtension == "" || pathExtension == "png" ||  pathExtension == "jpg" || pathExtension == "jpeg" {
-                                self.dropboxDataPath.append(entry.pathLower!)
-                                self.dropboxData.append(entry.name)
-                            }
-                        }
-                        //reload tableview
                         self.tableView.reloadData()
                     } else {
                         //show error message
                         print("error")
                     }
             }
-        }
-    }
-    
-    //MARK: SEGUE DELEGATES
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "DropboxListingViewController"{
-            let dropboxListingViewController = segue.destination  as! DropboxListingViewController
-            dropboxListingViewController.filesArr = self.downloadData
         }
     }
     
@@ -313,9 +253,7 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func cancelBtnClicked(_ sender: AnyObject){
-        // request.ca
         request?.cancel()
-        //print("cancel btn clicked")
     }
     
     //MARK: CUSTOM METHODS
@@ -324,6 +262,44 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
         return DropboxClientsManager.authorizedClient
     }
     
+    func addSearchBar(){
+        searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44.0))
+        searchBar.delegate = self
+        self.tableView.tableHeaderView = searchBar
+    }
+    
+    func makeLoader(){
+       
+        loaderBGView = UIView(frame: self.view.frame)
+        loaderBGView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        progressView = UIProgressView(frame: CGRect(x: 30, y: ((self.view.frame.size.height/2) - 10), width: self.view.frame.size.width-60, height: 10.0))
+        progressView.progress = 0.0
+        progressView.tintColor = UIColor(colorLiteralRed: 200/255.0, green: 200/255.0, blue: 48/255.0, alpha: 1.0)
+        progressView.trackTintColor = UIColor.white
+        progressView.transform = CGAffineTransform(scaleX: 1.0, y: 3.0)
+        
+        let lblDownload = UILabel(frame: CGRect(x: 30, y: progressView.frame.origin.y-30, width: self.view.frame.size.width-60, height: 20.0))
+        lblDownload.text = "Downloading"
+        lblDownload.textColor = UIColor.white
+        lblDownload.textAlignment = .center
+        
+        lblPercentage = UILabel(frame: CGRect(x: 30, y: progressView.frame.size.height + progressView.frame.origin.y+5, width: self.view.frame.size.width-60, height: 15.0))
+        lblPercentage.textColor = UIColor.white
+        lblPercentage.textAlignment = .center
+        lblPercentage.font = UIFont.systemFont(ofSize: 15.0)
+        
+        cancelBtn = UIButton(frame: CGRect(x: self.view.frame.size.width-120, y: 20, width: 100, height: 50))
+        cancelBtn.setTitle("Cancel", for: .normal)
+        cancelBtn.tintColor = UIColor.white
+        cancelBtn.addTarget(self, action: #selector(TableViewController.cancelBtnClicked(_:)), for: .touchUpInside)
+        
+        loaderBGView.addSubview(cancelBtn)
+        loaderBGView.addSubview(lblDownload)
+        loaderBGView.addSubview(progressView)
+        loaderBGView.addSubview(lblPercentage)
+        self.view.addSubview(loaderBGView)
+        loaderBGView.isHidden = true
+    }
     //MARK: UISearchbarDelegate methods
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -339,7 +315,7 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
+       /*
         self.searchActive = true
         
         self.filteredDataPath.removeAll()
@@ -364,17 +340,9 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
         } else {
             searchActive = true
         }
-        self.tableView.reloadData()
+        self.tableView.reloadData()*/
     }
     
+
+   
 }
-
-
-/*
- print("bytesRead = totalUnitCount: \(progressData.totalUnitCount)")
- print("totalBytesRead = completedUnitCount: \(progressData.completedUnitCount)")
- 
- print("totalBytesExpectedToRead (Has to sub): \(progressData.totalUnitCount - progressData.completedUnitCount)")
- 
- print("progressData.fractionCompleted (New)  = \(progressData.fractionCompleted)")
- */

@@ -905,10 +905,11 @@ open class Files {
         /// casing of paths won't be returned by listFolderContinue. This field will be null if the file or folder is
         /// not mounted.
         open let pathDisplay: String?
+        open let dpID:String?
         /// Deprecated. Please use parentSharedFolderId in FileSharingInfo or parentSharedFolderId in FolderSharingInfo
         /// instead.
         open let parentSharedFolderId: String?
-        public init(name: String, pathLower: String? = nil, pathDisplay: String? = nil, parentSharedFolderId: String? = nil) {
+        public init(name: String, pathLower: String? = nil, pathDisplay: String? = nil, parentSharedFolderId: String? = nil, dbId: String? = nil) {
             stringValidator()(name)
             self.name = name
             nullableValidator(stringValidator())(pathLower)
@@ -917,6 +918,7 @@ open class Files {
             self.pathDisplay = pathDisplay
             nullableValidator(stringValidator(pattern: "[-_0-9a-zA-Z:]+"))(parentSharedFolderId)
             self.parentSharedFolderId = parentSharedFolderId
+            self.dpID = dbId
         }
         open var description: String {
             return "\(SerializeUtil.prepareJSONForSerialization(MetadataSerializer().serialize(self)))"
@@ -1160,7 +1162,8 @@ open class Files {
             self.sharingInfo = sharingInfo
             self.propertyGroups = propertyGroups
             self.hasExplicitSharedMembers = hasExplicitSharedMembers
-            super.init(name: name, pathLower: pathLower, pathDisplay: pathDisplay, parentSharedFolderId: parentSharedFolderId)
+            super.init(name: name, pathLower: pathLower, pathDisplay: pathDisplay, parentSharedFolderId: parentSharedFolderId, dbId: id)
+           // super.init(name: name, pathLower: pathLower, pathDisplay: pathDisplay, parentSharedFolderId: parentSharedFolderId)
         }
         open override var description: String {
             return "\(SerializeUtil.prepareJSONForSerialization(FileMetadataSerializer().serialize(self)))"
@@ -1296,7 +1299,8 @@ open class Files {
             self.sharedFolderId = sharedFolderId
             self.sharingInfo = sharingInfo
             self.propertyGroups = propertyGroups
-            super.init(name: name, pathLower: pathLower, pathDisplay: pathDisplay, parentSharedFolderId: parentSharedFolderId)
+            super.init(name: name, pathLower: pathLower, pathDisplay: pathDisplay, parentSharedFolderId: parentSharedFolderId, dbId: id)
+     //       super.init(name: name, pathLower: pathLower, pathDisplay: pathDisplay, parentSharedFolderId: parentSharedFolderId)
         }
         open override var description: String {
             return "\(SerializeUtil.prepareJSONForSerialization(FolderMetadataSerializer().serialize(self)))"
