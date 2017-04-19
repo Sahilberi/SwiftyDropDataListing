@@ -17,6 +17,7 @@ protocol SelectedDropboxData {
 class TableViewController: UITableViewController, UISearchBarDelegate {
     
     var filesArr: [Files.Metadata] = []
+    var filteredArr:[Files.Metadata] = []
     var searchActive : Bool = false
     var delegate:SelectedDropboxData?
     var request: DownloadRequestFile<Files.FileMetadataSerializer, Files.DownloadErrorSerializer>?
@@ -26,11 +27,16 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
     var lblPercentage: UILabel!
     var cancelBtn: UIButton!
     var searchBar:UISearchBar!
+    var activityIndicatorBGView: UIView?
+    var activityIndicatorView: UIActivityIndicatorView!
 
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if activityIndicatorBGView == nil{
+            makeActivityIndicator()
+        }
         addSearchBar()
         makeLoader()
     }
@@ -50,18 +56,14 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        if self.searchActive {
-            return 0//self.filtered.count
-        }
-        return filesArr.count//dropboxData.count
+        return filteredArr.count//dropboxData.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "DropboxListingCell") as! DropboxListingCell
         cell.listImageView.image = UIImage(named: "folder_icon")
-        let fileInfo = filesArr[indexPath.row]
+        let fileInfo = filteredArr[indexPath.row]
         
         switch (fileInfo.name as NSString).pathExtension {
         case "bmp" , "cr2", "gif", "ico", "ithmb", "jpeg", "jpg", "nef", "png", "raw", "svg", "tif", "tiff", "wbmp", "webp":
@@ -86,41 +88,25 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     
-        
-       /* if self.searchActive {
-            currentFile = filtered[indexPath.row]
-            path = filteredDataPath[indexPath.row]
-        } else {
-            currentFile = filesArr[indexPath.row].name
-            path = filesArr[indexPath.row].pathLower!
-        }*/
-        
-        
-        
-        // get current file as NSString to check extension
-    //    let filename = currentFile as NSString
-        
-        // if fileExtenstion is folder
-        // add folder's data in dropboxData and dropboxDataPath variable and delete old data.
-        // else download the file from dropbox'
-        
-        if (filesArr[indexPath.row].name as NSString).pathExtension == "" {
+        if (filteredArr[indexPath.row].name as NSString).pathExtension == "" {
+            activityIndicatorBGView?.isHidden = false
+            activityIndicatorView.startAnimating()
             if let client = DropboxClientsManager.authorizedClient {
                 
                 // List folder
-                client.files.listFolder(path: filesArr[indexPath.row].pathLower!).response { response, error in
-                    // delet old data
-                    //          self.dropboxData.removeAll()
-                    //          self.dropboxDataPath.removeAll()
+                client.files.listFolder(path: filteredArr[indexPath.row].pathLower!).response { response, error in
                     
                     print("*** List folder ***")
                     
                     if let result = response {
+                        self.activityIndicatorBGView?.isHidden = true
+                        self.activityIndicatorView.stopAnimating()
                         print(result)
                         print("Folder contents:")
-                        let dropboxListingViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TableViewController") as! TableViewController
-                        dropboxListingViewController.filesArr = result.entries
-                        self.navigationController?.pushViewController(dropboxListingViewController, animated: true)
+                        let tableViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TableViewController") as! TableViewController
+                        tableViewController.filesArr = result.entries
+                        tableViewController.filteredArr = result.entries
+                        self.navigationController?.pushViewController(tableViewController, animated: true)
                     } else {
                         
                         //TODO: show message here to user
@@ -131,7 +117,7 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
             loaderBGView.isHidden = false
             progressView.progress = 0
             lblPercentage.text = "\(progressView.progress) %"
-            
+           // self.view.isUserInteractionEnabled = false
             //[self.downloadButton startProgressing];
             if let client = DropboxClientsManager.authorizedClient {
                 let destination : (URL, HTTPURLResponse) -> URL = { temporaryURL, response in
@@ -149,7 +135,7 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
                     }
                     
                     let pathComponent = directoryURL.appendingPathComponent("Resumes")
-                    let path = pathComponent.appendingPathComponent(self.filesArr[indexPath.row].name)
+                    let path = pathComponent.appendingPathComponent(self.filteredArr[indexPath.row].name)
                     print(path)
                     
                     // if file is already exist then delete it first
@@ -172,7 +158,7 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
                 
                 // let request =
                 
-                request = client.files.download(path: self.filesArr[indexPath.row].pathLower!, destination: destination)
+                request = client.files.download(path: self.filteredArr[indexPath.row].pathLower!, destination: destination)
                 
                 
                 
@@ -186,6 +172,7 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
                 
                 request?.response { response, error in
                     self.loaderBGView.isHidden = true
+//                    self.view.isUserInteractionEnabled = true
                     if let (metadata, url) = response {
                         
                         print(url.pathExtension)
@@ -218,6 +205,11 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         
         // check user is authorizedClient or not
         // if yes then hit dropbox api and save data in dropboxData  and dropboxDataPath variables.
+        if activityIndicatorBGView == nil{
+            makeActivityIndicator()
+        }
+        activityIndicatorBGView?.isHidden = false
+        activityIndicatorView.startAnimating()
         if let client = DropboxClientsManager.authorizedClient {
             
             // Get the current user's account info
@@ -233,10 +225,12 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
             client.files.listFolder(path: "", recursive: false, includeMediaInfo: true, includeDeleted: false, includeHasExplicitSharedMembers: true)
                 .response { response, error in
                     print("*** List folder ***")
-                    
+                    self.activityIndicatorBGView?.isHidden = true
+                    self.activityIndicatorView.stopAnimating()
                     if let result = response {
                         print("Folder contents:")
                         self.filesArr = result.entries
+                        self.filteredArr = result.entries
                         self.tableView.reloadData()
                     } else {
                         //show error message
@@ -247,10 +241,6 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     //MARK: IBACTIONS
-    
-    func downloadProgressed(progress: CGFloat){
-        //self.downloadButton.setProgress(progress, animated: true)
-    }
     
     func cancelBtnClicked(_ sender: AnyObject){
         request?.cancel()
@@ -264,12 +254,13 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
     
     func addSearchBar(){
         searchBar = UISearchBar(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 44.0))
+        self.searchBar.enablesReturnKeyAutomatically = false
         searchBar.delegate = self
         self.tableView.tableHeaderView = searchBar
+       
     }
     
     func makeLoader(){
-       
         loaderBGView = UIView(frame: self.view.frame)
         loaderBGView.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         progressView = UIProgressView(frame: CGRect(x: 30, y: ((self.view.frame.size.height/2) - 10), width: self.view.frame.size.width-60, height: 10.0))
@@ -297,8 +288,20 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         loaderBGView.addSubview(lblDownload)
         loaderBGView.addSubview(progressView)
         loaderBGView.addSubview(lblPercentage)
-        self.view.addSubview(loaderBGView)
+        (UIApplication.shared.delegate as! AppDelegate).window?.addSubview(loaderBGView)
+       // self.view.superview?.addSubview(loaderBGView)
         loaderBGView.isHidden = true
+    }
+    
+    func makeActivityIndicator(){
+        activityIndicatorBGView = UIView(frame: self.view.frame)
+        activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        activityIndicatorView.frame = CGRect(x: (UIScreen.main.bounds.size.width/2 - activityIndicatorView.frame.size.width/2), y: (UIScreen.main.bounds.size.height/2 - activityIndicatorView.frame.size.height/2), width: activityIndicatorView.frame.size.width, height: activityIndicatorView.frame.size.height)
+        activityIndicatorBGView?.addSubview(activityIndicatorView)
+        activityIndicatorBGView?.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        activityIndicatorBGView?.isHidden = true
+        (UIApplication.shared.delegate as! AppDelegate).window?.addSubview(activityIndicatorBGView!)
+        
     }
     //MARK: UISearchbarDelegate methods
     
@@ -312,13 +315,29 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchActive = false
+        searchBar.resignFirstResponder()
     }
     
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.isEmpty == true {
+            filteredArr = self.filesArr
+        }else{
+            filteredArr = self.filesArr.filter ({ (fileInfo) -> Bool in
+                let range = fileInfo.name.range(of: searchBar.text!, options: String.CompareOptions.caseInsensitive)
+                if range == nil
+                {
+                    return false
+                }
+                return true
+            })
+        }
+        self.tableView.reloadData()
        /*
         self.searchActive = true
         
         self.filteredDataPath.removeAll()
+         
         
         filtered = self.dropboxData.filter(
             { (text) -> Bool in
