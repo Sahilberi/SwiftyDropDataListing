@@ -34,6 +34,11 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.tableView
+//        [self.tableView registerClass:[MyCell class] forCellReuseIdentifier:@"MyCellIdentifier"];
+        self.tableView.register(DropboxListingCell.self, forCellReuseIdentifier: "DropboxListingCell")
+
+
         if activityIndicatorBGView == nil{
             makeActivityIndicator()
         }
@@ -60,9 +65,12 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DropboxListingCell") as! DropboxListingCell
-        cell.listImageView.image = UIImage(named: "folder_icon")
+        var cell = tableView.dequeueReusableCell(withIdentifier: "DropboxListingCell") as! DropboxListingCell
+        cell = DropboxListingCell(style: .default, reuseIdentifier: "DropboxListingCell")
+        if let image = loadImage(name: "sp_folder"){
+            image.withRenderingMode(.alwaysTemplate)
+            cell.listImageView.image = image.imageWithColor(UIColor.init(colorLiteralRed: 200/255.0, green: 200/255.0, blue: 48/255.0, alpha: 1.0))
+        }
         let fileInfo = filteredArr[indexPath.row]
         
         switch (fileInfo.name as NSString).pathExtension {
@@ -70,6 +78,10 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
             if self.cache.object(forKey: fileInfo.dpID as AnyObject) != nil {
                 cell.listImageView.image = self.cache.object(forKey: fileInfo.dpID as AnyObject) as? UIImage
             }else{
+                if let image = loadImage(name: "sp_page_dark_picture"){
+                    image.withRenderingMode(.alwaysTemplate)
+                    cell.listImageView.image = image.imageWithColor(UIColor.init(colorLiteralRed: 200/255.0, green: 200/255.0, blue: 48/255.0, alpha: 1.0))
+                }
                 if let client = DropboxClientsManager.authorizedClient {
                     client.files.download(path: fileInfo.pathLower!)
                         .response(completionHandler: { (file, error) in
@@ -78,8 +90,69 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
                         })
                 }
             }
+            
+            break
+        //document
+        case "csv", "doc", "docx", "docm", "ods", "odt", "pdf", "rtf", "xls", "xlsm", "xlsx":
+            if let image = loadImage(name: "sp_page_dark_excel"){
+                image.withRenderingMode(.alwaysTemplate)
+                cell.listImageView.image = image.imageWithColor(UIColor.init(colorLiteralRed: 200/255.0, green: 200/255.0, blue: 48/255.0, alpha: 1.0))
+            }
+            //sp_page_dark_excel
+            break
+        //presentation
+        case "odp" , "pps" ,"ppsm" ,"ppsx", "ppt", "pptm", "pptx":
+            if let image = loadImage(name: "sp_page_dark_powerpoint"){
+                image.withRenderingMode(.alwaysTemplate)
+                cell.listImageView.image = image.imageWithColor(UIColor.init(colorLiteralRed: 200/255.0, green: 200/255.0, blue: 48/255.0, alpha: 1.0))
+            }
+            
+            //sp_page_dark_powerpoint
+            break
+        //video
+        case "3gp", "3gpp", "3gpp2", "asf", "avi", "dv", "flv", "m2t", "m2t", "m4v", "mkv", "mov", "mp4", "mpeg", "mpg", "mts", "oggtheora", "ogv", "rm", "ts", "vob", "webm", "wmv":
+            if let image = loadImage(name: "sp_page_dark_film"){
+                image.withRenderingMode(.alwaysTemplate)
+                cell.listImageView.image = image.imageWithColor(UIColor.init(colorLiteralRed: 200/255.0, green: 200/255.0, blue: 48/255.0, alpha: 1.0))
+            }
+            //sp_page_dark_film
+            break
+        //AUDIO
+        case "aac", "m4a", "mp3", "oga", "wav":
+            if let image = loadImage(name: "sp_page_dark_mp3"){
+                image.withRenderingMode(.alwaysTemplate)
+                cell.listImageView.image = image.imageWithColor(UIColor.init(colorLiteralRed: 200/255.0, green: 200/255.0, blue: 48/255.0, alpha: 1.0))
+            }
+            //sp_page_dark_mp3
+            break
+        case "url", "webloc", "website":
+            if let image = loadImage(name: "sp_page_dark_webcode"){
+                image.withRenderingMode(.alwaysTemplate)
+                cell.listImageView.image = image.imageWithColor(UIColor.init(colorLiteralRed: 200/255.0, green: 200/255.0, blue: 48/255.0, alpha: 1.0))
+            }
+            //sp_page_dark_webcode
+            break
+        //Text
+        case "as", "as3", "asm", "aspx", "bat", "c", "cc", "cmake", "coffee", "cpp" , "cs", "css", "cxx" ,"diff", "erb", "erl", "groovy", "gvy", "h", "haml", "hh", "hpp", "hxx", "java", "js", "json", "jsx", "less", "lst", "m", "make", "markdown", "md", "mdown", "mkdn", "ml", "mm", "out", "patch", "php", "pl", "plist", "properties", "py", "rb", "sass", "scala", "scm", "script", "scss", "sh", "sml", "sql", "txt", "vb", "vi", "vim", "xhtml", "xml", "xsd", "xsl", "yaml", "yml":
+            if let image = loadImage(name: "sp_page_dark_text"){
+                image.withRenderingMode(.alwaysTemplate)
+                cell.listImageView.image = image.imageWithColor(UIColor.init(colorLiteralRed: 200/255.0, green: 200/255.0, blue: 48/255.0, alpha: 1.0))
+            }
+            //sp_page_dark_text
+            break
+        case "zip":
+            if let image = loadImage(name: "sp_page_dark_compressed"){
+                image.withRenderingMode(.alwaysTemplate)
+                cell.listImageView.image = image.imageWithColor(UIColor.init(colorLiteralRed: 200/255.0, green: 200/255.0, blue: 48/255.0, alpha: 1.0))
+            }
+            //sp_page_dark_compressed
             break
         default:
+            if let image = loadImage(name: "sp_folder"){
+                image.withRenderingMode(.alwaysTemplate)
+                cell.listImageView.image = image.imageWithColor(UIColor.init(colorLiteralRed: 200/255.0, green: 200/255.0, blue: 48/255.0, alpha: 1.0))
+            }
+            //sp_folder
             break
         }
         cell.fileName.text = fileInfo.name
@@ -228,7 +301,7 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
                     self.activityIndicatorBGView?.isHidden = true
                     self.activityIndicatorView.stopAnimating()
                     if let result = response {
-                        print("Folder contents:")
+                        print("Folder contents:%@", result)
                         self.filesArr = result.entries
                         self.filteredArr = result.entries
                         self.tableView.reloadData()
@@ -289,7 +362,6 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         loaderBGView.addSubview(progressView)
         loaderBGView.addSubview(lblPercentage)
         (UIApplication.shared.delegate as! AppDelegate).window?.addSubview(loaderBGView)
-       // self.view.superview?.addSubview(loaderBGView)
         loaderBGView.isHidden = true
     }
     
@@ -301,8 +373,17 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
         activityIndicatorBGView?.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         activityIndicatorBGView?.isHidden = true
         (UIApplication.shared.delegate as! AppDelegate).window?.addSubview(activityIndicatorBGView!)
-        
     }
+    
+    func loadImage(name: String) -> UIImage? {
+        let podBundle = Bundle(for: TableViewController.self)
+        if let url = podBundle.url(forResource: "DroplightIcons", withExtension: "bundle") {
+            let bundle = Bundle(url: url)
+            return UIImage(named: name, in: bundle, compatibleWith: nil)
+        }
+        return nil
+    }
+    
     //MARK: UISearchbarDelegate methods
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
@@ -333,35 +414,20 @@ class TableViewController: UITableViewController, UISearchBarDelegate {
             })
         }
         self.tableView.reloadData()
-       /*
-        self.searchActive = true
-        
-        self.filteredDataPath.removeAll()
-         
-        
-        filtered = self.dropboxData.filter(
-            { (text) -> Bool in
-                let tmp: NSString = text as NSString
-                let range = tmp.range(of: searchText, options: NSString.CompareOptions.caseInsensitive)
-                print(range)
-                return range.location != NSNotFound
-        })
-        
-        for element in self.filtered {
-            let index = self.dropboxData.index(of: element)
-            self.filteredDataPath.append(self.dropboxDataPath[index!])
-        }
-        
-        print(filtered.count)
-        
-        if(filtered.count == 0) {
-            searchActive = false
-        } else {
-            searchActive = true
-        }
-        self.tableView.reloadData()*/
     }
     
 
    
+}
+
+extension UIImage {
+    func imageWithColor(_ color: UIColor) -> UIImage? {
+        var image = withRenderingMode(.alwaysTemplate)
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        color.set()
+        image.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        image = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        return image
+    }
 }

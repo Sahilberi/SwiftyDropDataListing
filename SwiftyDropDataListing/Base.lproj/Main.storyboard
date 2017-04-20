@@ -255,42 +255,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DropboxListingCell" rowHeight="50" id="0PA-k5-EMf" customClass="DropboxListingCell" customModule="SwiftyDropDataListing" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="50"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0PA-k5-EMf" id="Erq-Az-PmU">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lyc-tR-Ii3">
-                                            <rect key="frame" x="68" y="18" width="234" height="21"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="folder_icon" translatesAutoresizingMaskIntoConstraints="NO" id="S9a-Go-76J">
-                                            <rect key="frame" x="18" y="8" width="40" height="40"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="40" id="Pr9-mW-TIv"/>
-                                                <constraint firstAttribute="height" constant="40" id="gLW-xG-Byt"/>
-                                            </constraints>
-                                        </imageView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="lyc-tR-Ii3" firstAttribute="leading" secondItem="S9a-Go-76J" secondAttribute="trailing" constant="10" id="6Qm-sJ-LU3"/>
-                                        <constraint firstItem="S9a-Go-76J" firstAttribute="leading" secondItem="Erq-Az-PmU" secondAttribute="leadingMargin" constant="10" id="WPc-hO-c26"/>
-                                        <constraint firstItem="S9a-Go-76J" firstAttribute="top" secondItem="Erq-Az-PmU" secondAttribute="topMargin" id="mgv-em-feO"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="lyc-tR-Ii3" secondAttribute="trailing" constant="10" id="o64-al-qPM"/>
-                                        <constraint firstItem="lyc-tR-Ii3" firstAttribute="top" secondItem="Erq-Az-PmU" secondAttribute="topMargin" constant="10" id="qdM-M5-nBa"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="fileName" destination="lyc-tR-Ii3" id="1sg-xr-nlC"/>
-                                    <outlet property="listImageView" destination="S9a-Go-76J" id="Wdf-bt-vgg"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="8Gn-2h-mDr" id="FRz-gX-8sP"/>
                             <outlet property="delegate" destination="8Gn-2h-mDr" id="VDH-k3-fxY"/>

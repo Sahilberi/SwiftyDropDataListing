@@ -75,33 +75,33 @@ class DropboxListingViewController: UIViewController, UITableViewDataSource, UIT
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DropboxListingCell") as! DropboxListingCell
-        
-        var currentfile = ""
-        
-        cell.listImageView.image = UIImage(named: "folder_icon")
-        
-        let fileInfo = filesArr[indexPath.row]
-        
-        switch (fileInfo.name as NSString).pathExtension {
-        case "bmp" , "cr2", "gif", "ico", "ithmb", "jpeg", "jpg", "nef", "png", "raw", "svg", "tif", "tiff", "wbmp", "webp":
-            if self.cache.object(forKey: fileInfo.dpID as AnyObject) != nil {
-                cell.listImageView.image = self.cache.object(forKey: fileInfo.dpID as AnyObject) as? UIImage
-            }else{
-                if let client = DropboxClientsManager.authorizedClient {
-                    client.files.download(path: fileInfo.pathLower!)
-                        .response(completionHandler: { (file, error) in
-                            cell.listImageView.image = UIImage(data: (file?.1)!)
-                            self.cache.setObject(cell.listImageView.image!, forKey: file?.0.id as AnyObject)
-                        })
-                }
-            }
-            break
-        default:
-            break
-        }
-        cell.fileName.text = fileInfo.name
-        return cell
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "DropboxListingCell") as! DropboxListingCell
+//        
+//        var currentfile = ""
+//        
+//        cell.listImageView.image = UIImage(named: "folder_icon")
+//        
+//        let fileInfo = filesArr[indexPath.row]
+//        
+//        switch (fileInfo.name as NSString).pathExtension {
+//        case "bmp" , "cr2", "gif", "ico", "ithmb", "jpeg", "jpg", "nef", "png", "raw", "svg", "tif", "tiff", "wbmp", "webp":
+//            if self.cache.object(forKey: fileInfo.dpID as AnyObject) != nil {
+//                cell.listImageView.image = self.cache.object(forKey: fileInfo.dpID as AnyObject) as? UIImage
+//            }else{
+//                if let client = DropboxClientsManager.authorizedClient {
+//                    client.files.download(path: fileInfo.pathLower!)
+//                        .response(completionHandler: { (file, error) in
+//                            cell.listImageView.image = UIImage(data: (file?.1)!)
+//                            self.cache.setObject(cell.listImageView.image!, forKey: file?.0.id as AnyObject)
+//                        })
+//                }
+//            }
+//            break
+//        default:
+//            break
+//        }
+//        cell.fileName.text = fileInfo.name
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
