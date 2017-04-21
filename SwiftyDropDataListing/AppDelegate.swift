@@ -3,7 +3,7 @@
 //  SwiftyDropDataListing
 //
 //  Created by Sahil on 27/09/16.
-//  Copyright © 2016 SammyOne. All rights reserved.
+//  Copyright © 2017 SahilBeri. All rights reserved.
 //
 
 import UIKit

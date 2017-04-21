@@ -905,7 +905,6 @@ open class Files {
         /// casing of paths won't be returned by listFolderContinue. This field will be null if the file or folder is
         /// not mounted.
         open let pathDisplay: String?
-        open let dpID:String?
         /// Deprecated. Please use parentSharedFolderId in FileSharingInfo or parentSharedFolderId in FolderSharingInfo
         /// instead.
         open let parentSharedFolderId: String?
@@ -918,7 +917,6 @@ open class Files {
             self.pathDisplay = pathDisplay
             nullableValidator(stringValidator(pattern: "[-_0-9a-zA-Z:]+"))(parentSharedFolderId)
             self.parentSharedFolderId = parentSharedFolderId
-            self.dpID = dbId
         }
         open var description: String {
             return "\(SerializeUtil.prepareJSONForSerialization(MetadataSerializer().serialize(self)))"

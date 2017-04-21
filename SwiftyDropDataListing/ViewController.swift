@@ -3,7 +3,7 @@
 //  SwiftyDropDataListing
 //
 //  Created by Sahil on 27/09/16.
-//  Copyright © 2016 SammyOne. All rights reserved.
+//  Copyright © 2017 SahilBeri. All rights reserved.
 //
 
 import UIKit
@@ -21,24 +21,10 @@ class ViewController: UIViewController, SelectedDropboxData {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TableViewController"{
-            
-            let tableViewController = segue.destination  as! TableViewController
+            let tableViewController = segue.destination  as! DBListingViewController
             tableViewController.delegate = self
             tableViewController.showDropboxData()
         }
-        /*if segue.identifier == "DropboxListingViewController"{
-            let dropboxListingViewController = segue.destination  as! DropboxListingViewController
-            dropboxListingViewController.delegate = self
-            //            dropboxListingViewController.getSelectedData = { pathArr in
-            //                print(pathArr)
-            //                print( FileManager.default.contents(atPath: pathArr[0]))
-            //
-            //
-            //            }
-            dropboxListingViewController.showDropboxData()
-            
-            
-        }*/
     }
     
     func getDropboxSelectedData(_ dataArr: [String]){
@@ -47,11 +33,10 @@ class ViewController: UIViewController, SelectedDropboxData {
     }
     
     func refreshDropboxList() {
-        
         self.performSegue(withIdentifier: "TableViewController", sender: nil)
     }
-    
-    @IBAction func linkToDropboxClicked(_ sender: AnyObject) {
+
+  @IBAction func linkToDropboxClicked(_ sender: AnyObject) {
         
         if (DropboxClientsManager.authorizedClient == nil) {
             //authorize a user
