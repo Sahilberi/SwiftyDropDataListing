@@ -44,8 +44,6 @@ s.source_files  = "DBListingViewController.{h,m}"
   # s.library   = "iconv"
   # s.libraries = "iconv", "xml2"
 
-
-
    s.dependency "SwiftyDropbox', '~> 4.1.1"
 
 end
