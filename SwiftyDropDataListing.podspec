@@ -12,14 +12,15 @@ Pod::Spec.new do |s|
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
     s.author             = { "Sahil" => "Sahilberi97@gmail.com" }
+  s.source = { :git => 'https://github.com/SwiftyDropDataListing/SwiftyDropDataListing.git', :tag => s.version }
+
 
   s.platform     = :ios
   s.platform     = :ios, “9.0”
 
 
-  s.source_files  = "DBListingViewController.{h,m}"
+  s.source_files = 'Source/’
 
-  # s.public_header_files = "Classes/**/*.h"
 
    s.resources = "DroplightIcons.bundle"
 

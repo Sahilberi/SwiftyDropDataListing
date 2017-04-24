@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		341CCAC3FF565459E24937C1 /* Pods_SwiftyDropDataListing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA6C25AEFB8B35D4A86EBDC /* Pods_SwiftyDropDataListing.framework */; };
+		BA1A8E561EAE6F3300FC10DF /* DroplightIcons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BA1A8E541EAE6F3300FC10DF /* DroplightIcons.bundle */; };
+		BA1A8E571EAE6F3300FC10DF /* FileViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1A8E551EAE6F3300FC10DF /* FileViewerViewController.swift */; };
 		BA54D0B61D9A42D4005E94C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0B51D9A42D4005E94C4 /* AppDelegate.swift */; };
 		BA54D0B81D9A42D4005E94C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0B71D9A42D4005E94C4 /* ViewController.swift */; };
 		BA54D0BB1D9A42D5005E94C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA54D0B91D9A42D5005E94C4 /* Main.storyboard */; };
@@ -15,8 +17,6 @@
 		BA54D0C01D9A42D5005E94C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA54D0BE1D9A42D5005E94C4 /* LaunchScreen.storyboard */; };
 		BA54D0CB1D9A42D5005E94C4 /* SwiftyDropDataListingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0CA1D9A42D5005E94C4 /* SwiftyDropDataListingTests.swift */; };
 		BA54D0D61D9A42D5005E94C4 /* SwiftyDropDataListingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0D51D9A42D5005E94C4 /* SwiftyDropDataListingUITests.swift */; };
-		BA54D0EB1D9A8A14005E94C4 /* FileViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54D0EA1D9A8A14005E94C4 /* FileViewerViewController.swift */; };
-		C354C0F21EA8E3F900AA5C0A /* DroplightIcons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C354C0F11EA8E3F900AA5C0A /* DroplightIcons.bundle */; };
 		C375A84C1EA62BDE00062BD5 /* DBListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C375A84B1EA62BDE00062BD5 /* DBListingViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		3B0FB27FBD93072A57E9CBBC /* Pods-SwiftyDropDataListing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyDropDataListing.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyDropDataListing/Pods-SwiftyDropDataListing.release.xcconfig"; sourceTree = "<group>"; };
+		BA1A8E541EAE6F3300FC10DF /* DroplightIcons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DroplightIcons.bundle; path = Source/DroplightIcons.bundle; sourceTree = "<group>"; };
+		BA1A8E551EAE6F3300FC10DF /* FileViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FileViewerViewController.swift; path = Source/FileViewerViewController.swift; sourceTree = "<group>"; };
 		BA54D0B21D9A42D4005E94C4 /* SwiftyDropDataListing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyDropDataListing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA54D0B51D9A42D4005E94C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA54D0B71D9A42D4005E94C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,8 +54,6 @@
 		BA54D0D11D9A42D5005E94C4 /* SwiftyDropDataListingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftyDropDataListingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA54D0D51D9A42D5005E94C4 /* SwiftyDropDataListingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyDropDataListingUITests.swift; sourceTree = "<group>"; };
 		BA54D0D71D9A42D5005E94C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BA54D0EA1D9A8A14005E94C4 /* FileViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileViewerViewController.swift; sourceTree = "<group>"; };
-		C354C0F11EA8E3F900AA5C0A /* DroplightIcons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = DroplightIcons.bundle; sourceTree = "<group>"; };
 		C375A84B1EA62BDE00062BD5 /* DBListingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBListingViewController.swift; sourceTree = "<group>"; };
 		CCA6C25AEFB8B35D4A86EBDC /* Pods_SwiftyDropDataListing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftyDropDataListing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4D339E5767275C64B7AACDE /* Pods-SwiftyDropDataListing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftyDropDataListing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftyDropDataListing/Pods-SwiftyDropDataListing.debug.xcconfig"; sourceTree = "<group>"; };
@@ -102,9 +102,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BA1A8E531EAE6EE900FC10DF /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				BA1A8E541EAE6F3300FC10DF /* DroplightIcons.bundle */,
+				BA1A8E551EAE6F3300FC10DF /* FileViewerViewController.swift */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
 		BA54D0A91D9A42D4005E94C4 = {
 			isa = PBXGroup;
 			children = (
+				BA1A8E531EAE6EE900FC10DF /* Source */,
 				BA54D0B41D9A42D4005E94C4 /* SwiftyDropDataListing */,
 				BA54D0C91D9A42D5005E94C4 /* SwiftyDropDataListingTests */,
 				BA54D0D41D9A42D5005E94C4 /* SwiftyDropDataListingUITests */,
@@ -127,7 +137,6 @@
 		BA54D0B41D9A42D4005E94C4 /* SwiftyDropDataListing */ = {
 			isa = PBXGroup;
 			children = (
-				C354C0F11EA8E3F900AA5C0A /* DroplightIcons.bundle */,
 				BA54D0B71D9A42D4005E94C4 /* ViewController.swift */,
 				C375A84B1EA62BDE00062BD5 /* DBListingViewController.swift */,
 				BA54D0B51D9A42D4005E94C4 /* AppDelegate.swift */,
@@ -135,7 +144,6 @@
 				BA54D0B91D9A42D5005E94C4 /* Main.storyboard */,
 				BA54D0BC1D9A42D5005E94C4 /* Assets.xcassets */,
 				BA54D0C11D9A42D5005E94C4 /* Info.plist */,
-				BA54D0EA1D9A8A14005E94C4 /* FileViewerViewController.swift */,
 			);
 			path = SwiftyDropDataListing;
 			sourceTree = "<group>";
@@ -270,9 +278,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA1A8E561EAE6F3300FC10DF /* DroplightIcons.bundle in Resources */,
 				BA54D0C01D9A42D5005E94C4 /* LaunchScreen.storyboard in Resources */,
 				BA54D0BD1D9A42D5005E94C4 /* Assets.xcassets in Resources */,
-				C354C0F21EA8E3F900AA5C0A /* DroplightIcons.bundle in Resources */,
 				BA54D0BB1D9A42D5005E94C4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,8 +356,8 @@
 			files = (
 				BA54D0B81D9A42D4005E94C4 /* ViewController.swift in Sources */,
 				C375A84C1EA62BDE00062BD5 /* DBListingViewController.swift in Sources */,
+				BA1A8E571EAE6F3300FC10DF /* FileViewerViewController.swift in Sources */,
 				BA54D0B61D9A42D4005E94C4 /* AppDelegate.swift in Sources */,
-				BA54D0EB1D9A8A14005E94C4 /* FileViewerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
