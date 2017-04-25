@@ -82,11 +82,11 @@ After successfully integration, handle the redirection back into the Swift SDK o
 
 
 # Features
-Key Features of SwiftDropDataListing are listed below. It has a great interface for ios 8, 9 ,solid file handling features and file search capability.
+Key Features of SwiftDropDataListing are listed below. It has a great interface for ios 9 ,solid file handling features and file search capability.
 
 # User Interface 
 
-SwiftyDropDataListing has a beautiful and simple interface similar to that of the actual Dropbox App. The interface is built for iOS 8 or greator. You can get all dropbox data with in your app simply by after autenticate in dropbox.
+SwiftyDropDataListing has a beautiful and simple interface similar to that of the actual Dropbox App. The interface is built for iOS 9 or greator. You can get all dropbox data with in your app simply by after autenticate in dropbox.
 
 <img src = "https://cloud.githubusercontent.com/assets/7422405/25396939/162d3ff2-2a04-11e7-977e-ad977533111d.jpg" /> 
 
