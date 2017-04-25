@@ -59,7 +59,7 @@ After successfully integration, handle the redirection back into the Swift SDK o
     }
   
     // Handle Notification
-    // and segue to TableViewController. TableViewController Must be connected through the storyboard. and it should be push through the navigation controller.
+    // and segue to TableViewController. DBListingViewController Must be connected through the storyboard. and it should be push through the navigation controller.
     func refreshDropboxList() {
      self.performSegue(withIdentifier: "TableViewController", sender: nil)
     }
