@@ -1,10 +1,16 @@
 # SwiftyDropDataListing
 
-SwiftyDropDataListing provides a simple and effective way to browse, view, and get files(download) using the SwiftyDropbox. But you need to first integrate SwiftyDropbox. To integrate SwiftyDropbox follow this [SwiftyDropbox](https://github.com/dropbox/SwiftyDropbox).
+SwiftyDropDataListing provides a simple and effective way to browse, view, and get files(download) using the SwiftyDropbox. But you need to first integrate SwiftyDropbox. To integrate SwiftyDropbox You must follow this link [SwiftyDropbox](https://github.com/dropbox/SwiftyDropbox) to implement SwiftyDropbox first.
 
-After successfully integration handle the redirection back into the Swift SDK once the authentication flow is complete, you should add the following code in your application's delegate and  fire a notification. And add Observer to recieve the notification in YourViewController and push to the TableViewController.
 
-#AppDelegate class  
+# Setup
+
+Follow this link [SwiftyDropbox](https://github.com/dropbox/SwiftyDropbox) to implement SwiftyDropbox first.
+
+After successfully integration, handle the redirection back into the Swift SDK once the authentication flow is completed and after that add the following code in your application's delegate and  fire a notification. And add Observer to recieve the notification in YourViewController and push to the DBListingViewController From Your controller.
+
+
+# AppDelegate class  
 
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {  
     
@@ -25,7 +31,7 @@ After successfully integration handle the redirection back into the Swift SDK on
      return false
     }
 
-#YourViewController
+# YourViewController
 
     import UIKit
     import SwiftyDropbox
@@ -97,13 +103,26 @@ In SwiftyDropDataListing we are currently showing all files. When a user tap on 
 Users can quickly get to the files they need by using the built-in search features. Just scroll to the top and start typing for instant search results. Download files directly from search results.
 
 # Requirements
-Requires minimum Xcode 8.0 for use in any iOS Project. Requires a minimum of iOS 8.0 as the deployment target.
+Requires minimum Xcode 9.0 for use in any iOS Project. Requires a minimum of iOS 9.0 as the deployment target.
 Minimum Swift 3.
 
 # Installation
-Manually
-Simply put DBListingViewController.swift and DroplightIcons.bundle in your project. And Segue Any TableViewController to your Class controller class and assign that TableViewController class to DBListingViewController.
 
+# Cocoapods
+CocoaPods is a dependency manager for Cocoa projects. You can install it with the following command:
+
+$ gem install cocoapods To integrate `SwiftyDropDataListing` into your Xcode project using CocoaPods, specify it in your Podfile:
+
+```platform :ios, '9.0'
+use_frameworks!
+
+target '<Your Target Name>' do
+  pod 'SwiftyDropDataListing','~> 0.0.1'
+end
+Then, run the following command:
+```
+
+$ pod install
 
 # Contributions
 
