@@ -11,79 +11,12 @@ open class TeamRoutes {
         self.client = client
     }
 
-    /// Creates a new, empty group, with a requested name. Permission : Team member management
-    ///
-    /// - parameter groupName: Group name.
-    /// - parameter groupExternalId: The creator of a team can associate an arbitrary external ID to the group.
-    /// - parameter groupManagementType: Whether the team can be managed by selected users, or only by team admins
-    ///
-    ///  - returns: Through the response callback, the caller will receive a `Team.GroupFullInfo` object on success or a
-    /// `Team.GroupCreateError` object on failure.
-    @discardableResult open func alphaGroupsCreate(groupName: String, groupExternalId: String? = nil, groupManagementType: TeamCommon.GroupManagementType? = nil) -> RpcRequest<Team.GroupFullInfoSerializer, Team.GroupCreateErrorSerializer> {
-        let route = Team.alphaGroupsCreate
-        let serverArgs = Team.GroupCreateArg(groupName: groupName, groupExternalId: groupExternalId, groupManagementType: groupManagementType)
-        return client.request(route, serverArgs: serverArgs)
-    }
-
-    /// Retrieves information about one or more groups. Permission : Team Information
-    ///
-    /// - parameter groupsSelector: Argument for selecting a list of groups, either by group_ids, or external group IDs.
-    ///
-    ///  - returns: Through the response callback, the caller will receive a `Array<Team.GroupsGetInfoItem>` object on
-    /// success or a `Team.GroupsGetInfoError` object on failure.
-    @discardableResult open func alphaGroupsGetInfo(groupsSelector: Team.GroupsSelector) -> RpcRequest<ArraySerializer<Team.GroupsGetInfoItemSerializer>, Team.GroupsGetInfoErrorSerializer> {
-        let route = Team.alphaGroupsGetInfo
-        let serverArgs = groupsSelector
-        return client.request(route, serverArgs: serverArgs)
-    }
-
-    /// Lists groups on a team. Permission : Team Information
-    ///
-    /// - parameter limit: Number of results to return per call.
-    ///
-    ///  - returns: Through the response callback, the caller will receive a `Team.GroupsListResult` object on success
-    /// or a `Void` object on failure.
-    @discardableResult open func alphaGroupsList(limit: UInt32 = 1000) -> RpcRequest<Team.GroupsListResultSerializer, VoidSerializer> {
-        let route = Team.alphaGroupsList
-        let serverArgs = Team.GroupsListArg(limit: limit)
-        return client.request(route, serverArgs: serverArgs)
-    }
-
-    /// Once a cursor has been retrieved from alphaGroupsList, use this to paginate through all groups. Permission :
-    /// Team information
-    ///
-    /// - parameter cursor: Indicates from what point to get the next set of groups.
-    ///
-    ///  - returns: Through the response callback, the caller will receive a `Team.GroupsListResult` object on success
-    /// or a `Team.GroupsListContinueError` object on failure.
-    @discardableResult open func alphaGroupsListContinue(cursor: String) -> RpcRequest<Team.GroupsListResultSerializer, Team.GroupsListContinueErrorSerializer> {
-        let route = Team.alphaGroupsListContinue
-        let serverArgs = Team.GroupsListContinueArg(cursor: cursor)
-        return client.request(route, serverArgs: serverArgs)
-    }
-
-    /// Updates a group's name, external ID or management type. Permission : Team member management
-    ///
-    /// - parameter group: Specify a group.
-    /// - parameter newGroupName: Optional argument. Set group name to this if provided.
-    /// - parameter newGroupExternalId: Optional argument. New group external ID. If the argument is None, the group's
-    /// external_id won't be updated. If the argument is empty string, the group's external id will be cleared.
-    /// - parameter newGroupManagementType: Set new group management type, if provided.
-    ///
-    ///  - returns: Through the response callback, the caller will receive a `Team.GroupFullInfo` object on success or a
-    /// `Team.GroupUpdateError` object on failure.
-    @discardableResult open func alphaGroupsUpdate(group: Team.GroupSelector, returnMembers: Bool = true, newGroupName: String? = nil, newGroupExternalId: String? = nil, newGroupManagementType: TeamCommon.GroupManagementType? = nil) -> RpcRequest<Team.GroupFullInfoSerializer, Team.GroupUpdateErrorSerializer> {
-        let route = Team.alphaGroupsUpdate
-        let serverArgs = Team.GroupUpdateArgs(group: group, returnMembers: returnMembers, newGroupName: newGroupName, newGroupExternalId: newGroupExternalId, newGroupManagementType: newGroupManagementType)
-        return client.request(route, serverArgs: serverArgs)
-    }
-
     /// List all device sessions of a team's member.
     ///
-    /// - parameter teamMemberId: The team's member id
-    /// - parameter includeWebSessions: Whether to list web sessions of the team's member
-    /// - parameter includeDesktopClients: Whether to list linked desktop devices of the team's member
-    /// - parameter includeMobileClients: Whether to list linked mobile devices of the team's member
+    /// - parameter teamMemberId: The team's member id.
+    /// - parameter includeWebSessions: Whether to list web sessions of the team's member.
+    /// - parameter includeDesktopClients: Whether to list linked desktop devices of the team's member.
+    /// - parameter includeMobileClients: Whether to list linked mobile devices of the team's member.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Team.ListMemberDevicesResult` object on
     /// success or a `Team.ListMemberDevicesError` object on failure.
@@ -97,10 +30,10 @@ open class TeamRoutes {
     ///
     /// - parameter cursor: At the first call to the devicesListMembersDevices the cursor shouldn't be passed. Then, if
     /// the result of the call includes a cursor, the following requests should include the received cursors in order to
-    /// receive the next sub list of team devices
-    /// - parameter includeWebSessions: Whether to list web sessions of the team members
-    /// - parameter includeDesktopClients: Whether to list desktop clients of the team members
-    /// - parameter includeMobileClients: Whether to list mobile clients of the team members
+    /// receive the next sub list of team devices.
+    /// - parameter includeWebSessions: Whether to list web sessions of the team members.
+    /// - parameter includeDesktopClients: Whether to list desktop clients of the team members.
+    /// - parameter includeMobileClients: Whether to list mobile clients of the team members.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Team.ListMembersDevicesResult` object on
     /// success or a `Team.ListMembersDevicesError` object on failure.
@@ -114,10 +47,10 @@ open class TeamRoutes {
     ///
     /// - parameter cursor: At the first call to the devicesListTeamDevices the cursor shouldn't be passed. Then, if the
     /// result of the call includes a cursor, the following requests should include the received cursors in order to
-    /// receive the next sub list of team devices
-    /// - parameter includeWebSessions: Whether to list web sessions of the team members
-    /// - parameter includeDesktopClients: Whether to list desktop clients of the team members
-    /// - parameter includeMobileClients: Whether to list mobile clients of the team members
+    /// receive the next sub list of team devices.
+    /// - parameter includeWebSessions: Whether to list web sessions of the team members.
+    /// - parameter includeDesktopClients: Whether to list desktop clients of the team members.
+    /// - parameter includeMobileClients: Whether to list mobile clients of the team members.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Team.ListTeamDevicesResult` object on
     /// success or a `Team.ListTeamDevicesError` object on failure.
@@ -128,7 +61,7 @@ open class TeamRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Revoke a device session of a team's member
+    /// Revoke a device session of a team's member.
     ///
     /// - parameter revokeDeviceSessionArg: The RevokeDeviceSessionArg union
     ///
@@ -140,7 +73,7 @@ open class TeamRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Revoke a list of device sessions of team members
+    /// Revoke a list of device sessions of team members.
     ///
     ///
     ///  - returns: Through the response callback, the caller will receive a `Team.RevokeDeviceSessionBatchResult`
@@ -148,6 +81,20 @@ open class TeamRoutes {
     @discardableResult open func devicesRevokeDeviceSessionBatch(revokeDevices: Array<Team.RevokeDeviceSessionArg>) -> RpcRequest<Team.RevokeDeviceSessionBatchResultSerializer, Team.RevokeDeviceSessionBatchErrorSerializer> {
         let route = Team.devicesRevokeDeviceSessionBatch
         let serverArgs = Team.RevokeDeviceSessionBatchArg(revokeDevices: revokeDevices)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
+    /// Get the values for one or more featues. This route allows you to check your account's capability for what
+    /// feature you can access or what value you have for certain features. Permission : Team information.
+    ///
+    /// - parameter features: A list of features in Feature. If the list is empty, this route will return
+    /// FeaturesGetValuesBatchError.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Team.FeaturesGetValuesBatchResult` object
+    /// on success or a `Team.FeaturesGetValuesBatchError` object on failure.
+    @discardableResult open func featuresGetValues(features: Array<Team.Feature>) -> RpcRequest<Team.FeaturesGetValuesBatchResultSerializer, Team.FeaturesGetValuesBatchErrorSerializer> {
+        let route = Team.featuresGetValues
+        let serverArgs = Team.FeaturesGetValuesBatchArg(features: features)
         return client.request(route, serverArgs: serverArgs)
     }
 
@@ -161,11 +108,11 @@ open class TeamRoutes {
         return client.request(route)
     }
 
-    /// Creates a new, empty group, with a requested name. Permission : Team member management
+    /// Creates a new, empty group, with a requested name. Permission : Team member management.
     ///
     /// - parameter groupName: Group name.
     /// - parameter groupExternalId: The creator of a team can associate an arbitrary external ID to the group.
-    /// - parameter groupManagementType: Whether the team can be managed by selected users, or only by team admins
+    /// - parameter groupManagementType: Whether the team can be managed by selected users, or only by team admins.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Team.GroupFullInfo` object on success or a
     /// `Team.GroupCreateError` object on failure.
@@ -177,7 +124,7 @@ open class TeamRoutes {
 
     /// Deletes a group. The group is deleted immediately. However the revoking of group-owned resources may take
     /// additional time. Use the groupsJobStatusGet to determine whether this process has completed. Permission : Team
-    /// member management
+    /// member management.
     ///
     /// - parameter groupSelector: Argument for selecting a single group, either by group_id or by external group ID.
     ///
@@ -189,7 +136,8 @@ open class TeamRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Retrieves information about one or more groups. Permission : Team Information
+    /// Retrieves information about one or more groups. Note that the optional field  members in GroupFullInfo is not
+    /// returned for system-managed groups. Permission : Team Information.
     ///
     /// - parameter groupsSelector: Argument for selecting a list of groups, either by group_ids, or external group IDs.
     ///
@@ -203,7 +151,7 @@ open class TeamRoutes {
 
     /// Once an async_job_id is returned from groupsDelete, groupsMembersAdd , or groupsMembersRemove use this method to
     /// poll the status of granting/revoking group members' access to group-owned resources. Permission : Team member
-    /// management
+    /// management.
     ///
     /// - parameter asyncJobId: Id of the asynchronous job. This is the value of a response returned from the method
     /// that launched the job.
@@ -216,7 +164,7 @@ open class TeamRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Lists groups on a team. Permission : Team Information
+    /// Lists groups on a team. Permission : Team Information.
     ///
     /// - parameter limit: Number of results to return per call.
     ///
@@ -229,7 +177,7 @@ open class TeamRoutes {
     }
 
     /// Once a cursor has been retrieved from groupsList, use this to paginate through all groups. Permission : Team
-    /// information
+    /// Information.
     ///
     /// - parameter cursor: Indicates from what point to get the next set of groups.
     ///
@@ -243,7 +191,7 @@ open class TeamRoutes {
 
     /// Adds members to a group. The members are added immediately. However the granting of group-owned resources may
     /// take additional time. Use the groupsJobStatusGet to determine whether this process has completed. Permission :
-    /// Team member management
+    /// Team member management.
     ///
     /// - parameter group: Group to which users will be added.
     /// - parameter members: List of users to be added to the group.
@@ -256,7 +204,7 @@ open class TeamRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Lists members of a group. Permission : Team Information
+    /// Lists members of a group. Permission : Team Information.
     ///
     /// - parameter group: The group whose members are to be listed.
     /// - parameter limit: Number of results to return per call.
@@ -270,7 +218,7 @@ open class TeamRoutes {
     }
 
     /// Once a cursor has been retrieved from groupsMembersList, use this to paginate through all members of the group.
-    /// Permission : Team information
+    /// Permission : Team information.
     ///
     /// - parameter cursor: Indicates from what point to get the next set of groups.
     ///
@@ -285,7 +233,7 @@ open class TeamRoutes {
     /// Removes members from a group. The members are removed immediately. However the revoking of group-owned resources
     /// may take additional time. Use the groupsJobStatusGet to determine whether this process has completed. This
     /// method permits removing the only owner of a group, even in cases where this is not possible via the web client.
-    /// Permission : Team member management
+    /// Permission : Team member management.
     ///
     /// - parameter group: Group from which users will be removed.
     /// - parameter users: List of users to be removed from the group.
@@ -298,7 +246,7 @@ open class TeamRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Sets a member's access type in a group. Permission : Team member management
+    /// Sets a member's access type in a group. Permission : Team member management.
     ///
     /// - parameter accessType: New group access type the user will have.
     /// - parameter returnMembers: Whether to return the list of members in the group.  Note that the default value will
@@ -312,7 +260,7 @@ open class TeamRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Updates a group's name and/or external ID. Permission : Team member management
+    /// Updates a group's name and/or external ID. Permission : Team member management.
     ///
     /// - parameter group: Specify a group.
     /// - parameter newGroupName: Optional argument. Set group name to this if provided.
@@ -330,7 +278,7 @@ open class TeamRoutes {
 
     /// List all linked applications of the team member. Note, this endpoint does not list any team-linked applications.
     ///
-    /// - parameter teamMemberId: The team member id
+    /// - parameter teamMemberId: The team member id.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Team.ListMemberAppsResult` object on
     /// success or a `Team.ListMemberAppsError` object on failure.
@@ -345,7 +293,7 @@ open class TeamRoutes {
     ///
     /// - parameter cursor: At the first call to the linkedAppsListMembersLinkedApps the cursor shouldn't be passed.
     /// Then, if the result of the call includes a cursor, the following requests should include the received cursors in
-    /// order to receive the next sub list of the team applications
+    /// order to receive the next sub list of the team applications.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Team.ListMembersAppsResult` object on
     /// success or a `Team.ListMembersAppsError` object on failure.
@@ -360,7 +308,7 @@ open class TeamRoutes {
     ///
     /// - parameter cursor: At the first call to the linkedAppsListTeamLinkedApps the cursor shouldn't be passed. Then,
     /// if the result of the call includes a cursor, the following requests should include the received cursors in order
-    /// to receive the next sub list of the team applications
+    /// to receive the next sub list of the team applications.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Team.ListTeamAppsResult` object on success
     /// or a `Team.ListTeamAppsError` object on failure.
@@ -371,11 +319,11 @@ open class TeamRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Revoke a linked application of the team member
+    /// Revoke a linked application of the team member.
     ///
-    /// - parameter appId: The application's unique id
-    /// - parameter teamMemberId: The unique id of the member owning the device
-    /// - parameter keepAppFolder: Whether to keep the application dedicated folder (in case the application uses  one)
+    /// - parameter appId: The application's unique id.
+    /// - parameter teamMemberId: The unique id of the member owning the device.
+    /// - parameter keepAppFolder: Whether to keep the application dedicated folder (in case the application uses  one).
     ///
     ///  - returns: Through the response callback, the caller will receive a `Void` object on success or a
     /// `Team.RevokeLinkedAppError` object on failure.
@@ -385,7 +333,7 @@ open class TeamRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Revoke a list of linked applications of the team members
+    /// Revoke a list of linked applications of the team members.
     ///
     ///
     ///  - returns: Through the response callback, the caller will receive a `Team.RevokeLinkedAppBatchResult` object on
@@ -393,6 +341,44 @@ open class TeamRoutes {
     @discardableResult open func linkedAppsRevokeLinkedAppBatch(revokeLinkedApp: Array<Team.RevokeLinkedApiAppArg>) -> RpcRequest<Team.RevokeLinkedAppBatchResultSerializer, Team.RevokeLinkedAppBatchErrorSerializer> {
         let route = Team.linkedAppsRevokeLinkedAppBatch
         let serverArgs = Team.RevokeLinkedApiAppBatchArg(revokeLinkedApp: revokeLinkedApp)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
+    /// Get users custom quota. Returns none as the custom quota if none was set. A maximum of 1000 members can be
+    /// specified in a single call.
+    ///
+    /// - parameter users: List of users.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Array<Team.CustomQuotaResult>` object on
+    /// success or a `Team.CustomQuotaError` object on failure.
+    @discardableResult open func memberSpaceLimitsGetCustomQuota(users: Array<Team.UserSelectorArg>) -> RpcRequest<ArraySerializer<Team.CustomQuotaResultSerializer>, Team.CustomQuotaErrorSerializer> {
+        let route = Team.memberSpaceLimitsGetCustomQuota
+        let serverArgs = Team.CustomQuotaUsersArg(users: users)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
+    /// Remove users custom quota. A maximum of 1000 members can be specified in a single call.
+    ///
+    /// - parameter users: List of users.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Array<Team.RemoveCustomQuotaResult>`
+    /// object on success or a `Team.CustomQuotaError` object on failure.
+    @discardableResult open func memberSpaceLimitsRemoveCustomQuota(users: Array<Team.UserSelectorArg>) -> RpcRequest<ArraySerializer<Team.RemoveCustomQuotaResultSerializer>, Team.CustomQuotaErrorSerializer> {
+        let route = Team.memberSpaceLimitsRemoveCustomQuota
+        let serverArgs = Team.CustomQuotaUsersArg(users: users)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
+    /// Set users custom quota. Custom quota has to be at least 25GB. A maximum of 1000 members can be specified in a
+    /// single call.
+    ///
+    /// - parameter usersAndQuotas: List of users and their custom quotas.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Array<Team.CustomQuotaResult>` object on
+    /// success or a `Team.CustomQuotaError` object on failure.
+    @discardableResult open func memberSpaceLimitsSetCustomQuota(usersAndQuotas: Array<Team.UserCustomQuotaArg>) -> RpcRequest<ArraySerializer<Team.CustomQuotaResultSerializer>, Team.CustomQuotaErrorSerializer> {
+        let route = Team.memberSpaceLimitsSetCustomQuota
+        let serverArgs = Team.SetCustomQuotaArg(usersAndQuotas: usersAndQuotas)
         return client.request(route, serverArgs: serverArgs)
     }
 
@@ -416,7 +402,7 @@ open class TeamRoutes {
     }
 
     /// Once an async_job_id is returned from membersAdd , use this to poll the status of the asynchronous request.
-    /// Permission : Team member management
+    /// Permission : Team member management.
     ///
     /// - parameter asyncJobId: Id of the asynchronous job. This is the value of a response returned from the method
     /// that launched the job.
@@ -442,7 +428,7 @@ open class TeamRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Lists members of a team. Permission : Team information
+    /// Lists members of a team. Permission : Team information.
     ///
     /// - parameter limit: Number of results to return per call.
     /// - parameter includeRemoved: Whether to return removed members.
@@ -456,7 +442,7 @@ open class TeamRoutes {
     }
 
     /// Once a cursor has been retrieved from membersList, use this to paginate through all team members. Permission :
-    /// Team information
+    /// Team information.
     ///
     /// - parameter cursor: Indicates from what point to get the next set of members.
     ///
@@ -482,17 +468,20 @@ open class TeamRoutes {
     }
 
     /// Removes a member from a team. Permission : Team member management Exactly one of team_member_id, email, or
-    /// external_id must be provided to identify the user account. This is not a deactivation where the account can be
-    /// re-activated again. Calling membersAdd with the removed user's email address will create a new account with a
-    /// new team_member_id that will not have access to any content that was shared with the initial account. This
-    /// endpoint may initiate an asynchronous job. To obtain the final result of the job, the client should periodically
-    /// poll membersRemoveJobStatusGet.
+    /// external_id must be provided to identify the user account. Accounts can be recovered via membersRecover for a 7
+    /// day period or until the account has been permanently deleted or transferred to another account (whichever comes
+    /// first). Calling membersAdd while a user is still recoverable on your team will return with userAlreadyOnTeam in
+    /// MemberAddResult. Accounts can have their files transferred via the admin console for a limited time, based on
+    /// the version history length associated with the team (120 days for most teams). This endpoint may initiate an
+    /// asynchronous job. To obtain the final result of the job, the client should periodically poll
+    /// membersRemoveJobStatusGet.
     ///
     /// - parameter transferDestId: If provided, files from the deleted member account will be transferred to this user.
     /// - parameter transferAdminId: If provided, errors during the transfer process will be sent via email to this
     /// user. If the transfer_dest_id argument was provided, then this argument must be provided as well.
     /// - parameter keepAccount: Downgrade the member to a Basic account. The user will retain the email address
-    /// associated with their Dropbox  account and data in their account that is not restricted to team members.
+    /// associated with their Dropbox  account and data in their account that is not restricted to team members. In
+    /// order to keep the account the argument wipe_data should be set to False.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Async.LaunchEmptyResult` object on success
     /// or a `Team.MembersRemoveError` object on failure.
@@ -503,7 +492,7 @@ open class TeamRoutes {
     }
 
     /// Once an async_job_id is returned from membersRemove , use this to poll the status of the asynchronous request.
-    /// Permission : Team member management
+    /// Permission : Team member management.
     ///
     /// - parameter asyncJobId: Id of the asynchronous job. This is the value of a response returned from the method
     /// that launched the job.
@@ -530,7 +519,7 @@ open class TeamRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Updates a team member's permissions. Permission : Team member management
+    /// Updates a team member's permissions. Permission : Team member management.
     ///
     /// - parameter user: Identity of user whose role will be set.
     /// - parameter newRole: The new role of the member.
@@ -543,19 +532,21 @@ open class TeamRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Updates a team member's profile. Permission : Team member management
+    /// Updates a team member's profile. Permission : Team member management.
     ///
     /// - parameter user: Identity of user whose profile will be set.
     /// - parameter newEmail: New email for member.
     /// - parameter newExternalId: New external ID for member.
     /// - parameter newGivenName: New given name for member.
     /// - parameter newSurname: New surname for member.
+    /// - parameter newPersistentId: New persistent ID. This field only available to teams using persistent ID SAML
+    /// configuration.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Team.TeamMemberInfo` object on success or
     /// a `Team.MembersSetProfileError` object on failure.
-    @discardableResult open func membersSetProfile(user: Team.UserSelectorArg, newEmail: String? = nil, newExternalId: String? = nil, newGivenName: String? = nil, newSurname: String? = nil) -> RpcRequest<Team.TeamMemberInfoSerializer, Team.MembersSetProfileErrorSerializer> {
+    @discardableResult open func membersSetProfile(user: Team.UserSelectorArg, newEmail: String? = nil, newExternalId: String? = nil, newGivenName: String? = nil, newSurname: String? = nil, newPersistentId: String? = nil) -> RpcRequest<Team.TeamMemberInfoSerializer, Team.MembersSetProfileErrorSerializer> {
         let route = Team.membersSetProfile
-        let serverArgs = Team.MembersSetProfileArg(user: user, newEmail: newEmail, newExternalId: newExternalId, newGivenName: newGivenName, newSurname: newSurname)
+        let serverArgs = Team.MembersSetProfileArg(user: user, newEmail: newEmail, newExternalId: newExternalId, newGivenName: newGivenName, newSurname: newSurname, newPersistentId: newPersistentId)
         return client.request(route, serverArgs: serverArgs)
     }
 
@@ -586,61 +577,92 @@ open class TeamRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Add a property template. See route files/properties/add to add properties to a file.
+    /// Returns a list of all team-accessible namespaces. This list includes team folders, shared folders containing
+    /// team members, team members' home namespaces, and team members' app folders. Home namespaces and app folders are
+    /// always owned by this team or members of the team, but shared folders may be owned by other users or other teams.
+    /// Duplicates may occur in the list.
+    ///
+    /// - parameter limit: Specifying a value here has no effect.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Team.TeamNamespacesListResult` object on
+    /// success or a `Void` object on failure.
+    @discardableResult open func namespacesList(limit: UInt32 = 1000) -> RpcRequest<Team.TeamNamespacesListResultSerializer, VoidSerializer> {
+        let route = Team.namespacesList
+        let serverArgs = Team.TeamNamespacesListArg(limit: limit)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
+    /// Once a cursor has been retrieved from namespacesList, use this to paginate through all team-accessible
+    /// namespaces. Duplicates may occur in the list.
+    ///
+    /// - parameter cursor: Indicates from what point to get the next set of team-accessible namespaces.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Team.TeamNamespacesListResult` object on
+    /// success or a `Team.TeamNamespacesListContinueError` object on failure.
+    @discardableResult open func namespacesListContinue(cursor: String) -> RpcRequest<Team.TeamNamespacesListResultSerializer, Team.TeamNamespacesListContinueErrorSerializer> {
+        let route = Team.namespacesListContinue
+        let serverArgs = Team.TeamNamespacesListContinueArg(cursor: cursor)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
+    /// The propertiesTemplateAdd route
     ///
     ///
-    ///  - returns: Through the response callback, the caller will receive a `Team.AddPropertyTemplateResult` object on
-    /// success or a `Properties.ModifyPropertyTemplateError` object on failure.
-    @discardableResult open func propertiesTemplateAdd(name: String, description_: String, fields: Array<Properties.PropertyFieldTemplate>) -> RpcRequest<Team.AddPropertyTemplateResultSerializer, Properties.ModifyPropertyTemplateErrorSerializer> {
+    ///  - returns: Through the response callback, the caller will receive a `FileProperties.AddTemplateResult` object
+    /// on success or a `FileProperties.ModifyTemplateError` object on failure.
+    @available(*, unavailable, message:"properties/template/add is deprecated.")
+    @discardableResult open func propertiesTemplateAdd(name: String, description_: String, fields: Array<FileProperties.PropertyFieldTemplate>) -> RpcRequest<FileProperties.AddTemplateResultSerializer, FileProperties.ModifyTemplateErrorSerializer> {
         let route = Team.propertiesTemplateAdd
-        let serverArgs = Team.AddPropertyTemplateArg(name: name, description_: description_, fields: fields)
+        let serverArgs = FileProperties.AddTemplateArg(name: name, description_: description_, fields: fields)
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Get the schema for a specified template.
+    /// The propertiesTemplateGet route
     ///
-    /// - parameter templateId: An identifier for property template added by route properties/template/add.
+    /// - parameter templateId: An identifier for template added by route  See templatesAddForUser or
+    /// templatesAddForTeam.
     ///
-    ///  - returns: Through the response callback, the caller will receive a `Properties.GetPropertyTemplateResult`
-    /// object on success or a `Properties.PropertyTemplateError` object on failure.
-    @discardableResult open func propertiesTemplateGet(templateId: String) -> RpcRequest<Properties.GetPropertyTemplateResultSerializer, Properties.PropertyTemplateErrorSerializer> {
+    ///  - returns: Through the response callback, the caller will receive a `FileProperties.GetTemplateResult` object
+    /// on success or a `FileProperties.TemplateError` object on failure.
+    @available(*, unavailable, message:"properties/template/get is deprecated.")
+    @discardableResult open func propertiesTemplateGet(templateId: String) -> RpcRequest<FileProperties.GetTemplateResultSerializer, FileProperties.TemplateErrorSerializer> {
         let route = Team.propertiesTemplateGet
-        let serverArgs = Properties.GetPropertyTemplateArg(templateId: templateId)
+        let serverArgs = FileProperties.GetTemplateArg(templateId: templateId)
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Get the property template identifiers for a team. To get the schema of each template use propertiesTemplateGet.
+    /// The propertiesTemplateList route
     ///
     ///
-    ///  - returns: Through the response callback, the caller will receive a `Properties.ListPropertyTemplateIds` object
-    /// on success or a `Properties.PropertyTemplateError` object on failure.
-    @discardableResult open func propertiesTemplateList() -> RpcRequest<Properties.ListPropertyTemplateIdsSerializer, Properties.PropertyTemplateErrorSerializer> {
+    ///  - returns: Through the response callback, the caller will receive a `FileProperties.ListTemplateResult` object
+    /// on success or a `FileProperties.TemplateError` object on failure.
+    @available(*, unavailable, message:"properties/template/list is deprecated.")
+    @discardableResult open func propertiesTemplateList() -> RpcRequest<FileProperties.ListTemplateResultSerializer, FileProperties.TemplateErrorSerializer> {
         let route = Team.propertiesTemplateList
         return client.request(route)
     }
 
-    /// Update a property template. This route can update the template name, the template description and add optional
-    /// properties to templates.
+    /// The propertiesTemplateUpdate route
     ///
-    /// - parameter templateId: An identifier for property template added by propertiesTemplateAdd.
-    /// - parameter name: A display name for the property template. Property template names can be up to 256 bytes.
-    /// - parameter description_: Description for new property template. Property template descriptions can be up to
-    /// 1024 bytes.
-    /// - parameter addFields: This is a list of custom properties to add to the property template. There can be up to
-    /// 64 properties in a single property template.
+    /// - parameter templateId: An identifier for template added by  See templatesAddForUser or templatesAddForTeam.
+    /// - parameter name: A display name for the template. template names can be up to 256 bytes.
+    /// - parameter description_: Description for the new template. Template descriptions can be up to 1024 bytes.
+    /// - parameter addFields: Property field templates to be added to the group template. There can be up to 32
+    /// properties in a single template.
     ///
-    ///  - returns: Through the response callback, the caller will receive a `Team.UpdatePropertyTemplateResult` object
-    /// on success or a `Properties.ModifyPropertyTemplateError` object on failure.
-    @discardableResult open func propertiesTemplateUpdate(templateId: String, name: String? = nil, description_: String? = nil, addFields: Array<Properties.PropertyFieldTemplate>? = nil) -> RpcRequest<Team.UpdatePropertyTemplateResultSerializer, Properties.ModifyPropertyTemplateErrorSerializer> {
+    ///  - returns: Through the response callback, the caller will receive a `FileProperties.UpdateTemplateResult`
+    /// object on success or a `FileProperties.ModifyTemplateError` object on failure.
+    @available(*, unavailable, message:"properties/template/update is deprecated.")
+    @discardableResult open func propertiesTemplateUpdate(templateId: String, name: String? = nil, description_: String? = nil, addFields: Array<FileProperties.PropertyFieldTemplate>? = nil) -> RpcRequest<FileProperties.UpdateTemplateResultSerializer, FileProperties.ModifyTemplateErrorSerializer> {
         let route = Team.propertiesTemplateUpdate
-        let serverArgs = Team.UpdatePropertyTemplateArg(templateId: templateId, name: name, description_: description_, addFields: addFields)
+        let serverArgs = FileProperties.UpdateTemplateArg(templateId: templateId, name: name, description_: description_, addFields: addFields)
         return client.request(route, serverArgs: serverArgs)
     }
 
     /// Retrieves reporting data about a team's user activity.
     ///
-    /// - parameter startDate: Optional starting date (inclusive)
-    /// - parameter endDate: Optional ending date (exclusive)
+    /// - parameter startDate: Optional starting date (inclusive).
+    /// - parameter endDate: Optional ending date (exclusive).
     ///
     ///  - returns: Through the response callback, the caller will receive a `Team.GetActivityReport` object on success
     /// or a `Team.DateRangeError` object on failure.
@@ -652,8 +674,8 @@ open class TeamRoutes {
 
     /// Retrieves reporting data about a team's linked devices.
     ///
-    /// - parameter startDate: Optional starting date (inclusive)
-    /// - parameter endDate: Optional ending date (exclusive)
+    /// - parameter startDate: Optional starting date (inclusive).
+    /// - parameter endDate: Optional ending date (exclusive).
     ///
     ///  - returns: Through the response callback, the caller will receive a `Team.GetDevicesReport` object on success
     /// or a `Team.DateRangeError` object on failure.
@@ -665,8 +687,8 @@ open class TeamRoutes {
 
     /// Retrieves reporting data about a team's membership.
     ///
-    /// - parameter startDate: Optional starting date (inclusive)
-    /// - parameter endDate: Optional ending date (exclusive)
+    /// - parameter startDate: Optional starting date (inclusive).
+    /// - parameter endDate: Optional ending date (exclusive).
     ///
     ///  - returns: Through the response callback, the caller will receive a `Team.GetMembershipReport` object on
     /// success or a `Team.DateRangeError` object on failure.
@@ -678,8 +700,8 @@ open class TeamRoutes {
 
     /// Retrieves reporting data about a team's storage usage.
     ///
-    /// - parameter startDate: Optional starting date (inclusive)
-    /// - parameter endDate: Optional ending date (exclusive)
+    /// - parameter startDate: Optional starting date (inclusive).
+    /// - parameter endDate: Optional ending date (exclusive).
     ///
     ///  - returns: Through the response callback, the caller will receive a `Team.GetStorageReport` object on success
     /// or a `Team.DateRangeError` object on failure.
@@ -687,6 +709,127 @@ open class TeamRoutes {
         let route = Team.reportsGetStorage
         let serverArgs = Team.DateRange(startDate: startDate, endDate: endDate)
         return client.request(route, serverArgs: serverArgs)
+    }
+
+    /// Sets an archived team folder's status to active. Permission : Team member file access.
+    ///
+    /// - parameter teamFolderId: The ID of the team folder.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Team.TeamFolderMetadata` object on success
+    /// or a `Team.TeamFolderActivateError` object on failure.
+    @discardableResult open func teamFolderActivate(teamFolderId: String) -> RpcRequest<Team.TeamFolderMetadataSerializer, Team.TeamFolderActivateErrorSerializer> {
+        let route = Team.teamFolderActivate
+        let serverArgs = Team.TeamFolderIdArg(teamFolderId: teamFolderId)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
+    /// Sets an active team folder's status to archived and removes all folder and file members. Permission : Team
+    /// member file access.
+    ///
+    /// - parameter forceAsyncOff: Whether to force the archive to happen synchronously.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Team.TeamFolderArchiveLaunch` object on
+    /// success or a `Team.TeamFolderArchiveError` object on failure.
+    @discardableResult open func teamFolderArchive(teamFolderId: String, forceAsyncOff: Bool = false) -> RpcRequest<Team.TeamFolderArchiveLaunchSerializer, Team.TeamFolderArchiveErrorSerializer> {
+        let route = Team.teamFolderArchive
+        let serverArgs = Team.TeamFolderArchiveArg(teamFolderId: teamFolderId, forceAsyncOff: forceAsyncOff)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
+    /// Returns the status of an asynchronous job for archiving a team folder. Permission : Team member file access.
+    ///
+    /// - parameter asyncJobId: Id of the asynchronous job. This is the value of a response returned from the method
+    /// that launched the job.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Team.TeamFolderArchiveJobStatus` object on
+    /// success or a `Async.PollError` object on failure.
+    @discardableResult open func teamFolderArchiveCheck(asyncJobId: String) -> RpcRequest<Team.TeamFolderArchiveJobStatusSerializer, Async.PollErrorSerializer> {
+        let route = Team.teamFolderArchiveCheck
+        let serverArgs = Async.PollArg(asyncJobId: asyncJobId)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
+    /// Creates a new, active, team folder with no members. Permission : Team member file access.
+    ///
+    /// - parameter name: Name for the new team folder.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Team.TeamFolderMetadata` object on success
+    /// or a `Team.TeamFolderCreateError` object on failure.
+    @discardableResult open func teamFolderCreate(name: String) -> RpcRequest<Team.TeamFolderMetadataSerializer, Team.TeamFolderCreateErrorSerializer> {
+        let route = Team.teamFolderCreate
+        let serverArgs = Team.TeamFolderCreateArg(name: name)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
+    /// Retrieves metadata for team folders. Permission : Team member file access.
+    ///
+    /// - parameter teamFolderIds: The list of team folder IDs.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Array<Team.TeamFolderGetInfoItem>` object
+    /// on success or a `Void` object on failure.
+    @discardableResult open func teamFolderGetInfo(teamFolderIds: Array<String>) -> RpcRequest<ArraySerializer<Team.TeamFolderGetInfoItemSerializer>, VoidSerializer> {
+        let route = Team.teamFolderGetInfo
+        let serverArgs = Team.TeamFolderIdListArg(teamFolderIds: teamFolderIds)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
+    /// Lists all team folders. Permission : Team member file access.
+    ///
+    /// - parameter limit: The maximum number of results to return per request.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Team.TeamFolderListResult` object on
+    /// success or a `Team.TeamFolderListError` object on failure.
+    @discardableResult open func teamFolderList(limit: UInt32 = 1000) -> RpcRequest<Team.TeamFolderListResultSerializer, Team.TeamFolderListErrorSerializer> {
+        let route = Team.teamFolderList
+        let serverArgs = Team.TeamFolderListArg(limit: limit)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
+    /// Once a cursor has been retrieved from teamFolderList, use this to paginate through all team folders. Permission
+    /// : Team member file access.
+    ///
+    /// - parameter cursor: Indicates from what point to get the next set of team folders.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Team.TeamFolderListResult` object on
+    /// success or a `Team.TeamFolderListContinueError` object on failure.
+    @discardableResult open func teamFolderListContinue(cursor: String) -> RpcRequest<Team.TeamFolderListResultSerializer, Team.TeamFolderListContinueErrorSerializer> {
+        let route = Team.teamFolderListContinue
+        let serverArgs = Team.TeamFolderListContinueArg(cursor: cursor)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
+    /// Permanently deletes an archived team folder. Permission : Team member file access.
+    ///
+    /// - parameter teamFolderId: The ID of the team folder.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Void` object on success or a
+    /// `Team.TeamFolderPermanentlyDeleteError` object on failure.
+    @discardableResult open func teamFolderPermanentlyDelete(teamFolderId: String) -> RpcRequest<VoidSerializer, Team.TeamFolderPermanentlyDeleteErrorSerializer> {
+        let route = Team.teamFolderPermanentlyDelete
+        let serverArgs = Team.TeamFolderIdArg(teamFolderId: teamFolderId)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
+    /// Changes an active team folder's name. Permission : Team member file access.
+    ///
+    /// - parameter name: New team folder name.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Team.TeamFolderMetadata` object on success
+    /// or a `Team.TeamFolderRenameError` object on failure.
+    @discardableResult open func teamFolderRename(teamFolderId: String, name: String) -> RpcRequest<Team.TeamFolderMetadataSerializer, Team.TeamFolderRenameErrorSerializer> {
+        let route = Team.teamFolderRename
+        let serverArgs = Team.TeamFolderRenameArg(teamFolderId: teamFolderId, name: name)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
+    /// Returns the member profile of the admin who generated the team access token used to make the call.
+    ///
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Team.TokenGetAuthenticatedAdminResult`
+    /// object on success or a `Team.TokenGetAuthenticatedAdminError` object on failure.
+    @discardableResult open func tokenGetAuthenticatedAdmin() -> RpcRequest<Team.TokenGetAuthenticatedAdminResultSerializer, Team.TokenGetAuthenticatedAdminErrorSerializer> {
+        let route = Team.tokenGetAuthenticatedAdmin
+        return client.request(route)
     }
 
 }

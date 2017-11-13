@@ -3,5 +3,5 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'SwiftyDropDataListing' do
-  pod 'SwiftyDropbox', '~> 4.1.1'
+  pod 'SwiftyDropbox'
 end

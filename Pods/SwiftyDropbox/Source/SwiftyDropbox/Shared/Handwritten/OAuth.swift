@@ -9,129 +9,19 @@ public protocol SharedApplication {
     func presentErrorMessage(_ message: String, title: String)
     func presentErrorMessageWithHandlers(_ message: String, title: String, buttonHandlers: Dictionary<String, () -> Void>)
     func presentPlatformSpecificAuth(_ authURL: URL) -> Bool
-    func presentWebViewAuth(_ authURL: URL, tryIntercept: @escaping ((URL) -> Bool), cancelHandler: @escaping (() -> Void))
-    func presentBrowserAuth(_ authURL: URL)
+    func presentAuthChannel(_ authURL: URL, tryIntercept: @escaping ((URL) -> Bool), cancelHandler: @escaping (() -> Void))
     func presentExternalApp(_ url: URL)
     func canPresentExternalApp(_ url: URL) -> Bool
 }
 
-
-open class DropboxDesktopOAuthManager: DropboxOAuthManager {}
-
-
-open class DropboxMobileOAuthManager: DropboxOAuthManager {
-    var dauthRedirectURL: URL
-
-    public override init(appKey: String, host: String) {
-        self.dauthRedirectURL = URL(string: "db-\(appKey)://1/connect")!
-        super.init(appKey: appKey, host:host)
-        self.urls.append(self.dauthRedirectURL)
-    }
-
-    internal override func extractFromUrl(_ url: URL) -> DropboxOAuthResult {
-        let result: DropboxOAuthResult
-        if url.host == "1" { // dauth
-            result = extractfromDAuthURL(url)
-        } else {
-            result = extractFromRedirectURL(url)
-        }
-        return result
-    }
-
-    internal override func checkAndPresentPlatformSpecificAuth(_ sharedApplication: SharedApplication) -> Bool {
-        if !self.hasApplicationQueriesSchemes() {
-            let message = "DropboxSDK: unable to link; app isn't registered to query for URL schemes dbapi-2 and dbapi-8-emm. Add a dbapi-2 entry and a dbapi-8-emm entry to LSApplicationQueriesSchemes"
-            let title = "SwiftyDropbox Error"
-            sharedApplication.presentErrorMessage(message, title: title)
-            return true
-        }
-
-        if let scheme = dAuthScheme(sharedApplication) {
-            let nonce = UUID().uuidString
-            UserDefaults.standard.set(nonce, forKey: kDBLinkNonce)
-            UserDefaults.standard.synchronize()
-            sharedApplication.presentExternalApp(dAuthURL(scheme, nonce: nonce))
-            return true
-        }
-        return false
-    }
-
-    fileprivate func dAuthURL(_ scheme: String, nonce: String?) -> URL {
-        var components = URLComponents()
-        components.scheme =  scheme
-        components.host = "1"
-        components.path = "/connect"
-
-        if let n = nonce {
-            let state = "oauth2:\(n)"
-            components.queryItems = [
-                URLQueryItem(name: "k", value: self.appKey),
-                URLQueryItem(name: "s", value: ""),
-                URLQueryItem(name: "state", value: state),
-            ]
-        }
-        return components.url!
-    }
-
-    fileprivate func dAuthScheme(_ sharedApplication: SharedApplication) -> String? {
-        if sharedApplication.canPresentExternalApp(dAuthURL("dbapi-2", nonce: nil)) {
-            return "dbapi-2"
-        } else if sharedApplication.canPresentExternalApp(dAuthURL("dbapi-8-emm", nonce: nil)) {
-            return "dbapi-8-emm"
-        } else {
-            return nil
-        }
-    }
-
-    func extractfromDAuthURL(_ url: URL) -> DropboxOAuthResult {
-        switch url.path {
-        case "/connect":
-            var results = [String: String]()
-            let pairs  = url.query?.components(separatedBy: "&") ?? []
-
-            for pair in pairs {
-                let kv = pair.components(separatedBy: "=")
-                results.updateValue(kv[1], forKey: kv[0])
-            }
-            let state = results["state"]?.components(separatedBy: "%3A") ?? []
-
-            let nonce = UserDefaults.standard.object(forKey: kDBLinkNonce) as? String
-            if state.count == 2 && state[0] == "oauth2" && state[1] == nonce! {
-                let accessToken = results["oauth_token_secret"]!
-                let uid = results["uid"]!
-                return .success(DropboxAccessToken(accessToken: accessToken, uid: uid))
-            } else {
-                return .error(.unknown, "Unable to verify link request")
-            }
-        default:
-            return .error(.accessDenied, "User cancelled Dropbox link")
-        }
-    }
-
-    fileprivate func hasApplicationQueriesSchemes() -> Bool {
-        let queriesSchemes = Bundle.main.object(forInfoDictionaryKey: "LSApplicationQueriesSchemes") as? [String] ?? []
-
-        var foundApi2 = false
-        var foundApi8Emm = false
-        for scheme in queriesSchemes {
-            if scheme == "dbapi-2" {
-                foundApi2 = true
-            } else if scheme == "dbapi-8-emm" {
-                foundApi8Emm = true
-            }
-            if foundApi2 && foundApi8Emm {
-                return true
-            }
-        }
-        return false
-    }
-}
-
-
 /// Manages access token storage and authentication
 ///
 /// Use the `DropboxOAuthManager` to authenticate users through OAuth2, save access tokens, and retrieve access tokens.
+///
+/// @note OAuth flow webviews localize to enviroment locale.
+///
 open class DropboxOAuthManager {
+    open let locale: Locale?
     let appKey: String
     let redirectURL: URL
     let host: String
@@ -147,6 +37,7 @@ open class DropboxOAuthManager {
         self.redirectURL = URL(string: "db-\(self.appKey)://2/token")!
         self.host = host
         self.urls = [self.redirectURL]
+        self.locale = nil;
     }
 
     ///
@@ -190,12 +81,18 @@ open class DropboxOAuthManager {
     ///
     /// - parameter controller: The controller to present from
     ///
-    open func authorizeFromSharedApplication(_ sharedApplication: SharedApplication, browserAuth: Bool = false) {
+    open func authorizeFromSharedApplication(_ sharedApplication: SharedApplication) {
+        let cancelHandler: (() -> Void) = {
+            let cancelUrl = URL(string: "db-\(self.appKey)://2/cancel")!
+            sharedApplication.presentExternalApp(cancelUrl)
+        }
+
         if !Reachability.connectedToNetwork() {
             let message = "Try again once you have an internet connection"
             let title = "No internet connection"
 
             let buttonHandlers: [String: () -> Void] = [
+                "Cancel": { cancelHandler() },
                 "Retry": { self.authorizeFromSharedApplication(sharedApplication) },
             ]
             sharedApplication.presentErrorMessageWithHandlers(message, title: title, buttonHandlers: buttonHandlers)
@@ -218,25 +115,15 @@ open class DropboxOAuthManager {
             return
         }
 
-        if browserAuth {
-            sharedApplication.presentBrowserAuth(url)
-        } else {
-            let tryIntercept: ((URL) -> Bool) = { url in
-                if self.canHandleURL(url) {
-                    sharedApplication.presentExternalApp(url)
-                    return true
-                } else {
-                    return false
-                }
+        let tryIntercept: ((URL) -> Bool) = { url in
+            if self.canHandleURL(url) {
+                sharedApplication.presentExternalApp(url)
+                return true
+            } else {
+                return false
             }
-
-            let cancelHandler: (() -> Void) = {
-                let cancelUrl = URL(string: "db-\(self.appKey)://2/cancel")!
-                sharedApplication.presentExternalApp(cancelUrl)
-            }
-
-            sharedApplication.presentWebViewAuth(url, tryIntercept: tryIntercept, cancelHandler: cancelHandler)
         }
+        sharedApplication.presentAuthChannel(url, tryIntercept: tryIntercept, cancelHandler: cancelHandler)
     }
 
     fileprivate func conformsToAppScheme() -> Bool {
@@ -259,13 +146,16 @@ open class DropboxOAuthManager {
         var components = URLComponents()
         components.scheme = "https"
         components.host = self.host
-        components.path = "/1/oauth2/authorize"
+        components.path = "/oauth2/authorize"
+
+        let locale = Bundle.main.preferredLocalizations.first ?? "en"
 
         components.queryItems = [
             URLQueryItem(name: "response_type", value: "token"),
             URLQueryItem(name: "client_id", value: self.appKey),
             URLQueryItem(name: "redirect_uri", value: self.redirectURL.absoluteString),
             URLQueryItem(name: "disable_signup", value: "true"),
+            URLQueryItem(name: "locale", value: self.locale?.identifier ?? locale),
         ]
         return components.url!
     }
@@ -463,6 +353,9 @@ public enum DropboxOAuthResult {
 }
 
 class Keychain {
+    static let checkAccessibilityMigrationOneTime: () = {
+       Keychain.checkAccessibilityMigration()
+    }()
 
     class func queryWithDict(_ query: [String : AnyObject]) -> CFDictionary {
         let bundleId = Bundle.main.bundleIdentifier ?? ""
@@ -470,6 +363,7 @@ class Keychain {
 
         queryDict[kSecClass as String]       = kSecClassGenericPassword
         queryDict[kSecAttrService as String] = "\(bundleId).dropbox.authv2" as AnyObject?
+        queryDict[kSecAttrService as String] = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
 
         return queryDict as CFDictionary
     }
@@ -531,7 +425,7 @@ class Keychain {
 
     class func get(_ key: String) -> String? {
         if let data = getAsData(key) {
-            return NSString(data: data, encoding: String.Encoding.utf8.rawValue) as? String
+            return NSString(data: data, encoding: String.Encoding.utf8.rawValue) as String?
         } else {
             return nil
         }
@@ -548,6 +442,19 @@ class Keychain {
     class func clear() -> Bool {
         let query = Keychain.queryWithDict([:])
         return SecItemDelete(query) == noErr
+    }
+
+    class func checkAccessibilityMigration() {
+        let kAccessibilityMigrationOccurredKey = "KeychainAccessibilityMigration"
+        let MigrationOccurred = UserDefaults.standard.string(forKey: kAccessibilityMigrationOccurredKey)
+
+        if (MigrationOccurred != "true") {
+            let bundleId = Bundle.main.bundleIdentifier ?? ""
+            let queryDict = [kSecClass as String: kSecClassGenericPassword, kSecAttrService as String: "\(bundleId).dropbox.authv2" as AnyObject?]
+            let attributesToUpdateDict = [kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly]
+            SecItemUpdate(queryDict as CFDictionary, attributesToUpdateDict as CFDictionary)
+            UserDefaults.standard.set("true", forKey: kAccessibilityMigrationOccurredKey)
+        }
     }
 }
 

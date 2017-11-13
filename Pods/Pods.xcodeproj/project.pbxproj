@@ -7,63 +7,78 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00E153632A414101E0A66AE23569802B /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7334EE579D956F47A9ADE158B67BE838 /* Result.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		040420188A1A947193F4CC8D1BC6889D /* Webkit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E52D8C1BE08BBCFFBD0197C29AC0F4B1 /* Webkit.framework */; };
-		074E55B3ADA3CE8AE6770A4EAA31D07B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2D7A1E4DE1EE485D611722B3EE03C /* Foundation.framework */; };
-		079D990738735591330332B5F2551AE4 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DA5F6C1194A4C86ADF4277F0BC6CC2 /* NetworkReachabilityManager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		0CDE0D7E3174C5C19520006AD4FAD19C /* DropboxTeamClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02F2E0C102C97E0FA7B79EC508F982A8 /* DropboxTeamClient.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		14CECE238604E1D44104E5BCD14EB2BE /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791D22054F53102F825DCF4BAF21C84F /* SessionDelegate.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		164781197625A3149B3BDBCAA2AC8CC3 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DAD27CFBF2CD3EB97C955BDBE034EE0 /* Validation.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		17DCD66FB9E4936E8229F5756EAC87CB /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA673495CC2A1A87F9172354FE882DA /* Users.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		1B9EDEDC964E6B08F78920B4F4B9DB84 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1306DC67AFFE3A7187E4E779C5DA90E8 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		204944D67267632DD7CD4BEFB60AC389 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486629176BE4F7D11F6D21B3CAB59141 /* Response.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		2B58B070F9D7324583D01EE906BC918C /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8AA192AAC09377E452860024D223926 /* SessionManager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		2C4BA6A65A772D56FD0ED4C2440EE588 /* OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6C7D97688E955E1850CCFB8DE67605B /* OAuth.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		2DBEEFF3ACD56B9547A1C15CCF1FFCC8 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98B71060AED58F5083FB7AB10DE82289 /* Team.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		343B30C989188B77FB1149FED753A63C /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E7EFD3F80E4F7A8900746922EE93C4 /* ServerTrustPolicy.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		349AF8BCA375316A5714AB3571AB41EC /* TeamPolicies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6323C0D59600D74E318E1DFFD29AF67B /* TeamPolicies.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		34E3C511688363576FC4A6B5CEAB5518 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2ADF0FE028B435EF3AC6145703A2A1D /* UIKit.framework */; };
-		45F429CCF4A4EE86707A03E9AE26EB71 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36915C6F7E93FA3A5496499DAC9A5A79 /* SystemConfiguration.framework */; };
-		4F4CFCEC06EC9E9103AA9137D78520E7 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63412541C589112814CA72B4B9948E9C /* Base.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		58812AABBC0A1E7AE019752424DF31A7 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422F4C1B0D93385C566F955027DE5EC7 /* MultipartFormData.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		5891282E099F3DC27686E28BE8C8D0FC /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26497E17FD08F370AEF11AC9555A96B3 /* Async.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		5E25BCD30BDE2E7A68D1A6FAF7253AD4 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311A280A535ABA319B8AD5E0879E1DBB /* DispatchQueue+Alamofire.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		61F325ADEF451BA48B263039174C0F71 /* SwiftyDropbox-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 16128E1D6909AEAF5A7A729123DEB38F /* SwiftyDropbox-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6540CC4D369A32F6DE54AFA8D5D6FAF9 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E31D0A6CEFFFEE638DD17F1FCCF1A8D /* Alamofire-dummy.m */; };
-		694C0C45CDCF9DC435FD477A969FC51E /* SwiftyDropbox-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6840C02640F211161CF380DD04F7ECBA /* SwiftyDropbox-dummy.m */; };
-		755EC7781C3FF64144851984927D004E /* AuthRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3606D57A05331514B6ADF9C65CF4DA76 /* AuthRoutes.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		76BD644F8CFD613BD277509B4F6EF107 /* StoneSerializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2A47714550BF1C1887E811B9A5DED9 /* StoneSerializers.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		78F4229B4A746A38341474FEB9DADB25 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D554F5DF7A1E7805C576508ABF16888F /* ParameterEncoding.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		7BF8A067A322059D88D6F1C8208FDD90 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C01CAF06394816DE12EC9314E5E242 /* Alamofire.framework */; };
-		7C607C85AFA2AA7E74C7ADC9D3F19FA2 /* DropboxTransportClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32E7EDC426715864FD013F9A7F82B4 /* DropboxTransportClient.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		82DD7FEC8540B1A066E7A619232601B8 /* SwiftyDropbox.h in Headers */ = {isa = PBXBuildFile; fileRef = A121769A81D2C4EFE261C8126F9C6928 /* SwiftyDropbox.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		86C1C82217A83A92C77BC54A80A34B98 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2D7A1E4DE1EE485D611722B3EE03C /* Foundation.framework */; };
-		8969493CCE25F25C06DDA46EA5FCC44F /* StoneValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302DF9BE9C79694D787060398A3F5205 /* StoneValidators.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		8F5C0849D2757FC5A7C81B81BA3813C3 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DC68D5FC7C5C65DBD9C7639FB8FBF4D /* ResponseSerialization.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		917387A3C57BB432977E10D3ECACB33C /* OAuthMobile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74F6E836AAC1F396423CE01AA45E9E87 /* OAuthMobile.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		93D8D3632C3C22387159E14C415429EC /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2D21B0D75070F1D6736D3BB506EF29A /* Properties.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		981EFF1371FCE40F1907DA262743B93E /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6296A6487323110EDE81484D15AF82D4 /* Notifications.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		9C95AF8396D21DCB8A247EC1BA182D60 /* DropboxClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DF9EAC8FFDFFB5E4BE8AE20CD581D8 /* DropboxClient.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		9EE35BA7730F46ACD367BCD306A3DCB4 /* UsersRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8230FBE9CC6117EDE86ED53C83F4B205 /* UsersRoutes.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		A04BFC558D69E7DBB68023C80A9CFE4E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE2D7A1E4DE1EE485D611722B3EE03C /* Foundation.framework */; };
-		AD2C576F50E67B2417C1D17FBF5E32B2 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F100D9DEA35A125C6782186F7E22B /* AFError.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		ADA6D4A4D94D50FEC9584DB0A05FF45A /* DropboxClientsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C9E0AFF3B163C197E03BF741F5AEF9C /* DropboxClientsManager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		ADCBBF7567055978EE682BF548063F52 /* Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCABD26AAF4233CC42FD1D65BBD451C6 /* Sharing.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		AE7689D9FDE01D32B5B841A22A143E0C /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDAEA8898755715884BABD613BBAB94D /* Auth.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		00E153632A414101E0A66AE23569802B /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B23C17EC412F1B521C0C02C4F319090 /* Result.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		00FC91B952B5B953E4DB1327FB78B1CE /* OAuthMobile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3D26981646783071F96F3E7F61DB59 /* OAuthMobile.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		0165D493CC5199B71E47113414EE5A55 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3490E1AAF5ECB29BDFBD69276E5FD4C1 /* WebKit.framework */; };
+		04C61AA2460E4BD98B2F5D255850C02E /* FileProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E9C6E139D59653DD2A7444441B7E97 /* FileProperties.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		079D990738735591330332B5F2551AE4 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669F3E8DF92D6F4007EDAFB82607E244 /* NetworkReachabilityManager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		07FB897816FADF6C6F77F2D1B7D58C51 /* SharingRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97D5D3CCF583CC96A8BFDBF666CFB546 /* SharingRoutes.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		094E1584984DC2EFEE2CBF6D1AFEC056 /* CustomTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A238712E4BA59D085FA76C3EEC3B2F5 /* CustomTasks.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		095CC7D3743CEECD35DD1CD7DEE84330 /* TeamLogRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5006781B33E51C5C6587F0C6C9D3F9CA /* TeamLogRoutes.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		14CECE238604E1D44104E5BCD14EB2BE /* SessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A43E3845DDE5D39A06EFF17D6F361D /* SessionDelegate.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		164781197625A3149B3BDBCAA2AC8CC3 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C15C277FB9C3CD5BE1CE810E8470E6BF /* Validation.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		194A95A7FAC3A87C52C3A7E3CEDE9F64 /* FileRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D8988A3EC137F7BDC33E1F01A1B0C23 /* FileRequests.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		1A8F24D35B2FB47C9FFE859408C4CD7A /* Paper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F972B4F4D9A6F2846924321A1387BAC /* Paper.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		1B9EDEDC964E6B08F78920B4F4B9DB84 /* Alamofire-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = AD0DD13298C03611A15B7F836CD1D5A9 /* Alamofire-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1CD89351CFC166E854E2BC9F22CC9799 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73DCBB152829368D9D5B6173D2D033D /* Foundation.framework */; };
+		204944D67267632DD7CD4BEFB60AC389 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAD440EB42DAD256F38C47A561701DF0 /* Response.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2B58B070F9D7324583D01EE906BC918C /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CFC6CDBB2443E9F2B6AD97C8475059 /* SessionManager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2B751B2F0E6C78C82EB294480D4E56A3 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC0998FD769F83DECFA4DCD12510192 /* Team.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		2D8A558D7763452393E258AB0336C0CC /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = B68757431B62BE0C88C1B3EDA6FDC6AF /* Base.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		343B30C989188B77FB1149FED753A63C /* ServerTrustPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51BC123B07F68D2FD0CB2D7FB1A2AB3E /* ServerTrustPolicy.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		35ED8F5CD3B2F347DA1979D9DDBC2B35 /* TeamCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA370907C171FE42C5C3535750F4F4D /* TeamCommon.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		392C25A995D8BA9AF6425128D69A4E6A /* OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223E55D843E782A95209116AB2F50F1 /* OAuth.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		41F38442CF0C03CA72B60574F4FFCEC2 /* StoneBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B421D662789BE741C93364A1F16CBC46 /* StoneBase.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		5014A2E1D56256D7D70BF904288D875C /* FileRequestsRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6E34D84E5694F90E6504B5286D0BD0C /* FileRequestsRoutes.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		54C1FC873266501CDFCDB6301072E02E /* SDKConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C684B8473B997780C2A6F4B59C521E /* SDKConstants.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		56DDC7A018BCC8CE18903DFE1C5F52B3 /* PaperRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711D524F4FA6730D5A3D8FF8767F31F8 /* PaperRoutes.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		58812AABBC0A1E7AE019752424DF31A7 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1A10336B0F760B7B71E7FD085D5DB7 /* MultipartFormData.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		5E25BCD30BDE2E7A68D1A6FAF7253AD4 /* DispatchQueue+Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B438EDB612F74F3E66ED02474B36707 /* DispatchQueue+Alamofire.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		5E828BE2B9515B2AD18902BF22BD72DC /* DropboxTransportClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181911378713B117BE527AAA513742F1 /* DropboxTransportClient.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		5F5586E53031A319F5DF442A4BC35C59 /* UsersCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE433510DF6C8BDBAA8AC37516B272B8 /* UsersCommon.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		60B1CD81841EAF7F54F548E30B076575 /* TransportConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B5ABBE1921DFBF4F1EA5393D9E0D01 /* TransportConfig.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		6540CC4D369A32F6DE54AFA8D5D6FAF9 /* Alamofire-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B16717DA7A7D7732FF14F3C144E26DBB /* Alamofire-dummy.m */; };
+		65A4BBF8C67DDD031ED620394A1BEC59 /* AuthRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2191DA30C6E11358977E61ADA2B4AF /* AuthRoutes.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		67D4C0159B15995985607A94C355F091 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6C01CAF06394816DE12EC9314E5E242 /* Alamofire.framework */; };
+		6F4D3AE997B9023930A089D11A214A67 /* DropboxTeamClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA863F0F185119D28CD505C018083B0 /* DropboxTeamClient.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		73B9C996AED49ED7CF8EC2A6F1738059 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73DCBB152829368D9D5B6173D2D033D /* Foundation.framework */; };
+		78F4229B4A746A38341474FEB9DADB25 /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53646F5937144CED8FF856E55561A158 /* ParameterEncoding.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		7A1569D129CB703B73712C1A8E8F7C35 /* SwiftyDropbox-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 508167B425B0DB3BAD587F213BC3F10F /* SwiftyDropbox-dummy.m */; };
+		7CCB3F1D2CEBF992CF163E7216AF9D23 /* UsersRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD27FA7DF659B9088DE60AE7A1CAC181 /* UsersRoutes.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		7CE2803C97695090BA878AA90907BBB1 /* DBChunkInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 340F7E96B7F8F4B4BBFA73AF38280274 /* DBChunkInputStream.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		7E7AEFF95FC993A2BF4DBAB3361BDA93 /* DropboxClientsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AC36743F45BE2CF10708F377BE9457 /* DropboxClientsManager.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		86C6B17F34206FACCE4E3F07FC3A801A /* SwiftyDropbox.h in Headers */ = {isa = PBXBuildFile; fileRef = 5602A96DF59DBE7523A7CC0B2A6E846C /* SwiftyDropbox.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8E539174310FA39D85F13FA1FFD107F2 /* Async.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0642B1FE09178087F2BA365E6ED9BE1 /* Async.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		8F5C0849D2757FC5A7C81B81BA3813C3 /* ResponseSerialization.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB49C5E65E5A885B9AC77FB83E932910 /* ResponseSerialization.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		981EFF1371FCE40F1907DA262743B93E /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5D05F66C7917B0ADECA6D01CA55BBE /* Notifications.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A09DC1377F5BB3DFCD76989D28065323 /* StoneSerializers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7ADCC6203EA77F7C07F96221349C4EE /* StoneSerializers.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		A19C4D75D98C466666398FE17966FB7E /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D253C96EA017DE8AAB1D3FA613750AFB /* Common.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		AB7CFC2755CA576D4E74D8A953BDB732 /* FilesRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F2A87C64B1047DB1BC87E2D1216F9F /* FilesRoutes.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		AD2C576F50E67B2417C1D17FBF5E32B2 /* AFError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F30D3D3A9D688A4DCF8B91BC380AA1 /* AFError.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		B4FAED5DA27F1A04E4B27E95A5E812F1 /* DropboxClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F1DEDF7B30F6DEB5CFA6605C549069C /* DropboxClient.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		B5112B874BD8EFF8AFB2E570A6BB03EC /* Pods-SwiftyDropDataListing-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 331BAA3E736A5389C6C6A1303BB43167 /* Pods-SwiftyDropDataListing-dummy.m */; };
-		B5C7E8CB07003A9669421CFD6D57EA47 /* StoneBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E34582544E42C6C83AD6CEFE0BDD146 /* StoneBase.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		BE68DD83B749F1EDFCA308684A990EE6 /* BaseTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA28A169DB03664DCD977802E0E7084 /* BaseTeam.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		C39D9898B906DE7B95BEB4D3F847B6A0 /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC4FFDFB1EBDDDC2D6ECC8C85214BD89 /* Files.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		C410D937C4D6CEC1EB2AEE84429FFB80 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E617D3DB1F5E49CD4B167502112644 /* Common.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		C49B22FA70DED41F3F5F49C5E88B8EE4 /* SharingRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3399D8C2532503B37C7C23E70467F31 /* SharingRoutes.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		C5FD57751548EFFA6567AFD2EB47CD56 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251A13D43D9B3725B96DC9A9D5CF67A /* Request.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		D14B82E70D123EAD013469890D067B2B /* TeamRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987814F2A7F317453BE125D36A406BAE /* TeamRoutes.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		D5686072DEC1A0E14F8C100FCC873F73 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C926461D9A81B9579A6B1E29D606DC1 /* TaskDelegate.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		B60C8DD877A0485A0861C00E2AFA0B86 /* CustomRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F3865D0DFADAC80515A3F7C3AA4C9D9 /* CustomRoutes.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		B8B683C26EB878C749A0323A2EADA043 /* SwiftyDropbox-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3232D3F9773F0F5150E90E6165A03D6C /* SwiftyDropbox-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BF9BBFC4E8EFC9FDC265B7924772080E /* TeamPolicies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11281FB8728278D0664C99A4FB9F42F0 /* TeamPolicies.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		C28BB179705B001AA59C1821A40DF046 /* DBChunkInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = B54EC893050422CB1D26FC263A0776A7 /* DBChunkInputStream.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C2D7BB486B825131EC14B65D6062F1FD /* BaseTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FF52C648AD17D51C2980630B5580025 /* BaseTeam.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		C5FD57751548EFFA6567AFD2EB47CD56 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA0D1B75E54E3C7549C8C9A025DFD1B /* Request.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D1109754D74C8CE4A86418EA545CA262 /* TeamRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1708997166B3CF4DBBCE6B9D3527752B /* TeamRoutes.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D5686072DEC1A0E14F8C100FCC873F73 /* TaskDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92CEC6507694CB8B5387A6D6F4C30A3B /* TaskDelegate.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		D7E1313C0F81F6086ED5E0D62049D256 /* Pods-SwiftyDropDataListing-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A8879A855F78E50B1AFFD548A76F3233 /* Pods-SwiftyDropDataListing-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DF3F13E3CE99B7ED777004450FD6C833 /* TeamCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F22F00765D47669DEE32E95D2DF68FF /* TeamCommon.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		E198F398404F07805E5189165F3C1E64 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21401E83F00D4B2565585DA9D21D839F /* Timeline.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		EBA0781A1E2822CF7DFD56ACD394A63E /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80047093E875626450188DB8093A3F9 /* Alamofire.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
-		F224BA1D900DD3AE166402BDD777B663 /* FilesRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE6A3D718039D9834251EBE612B1B6A4 /* FilesRoutes.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		D87F554A9978E7E4AA20ADD7EF87D171 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE66A0BBE0B6DB7634F9D6E3672DB1F /* Users.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E198F398404F07805E5189165F3C1E64 /* Timeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8131AC8D020FD5BE55DEFFBD06DD0EF8 /* Timeline.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E1CE699FE2AE224A66E6D09CAFB144FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C73DCBB152829368D9D5B6173D2D033D /* Foundation.framework */; };
+		E1FC93A05E64A29CA70091413A7F37A4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C84EC5894A7AED2CF78CEA078BE316BB /* UIKit.framework */; };
+		E4D920FDF55EA4E509AD1E3F3B6D1727 /* Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE74972B38277F55AC89F96C4AAE4EA /* Custom.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E9060F148439DA751C32FC6867A36D77 /* Sharing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33DC7A24A7DB050F51B2694AF9007DEE /* Sharing.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		E9F8DDBFA5FEB76D2A6D20196FB3A002 /* FilePropertiesRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F973F44FEF7EBB537B6734A7D9E373 /* FilePropertiesRoutes.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		EB6B8E3E0673A69E7B9AECF5D05865D9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1740637F150936B683339C1430BD10A /* SystemConfiguration.framework */; };
+		EBA0781A1E2822CF7DFD56ACD394A63E /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8119B3F1C09BE1033889AA22575EA3 /* Alamofire.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		F055E1335703FD1A0166C7805E1F0F9C /* TeamLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1646B4F04ADBC0FB3A0241D321A565 /* TeamLog.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		F05D3DA82E1E53943DFD24DD3D3AFE20 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2260EA712F5588D9D824EBD0D8601D62 /* Auth.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		FACD2DDF108AF4F308A615F96830281D /* Files.swift in Sources */ = {isa = PBXBuildFile; fileRef = 784F732C4CD7E77059A131B753049DDC /* Files.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		FE47BB147400F7BB1B0E38A927C5BB65 /* StoneValidators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A554475731C618B32800AE14391A277 /* StoneValidators.swift */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,89 +106,116 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02C684B8473B997780C2A6F4B59C521E /* SDKConstants.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SDKConstants.swift; path = Source/SwiftyDropbox/Shared/Handwritten/SDKConstants.swift; sourceTree = "<group>"; };
 		02F11DF6A7E7BB0D8E7DE689669BC22A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		02F2E0C102C97E0FA7B79EC508F982A8 /* DropboxTeamClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropboxTeamClient.swift; path = Source/SwiftyDropbox/PlatformNeutral/DropboxTeamClient.swift; sourceTree = "<group>"; };
-		0DC68D5FC7C5C65DBD9C7639FB8FBF4D /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
-		1306DC67AFFE3A7187E4E779C5DA90E8 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
-		16128E1D6909AEAF5A7A729123DEB38F /* SwiftyDropbox-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyDropbox-umbrella.h"; sourceTree = "<group>"; };
+		089A9F0A2E520F7857DAC230E63FBD95 /* SwiftyDropbox.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyDropbox.modulemap; sourceTree = "<group>"; };
+		0F1DEDF7B30F6DEB5CFA6605C549069C /* DropboxClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropboxClient.swift; path = Source/SwiftyDropbox/Shared/Handwritten/DropboxClient.swift; sourceTree = "<group>"; };
+		11281FB8728278D0664C99A4FB9F42F0 /* TeamPolicies.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TeamPolicies.swift; path = Source/SwiftyDropbox/Shared/Generated/TeamPolicies.swift; sourceTree = "<group>"; };
+		1708997166B3CF4DBBCE6B9D3527752B /* TeamRoutes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TeamRoutes.swift; path = Source/SwiftyDropbox/Shared/Generated/TeamRoutes.swift; sourceTree = "<group>"; };
 		17E5E324ECE466F9DB73609E25B3DDFE /* Pods-SwiftyDropDataListing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftyDropDataListing.debug.xcconfig"; sourceTree = "<group>"; };
+		181911378713B117BE527AAA513742F1 /* DropboxTransportClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropboxTransportClient.swift; path = Source/SwiftyDropbox/Shared/Handwritten/DropboxTransportClient.swift; sourceTree = "<group>"; };
 		1E6247BE077D0E4BC4A5213ECF65DA25 /* Pods-SwiftyDropDataListing-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SwiftyDropDataListing-acknowledgements.markdown"; sourceTree = "<group>"; };
-		21401E83F00D4B2565585DA9D21D839F /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
-		26497E17FD08F370AEF11AC9555A96B3 /* Async.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Async.swift; path = Source/SwiftyDropbox/PlatformNeutral/Async.swift; sourceTree = "<group>"; };
-		2C926461D9A81B9579A6B1E29D606DC1 /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
-		2E31D0A6CEFFFEE638DD17F1FCCF1A8D /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
-		2E34582544E42C6C83AD6CEFE0BDD146 /* StoneBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StoneBase.swift; path = Source/SwiftyDropbox/PlatformNeutral/StoneBase.swift; sourceTree = "<group>"; };
-		302DF9BE9C79694D787060398A3F5205 /* StoneValidators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StoneValidators.swift; path = Source/SwiftyDropbox/PlatformNeutral/StoneValidators.swift; sourceTree = "<group>"; };
-		311A280A535ABA319B8AD5E0879E1DBB /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
+		2260EA712F5588D9D824EBD0D8601D62 /* Auth.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Auth.swift; path = Source/SwiftyDropbox/Shared/Generated/Auth.swift; sourceTree = "<group>"; };
+		2D8988A3EC137F7BDC33E1F01A1B0C23 /* FileRequests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileRequests.swift; path = Source/SwiftyDropbox/Shared/Generated/FileRequests.swift; sourceTree = "<group>"; };
+		2EE0A3432F6576AFAF7BCC846EABDE82 /* SwiftyDropbox-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyDropbox-prefix.pch"; sourceTree = "<group>"; };
+		2F972B4F4D9A6F2846924321A1387BAC /* Paper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Paper.swift; path = Source/SwiftyDropbox/Shared/Generated/Paper.swift; sourceTree = "<group>"; };
+		2FF52C648AD17D51C2980630B5580025 /* BaseTeam.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseTeam.swift; path = Source/SwiftyDropbox/Shared/Generated/BaseTeam.swift; sourceTree = "<group>"; };
+		30F2A87C64B1047DB1BC87E2D1216F9F /* FilesRoutes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FilesRoutes.swift; path = Source/SwiftyDropbox/Shared/Generated/FilesRoutes.swift; sourceTree = "<group>"; };
+		3232D3F9773F0F5150E90E6165A03D6C /* SwiftyDropbox-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyDropbox-umbrella.h"; sourceTree = "<group>"; };
 		331BAA3E736A5389C6C6A1303BB43167 /* Pods-SwiftyDropDataListing-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SwiftyDropDataListing-dummy.m"; sourceTree = "<group>"; };
-		3606D57A05331514B6ADF9C65CF4DA76 /* AuthRoutes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthRoutes.swift; path = Source/SwiftyDropbox/PlatformNeutral/AuthRoutes.swift; sourceTree = "<group>"; };
-		36915C6F7E93FA3A5496499DAC9A5A79 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
-		3DA28A169DB03664DCD977802E0E7084 /* BaseTeam.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseTeam.swift; path = Source/SwiftyDropbox/PlatformNeutral/BaseTeam.swift; sourceTree = "<group>"; };
-		3F22F00765D47669DEE32E95D2DF68FF /* TeamCommon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TeamCommon.swift; path = Source/SwiftyDropbox/PlatformNeutral/TeamCommon.swift; sourceTree = "<group>"; };
-		3FA673495CC2A1A87F9172354FE882DA /* Users.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Users.swift; path = Source/SwiftyDropbox/PlatformNeutral/Users.swift; sourceTree = "<group>"; };
+		33DC7A24A7DB050F51B2694AF9007DEE /* Sharing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sharing.swift; path = Source/SwiftyDropbox/Shared/Generated/Sharing.swift; sourceTree = "<group>"; };
+		340F7E96B7F8F4B4BBFA73AF38280274 /* DBChunkInputStream.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DBChunkInputStream.m; path = Source/SwiftyDropbox/Shared/Handwritten/DBChunkInputStream.m; sourceTree = "<group>"; };
+		3490E1AAF5ECB29BDFBD69276E5FD4C1 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
+		37B5ABBE1921DFBF4F1EA5393D9E0D01 /* TransportConfig.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TransportConfig.swift; path = Source/SwiftyDropbox/Shared/Handwritten/TransportConfig.swift; sourceTree = "<group>"; };
+		3BA0D1B75E54E3C7549C8C9A025DFD1B /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
 		40EC234901AEE93CF60109EB02D37217 /* Pods-SwiftyDropDataListing-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftyDropDataListing-resources.sh"; sourceTree = "<group>"; };
-		422F4C1B0D93385C566F955027DE5EC7 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
-		4251A13D43D9B3725B96DC9A9D5CF67A /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
-		44DF9EAC8FFDFFB5E4BE8AE20CD581D8 /* DropboxClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropboxClient.swift; path = Source/SwiftyDropbox/PlatformNeutral/DropboxClient.swift; sourceTree = "<group>"; };
-		486629176BE4F7D11F6D21B3CAB59141 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
-		4DAD27CFBF2CD3EB97C955BDBE034EE0 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
-		4F32E7EDC426715864FD013F9A7F82B4 /* DropboxTransportClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropboxTransportClient.swift; path = Source/SwiftyDropbox/PlatformNeutral/DropboxTransportClient.swift; sourceTree = "<group>"; };
-		6296A6487323110EDE81484D15AF82D4 /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
-		6323C0D59600D74E318E1DFFD29AF67B /* TeamPolicies.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TeamPolicies.swift; path = Source/SwiftyDropbox/PlatformNeutral/TeamPolicies.swift; sourceTree = "<group>"; };
-		63412541C589112814CA72B4B9948E9C /* Base.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Base.swift; path = Source/SwiftyDropbox/PlatformNeutral/Base.swift; sourceTree = "<group>"; };
+		4B23C17EC412F1B521C0C02C4F319090 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
+		5006781B33E51C5C6587F0C6C9D3F9CA /* TeamLogRoutes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TeamLogRoutes.swift; path = Source/SwiftyDropbox/Shared/Generated/TeamLogRoutes.swift; sourceTree = "<group>"; };
+		508167B425B0DB3BAD587F213BC3F10F /* SwiftyDropbox-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyDropbox-dummy.m"; sourceTree = "<group>"; };
+		51BC123B07F68D2FD0CB2D7FB1A2AB3E /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
+		53646F5937144CED8FF856E55561A158 /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
+		5602A96DF59DBE7523A7CC0B2A6E846C /* SwiftyDropbox.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftyDropbox.h; path = Source/SwiftyDropbox/Shared/Handwritten/SwiftyDropbox.h; sourceTree = "<group>"; };
+		56A43E3845DDE5D39A06EFF17D6F361D /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
+		5A238712E4BA59D085FA76C3EEC3B2F5 /* CustomTasks.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomTasks.swift; path = Source/SwiftyDropbox/Shared/Handwritten/CustomTasks.swift; sourceTree = "<group>"; };
+		5BA27BB08C3F8A84ADD2D53138B69045 /* SwiftyDropbox.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyDropbox.xcconfig; sourceTree = "<group>"; };
 		64A6EB24187B41210A3BCD13F354033E /* Pods-SwiftyDropDataListing-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SwiftyDropDataListing-acknowledgements.plist"; sourceTree = "<group>"; };
-		6840C02640F211161CF380DD04F7ECBA /* SwiftyDropbox-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyDropbox-dummy.m"; sourceTree = "<group>"; };
-		6B2A47714550BF1C1887E811B9A5DED9 /* StoneSerializers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StoneSerializers.swift; path = Source/SwiftyDropbox/PlatformNeutral/StoneSerializers.swift; sourceTree = "<group>"; };
+		669F3E8DF92D6F4007EDAFB82607E244 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
+		6AE66A0BBE0B6DB7634F9D6E3672DB1F /* Users.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Users.swift; path = Source/SwiftyDropbox/Shared/Generated/Users.swift; sourceTree = "<group>"; };
+		6B438EDB612F74F3E66ED02474B36707 /* DispatchQueue+Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DispatchQueue+Alamofire.swift"; path = "Source/DispatchQueue+Alamofire.swift"; sourceTree = "<group>"; };
+		6BD1C7BD906CEFEB91511070BA113F21 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
 		6DB0F71F7E4321F1BE15136AECEA4DE3 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70A42B7065146362F1101C5A5FC8B19A /* Pods-SwiftyDropDataListing.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-SwiftyDropDataListing.modulemap"; sourceTree = "<group>"; };
-		7334EE579D956F47A9ADE158B67BE838 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Source/Result.swift; sourceTree = "<group>"; };
-		74F6E836AAC1F396423CE01AA45E9E87 /* OAuthMobile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OAuthMobile.swift; path = Source/SwiftyDropbox/SwiftyDropbox_iOS/iOS/OAuthMobile.swift; sourceTree = "<group>"; };
-		791D22054F53102F825DCF4BAF21C84F /* SessionDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionDelegate.swift; path = Source/SessionDelegate.swift; sourceTree = "<group>"; };
-		8230FBE9CC6117EDE86ED53C83F4B205 /* UsersRoutes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UsersRoutes.swift; path = Source/SwiftyDropbox/PlatformNeutral/UsersRoutes.swift; sourceTree = "<group>"; };
-		8C9E0AFF3B163C197E03BF741F5AEF9C /* DropboxClientsManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropboxClientsManager.swift; path = Source/SwiftyDropbox/PlatformNeutral/DropboxClientsManager.swift; sourceTree = "<group>"; };
+		711D524F4FA6730D5A3D8FF8767F31F8 /* PaperRoutes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperRoutes.swift; path = Source/SwiftyDropbox/Shared/Generated/PaperRoutes.swift; sourceTree = "<group>"; };
+		73CFC6CDBB2443E9F2B6AD97C8475059 /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
+		77224B2D861FAF27219AC262BA95EAF9 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Alamofire.modulemap; sourceTree = "<group>"; };
+		784F732C4CD7E77059A131B753049DDC /* Files.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Files.swift; path = Source/SwiftyDropbox/Shared/Generated/Files.swift; sourceTree = "<group>"; };
+		7AA863F0F185119D28CD505C018083B0 /* DropboxTeamClient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropboxTeamClient.swift; path = Source/SwiftyDropbox/Shared/Handwritten/DropboxTeamClient.swift; sourceTree = "<group>"; };
+		7F3865D0DFADAC80515A3F7C3AA4C9D9 /* CustomRoutes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomRoutes.swift; path = Source/SwiftyDropbox/Shared/Handwritten/CustomRoutes.swift; sourceTree = "<group>"; };
+		8131AC8D020FD5BE55DEFFBD06DD0EF8 /* Timeline.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Timeline.swift; path = Source/Timeline.swift; sourceTree = "<group>"; };
+		89F973F44FEF7EBB537B6734A7D9E373 /* FilePropertiesRoutes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FilePropertiesRoutes.swift; path = Source/SwiftyDropbox/Shared/Generated/FilePropertiesRoutes.swift; sourceTree = "<group>"; };
+		8D3D26981646783071F96F3E7F61DB59 /* OAuthMobile.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OAuthMobile.swift; path = Source/SwiftyDropbox/Platform/SwiftyDropbox_iOS/OAuthMobile.swift; sourceTree = "<group>"; };
+		90AC36743F45BE2CF10708F377BE9457 /* DropboxClientsManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DropboxClientsManager.swift; path = Source/SwiftyDropbox/Shared/Handwritten/DropboxClientsManager.swift; sourceTree = "<group>"; };
+		92CEC6507694CB8B5387A6D6F4C30A3B /* TaskDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TaskDelegate.swift; path = Source/TaskDelegate.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		97E7EFD3F80E4F7A8900746922EE93C4 /* ServerTrustPolicy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ServerTrustPolicy.swift; path = Source/ServerTrustPolicy.swift; sourceTree = "<group>"; };
-		987814F2A7F317453BE125D36A406BAE /* TeamRoutes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TeamRoutes.swift; path = Source/SwiftyDropbox/PlatformNeutral/TeamRoutes.swift; sourceTree = "<group>"; };
-		98B71060AED58F5083FB7AB10DE82289 /* Team.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Team.swift; path = Source/SwiftyDropbox/PlatformNeutral/Team.swift; sourceTree = "<group>"; };
-		A121769A81D2C4EFE261C8126F9C6928 /* SwiftyDropbox.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftyDropbox.h; path = Source/SwiftyDropbox/PlatformNeutral/SwiftyDropbox.h; sourceTree = "<group>"; };
-		A2E617D3DB1F5E49CD4B167502112644 /* Common.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Common.swift; path = Source/SwiftyDropbox/PlatformNeutral/Common.swift; sourceTree = "<group>"; };
-		A2EA0D9178F17F32A66B7728E8993282 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Alamofire.modulemap; sourceTree = "<group>"; };
-		A6C7D97688E955E1850CCFB8DE67605B /* OAuth.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OAuth.swift; path = Source/SwiftyDropbox/PlatformNeutral/OAuth.swift; sourceTree = "<group>"; };
+		965DE5E62F989D26C51C1E6259FA7F73 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97D5D3CCF583CC96A8BFDBF666CFB546 /* SharingRoutes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SharingRoutes.swift; path = Source/SwiftyDropbox/Shared/Generated/SharingRoutes.swift; sourceTree = "<group>"; };
+		9A554475731C618B32800AE14391A277 /* StoneValidators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StoneValidators.swift; path = Source/SwiftyDropbox/Shared/Generated/StoneValidators.swift; sourceTree = "<group>"; };
+		A57126CAEA43FEB55B1A6C45DCE6A725 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
 		A8879A855F78E50B1AFFD548A76F3233 /* Pods-SwiftyDropDataListing-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SwiftyDropDataListing-umbrella.h"; sourceTree = "<group>"; };
-		AD867D10A327AF330854419767DEA04F /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AE6A3D718039D9834251EBE612B1B6A4 /* FilesRoutes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FilesRoutes.swift; path = Source/SwiftyDropbox/PlatformNeutral/FilesRoutes.swift; sourceTree = "<group>"; };
-		B2A6802E953D2D073ACA84F4926E0949 /* SwiftyDropbox-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyDropbox-prefix.pch"; sourceTree = "<group>"; };
-		BB6F100D9DEA35A125C6782186F7E22B /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
-		BB9B2D25A9CBF4903B4EE8CE50CE7C9F /* SwiftyDropbox.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyDropbox.xcconfig; sourceTree = "<group>"; };
-		C2D21B0D75070F1D6736D3BB506EF29A /* Properties.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Properties.swift; path = Source/SwiftyDropbox/PlatformNeutral/Properties.swift; sourceTree = "<group>"; };
-		CEE2D7A1E4DE1EE485D611722B3EE03C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D29D764DDB4CB689D72683661C83C31A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D554F5DF7A1E7805C576508ABF16888F /* ParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParameterEncoding.swift; path = Source/ParameterEncoding.swift; sourceTree = "<group>"; };
+		AAD440EB42DAD256F38C47A561701DF0 /* Response.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Response.swift; path = Source/Response.swift; sourceTree = "<group>"; };
+		AD0DD13298C03611A15B7F836CD1D5A9 /* Alamofire-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-umbrella.h"; sourceTree = "<group>"; };
+		AE433510DF6C8BDBAA8AC37516B272B8 /* UsersCommon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UsersCommon.swift; path = Source/SwiftyDropbox/Shared/Generated/UsersCommon.swift; sourceTree = "<group>"; };
+		B0642B1FE09178087F2BA365E6ED9BE1 /* Async.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Async.swift; path = Source/SwiftyDropbox/Shared/Generated/Async.swift; sourceTree = "<group>"; };
+		B16717DA7A7D7732FF14F3C144E26DBB /* Alamofire-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Alamofire-dummy.m"; sourceTree = "<group>"; };
+		B1740637F150936B683339C1430BD10A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		B223E55D843E782A95209116AB2F50F1 /* OAuth.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OAuth.swift; path = Source/SwiftyDropbox/Shared/Handwritten/OAuth.swift; sourceTree = "<group>"; };
+		B421D662789BE741C93364A1F16CBC46 /* StoneBase.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StoneBase.swift; path = Source/SwiftyDropbox/Shared/Generated/StoneBase.swift; sourceTree = "<group>"; };
+		B54EC893050422CB1D26FC263A0776A7 /* DBChunkInputStream.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DBChunkInputStream.h; path = Source/SwiftyDropbox/Shared/Handwritten/DBChunkInputStream.h; sourceTree = "<group>"; };
+		B68757431B62BE0C88C1B3EDA6FDC6AF /* Base.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Base.swift; path = Source/SwiftyDropbox/Shared/Generated/Base.swift; sourceTree = "<group>"; };
+		BDC0998FD769F83DECFA4DCD12510192 /* Team.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Team.swift; path = Source/SwiftyDropbox/Shared/Generated/Team.swift; sourceTree = "<group>"; };
+		BFA370907C171FE42C5C3535750F4F4D /* TeamCommon.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TeamCommon.swift; path = Source/SwiftyDropbox/Shared/Generated/TeamCommon.swift; sourceTree = "<group>"; };
+		C15C277FB9C3CD5BE1CE810E8470E6BF /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Validation.swift; sourceTree = "<group>"; };
+		C3E9C6E139D59653DD2A7444441B7E97 /* FileProperties.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileProperties.swift; path = Source/SwiftyDropbox/Shared/Generated/FileProperties.swift; sourceTree = "<group>"; };
+		C6E34D84E5694F90E6504B5286D0BD0C /* FileRequestsRoutes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FileRequestsRoutes.swift; path = Source/SwiftyDropbox/Shared/Generated/FileRequestsRoutes.swift; sourceTree = "<group>"; };
+		C73DCBB152829368D9D5B6173D2D033D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		C7ADCC6203EA77F7C07F96221349C4EE /* StoneSerializers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StoneSerializers.swift; path = Source/SwiftyDropbox/Shared/Generated/StoneSerializers.swift; sourceTree = "<group>"; };
+		C84EC5894A7AED2CF78CEA078BE316BB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		CA7C3E37F660241DFC6E7A2548C51012 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB49C5E65E5A885B9AC77FB83E932910 /* ResponseSerialization.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ResponseSerialization.swift; path = Source/ResponseSerialization.swift; sourceTree = "<group>"; };
+		CD2191DA30C6E11358977E61ADA2B4AF /* AuthRoutes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AuthRoutes.swift; path = Source/SwiftyDropbox/Shared/Generated/AuthRoutes.swift; sourceTree = "<group>"; };
+		CD27FA7DF659B9088DE60AE7A1CAC181 /* UsersRoutes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UsersRoutes.swift; path = Source/SwiftyDropbox/Shared/Generated/UsersRoutes.swift; sourceTree = "<group>"; };
+		D253C96EA017DE8AAB1D3FA613750AFB /* Common.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Common.swift; path = Source/SwiftyDropbox/Shared/Generated/Common.swift; sourceTree = "<group>"; };
 		D6C01CAF06394816DE12EC9314E5E242 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6DA5F6C1194A4C86ADF4277F0BC6CC2 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NetworkReachabilityManager.swift; path = Source/NetworkReachabilityManager.swift; sourceTree = "<group>"; };
-		D98C9C5334A3640DA070FA1382681107 /* Alamofire-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Alamofire-prefix.pch"; sourceTree = "<group>"; };
+		DA1646B4F04ADBC0FB3A0241D321A565 /* TeamLog.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TeamLog.swift; path = Source/SwiftyDropbox/Shared/Generated/TeamLog.swift; sourceTree = "<group>"; };
+		DA8119B3F1C09BE1033889AA22575EA3 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		DC7AD225BF25EAA351E8A3425FAB6C25 /* SwiftyDropbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyDropbox.framework; path = SwiftyDropbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DCABD26AAF4233CC42FD1D65BBD451C6 /* Sharing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Sharing.swift; path = Source/SwiftyDropbox/PlatformNeutral/Sharing.swift; sourceTree = "<group>"; };
-		DDAEA8898755715884BABD613BBAB94D /* Auth.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Auth.swift; path = Source/SwiftyDropbox/PlatformNeutral/Auth.swift; sourceTree = "<group>"; };
-		DFEB5BD1C72F3A955C0143E15792075A /* SwiftyDropbox.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = SwiftyDropbox.modulemap; sourceTree = "<group>"; };
-		E52D8C1BE08BBCFFBD0197C29AC0F4B1 /* Webkit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Webkit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Webkit.framework; sourceTree = DEVELOPER_DIR; };
-		E8AA192AAC09377E452860024D223926 /* SessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SessionManager.swift; path = Source/SessionManager.swift; sourceTree = "<group>"; };
-		ECDDC18FEA0A8FDD2315933E2C59D799 /* Alamofire.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Alamofire.xcconfig; sourceTree = "<group>"; };
-		F2ADF0FE028B435EF3AC6145703A2A1D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		F3399D8C2532503B37C7C23E70467F31 /* SharingRoutes.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SharingRoutes.swift; path = Source/SwiftyDropbox/PlatformNeutral/SharingRoutes.swift; sourceTree = "<group>"; };
+		DF1A10336B0F760B7B71E7FD085D5DB7 /* MultipartFormData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipartFormData.swift; path = Source/MultipartFormData.swift; sourceTree = "<group>"; };
+		E3F30D3D3A9D688A4DCF8B91BC380AA1 /* AFError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AFError.swift; path = Source/AFError.swift; sourceTree = "<group>"; };
+		EA5D05F66C7917B0ADECA6D01CA55BBE /* Notifications.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Notifications.swift; path = Source/Notifications.swift; sourceTree = "<group>"; };
 		F6013B8B038118242472F511DA256ADA /* Pods_SwiftyDropDataListing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SwiftyDropDataListing.framework; path = "Pods-SwiftyDropDataListing.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F80047093E875626450188DB8093A3F9 /* Alamofire.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Alamofire.swift; path = Source/Alamofire.swift; sourceTree = "<group>"; };
 		F9348E6585335B61854FF15F0751DB8C /* Pods-SwiftyDropDataListing-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SwiftyDropDataListing-frameworks.sh"; sourceTree = "<group>"; };
 		FAEA91006BDCB51B99810F781DA8C497 /* Pods-SwiftyDropDataListing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SwiftyDropDataListing.release.xcconfig"; sourceTree = "<group>"; };
-		FC4FFDFB1EBDDDC2D6ECC8C85214BD89 /* Files.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Files.swift; path = Source/SwiftyDropbox/PlatformNeutral/Files.swift; sourceTree = "<group>"; };
+		FEE74972B38277F55AC89F96C4AAE4EA /* Custom.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Custom.swift; path = Source/SwiftyDropbox/Shared/Handwritten/Custom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		34F7A56EA867C816C81ABA594A253B53 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67D4C0159B15995985607A94C355F091 /* Alamofire.framework in Frameworks */,
+				E1CE699FE2AE224A66E6D09CAFB144FD /* Foundation.framework in Frameworks */,
+				EB6B8E3E0673A69E7B9AECF5D05865D9 /* SystemConfiguration.framework in Frameworks */,
+				E1FC93A05E64A29CA70091413A7F37A4 /* UIKit.framework in Frameworks */,
+				0165D493CC5199B71E47113414EE5A55 /* WebKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7FF81FC9826B8DA226621C1E748B5C58 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				074E55B3ADA3CE8AE6770A4EAA31D07B /* Foundation.framework in Frameworks */,
+				1CD89351CFC166E854E2BC9F22CC9799 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,48 +223,60 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A04BFC558D69E7DBB68023C80A9CFE4E /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CAD9F0A95A9DD2591C6E1E28AB294DE0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7BF8A067A322059D88D6F1C8208FDD90 /* Alamofire.framework in Frameworks */,
-				86C1C82217A83A92C77BC54A80A34B98 /* Foundation.framework in Frameworks */,
-				45F429CCF4A4EE86707A03E9AE26EB71 /* SystemConfiguration.framework in Frameworks */,
-				34E3C511688363576FC4A6B5CEAB5518 /* UIKit.framework in Frameworks */,
-				040420188A1A947193F4CC8D1BC6889D /* Webkit.framework in Frameworks */,
+				73B9C996AED49ED7CF8EC2A6F1738059 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		240D150E633E08F0EA163D4602356434 /* Support Files */ = {
+		14B2B6A7E9DB389739385A3FF4D40C40 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A2EA0D9178F17F32A66B7728E8993282 /* Alamofire.modulemap */,
-				ECDDC18FEA0A8FDD2315933E2C59D799 /* Alamofire.xcconfig */,
-				2E31D0A6CEFFFEE638DD17F1FCCF1A8D /* Alamofire-dummy.m */,
-				D98C9C5334A3640DA070FA1382681107 /* Alamofire-prefix.pch */,
-				1306DC67AFFE3A7187E4E779C5DA90E8 /* Alamofire-umbrella.h */,
-				D29D764DDB4CB689D72683661C83C31A /* Info.plist */,
+				1A6B170478FA248B419C8D932E393811 /* Alamofire */,
+				741AAF8A29CAAC9A08F496FBABD59409 /* SwiftyDropbox */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1A6B170478FA248B419C8D932E393811 /* Alamofire */ = {
+			isa = PBXGroup;
+			children = (
+				E3F30D3D3A9D688A4DCF8B91BC380AA1 /* AFError.swift */,
+				DA8119B3F1C09BE1033889AA22575EA3 /* Alamofire.swift */,
+				6B438EDB612F74F3E66ED02474B36707 /* DispatchQueue+Alamofire.swift */,
+				DF1A10336B0F760B7B71E7FD085D5DB7 /* MultipartFormData.swift */,
+				669F3E8DF92D6F4007EDAFB82607E244 /* NetworkReachabilityManager.swift */,
+				EA5D05F66C7917B0ADECA6D01CA55BBE /* Notifications.swift */,
+				53646F5937144CED8FF856E55561A158 /* ParameterEncoding.swift */,
+				3BA0D1B75E54E3C7549C8C9A025DFD1B /* Request.swift */,
+				AAD440EB42DAD256F38C47A561701DF0 /* Response.swift */,
+				CB49C5E65E5A885B9AC77FB83E932910 /* ResponseSerialization.swift */,
+				4B23C17EC412F1B521C0C02C4F319090 /* Result.swift */,
+				51BC123B07F68D2FD0CB2D7FB1A2AB3E /* ServerTrustPolicy.swift */,
+				56A43E3845DDE5D39A06EFF17D6F361D /* SessionDelegate.swift */,
+				73CFC6CDBB2443E9F2B6AD97C8475059 /* SessionManager.swift */,
+				92CEC6507694CB8B5387A6D6F4C30A3B /* TaskDelegate.swift */,
+				8131AC8D020FD5BE55DEFFBD06DD0EF8 /* Timeline.swift */,
+				C15C277FB9C3CD5BE1CE810E8470E6BF /* Validation.swift */,
+				59FDFDA06469B901C6207331E7D5DBF9 /* Support Files */,
+			);
+			name = Alamofire;
+			path = Alamofire;
+			sourceTree = "<group>";
+		};
+		59FDFDA06469B901C6207331E7D5DBF9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				77224B2D861FAF27219AC262BA95EAF9 /* Alamofire.modulemap */,
+				6BD1C7BD906CEFEB91511070BA113F21 /* Alamofire.xcconfig */,
+				B16717DA7A7D7732FF14F3C144E26DBB /* Alamofire-dummy.m */,
+				A57126CAEA43FEB55B1A6C45DCE6A725 /* Alamofire-prefix.pch */,
+				AD0DD13298C03611A15B7F836CD1D5A9 /* Alamofire-umbrella.h */,
+				CA7C3E37F660241DFC6E7A2548C51012 /* Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/Alamofire";
-			sourceTree = "<group>";
-		};
-		3741E7C400652C7499DEE451C1DC36A8 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				CEE2D7A1E4DE1EE485D611722B3EE03C /* Foundation.framework */,
-				36915C6F7E93FA3A5496499DAC9A5A79 /* SystemConfiguration.framework */,
-				F2ADF0FE028B435EF3AC6145703A2A1D /* UIKit.framework */,
-				E52D8C1BE08BBCFFBD0197C29AC0F4B1 /* Webkit.framework */,
-			);
-			name = iOS;
 			sourceTree = "<group>";
 		};
 		5CAF563F8090054EDDC3F7D4F9F5F72D /* Targets Support Files */ = {
@@ -233,22 +287,64 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		6A1992A47645215278E0DC7E638A3A68 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				C766AB7C3DF5F0577FAA586E0EA3478E /* Alamofire */,
-				B14ECB12213C2BB4FF49C9CFF1B8CB90 /* SwiftyDropbox */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		7373ACB6198F1E9475AFA1E54D8EAA0A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				D6C01CAF06394816DE12EC9314E5E242 /* Alamofire.framework */,
-				3741E7C400652C7499DEE451C1DC36A8 /* iOS */,
+				A824FCF979BB5B8E06412E48C316F61A /* iOS */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		741AAF8A29CAAC9A08F496FBABD59409 /* SwiftyDropbox */ = {
+			isa = PBXGroup;
+			children = (
+				B0642B1FE09178087F2BA365E6ED9BE1 /* Async.swift */,
+				2260EA712F5588D9D824EBD0D8601D62 /* Auth.swift */,
+				CD2191DA30C6E11358977E61ADA2B4AF /* AuthRoutes.swift */,
+				B68757431B62BE0C88C1B3EDA6FDC6AF /* Base.swift */,
+				2FF52C648AD17D51C2980630B5580025 /* BaseTeam.swift */,
+				D253C96EA017DE8AAB1D3FA613750AFB /* Common.swift */,
+				FEE74972B38277F55AC89F96C4AAE4EA /* Custom.swift */,
+				7F3865D0DFADAC80515A3F7C3AA4C9D9 /* CustomRoutes.swift */,
+				5A238712E4BA59D085FA76C3EEC3B2F5 /* CustomTasks.swift */,
+				B54EC893050422CB1D26FC263A0776A7 /* DBChunkInputStream.h */,
+				340F7E96B7F8F4B4BBFA73AF38280274 /* DBChunkInputStream.m */,
+				0F1DEDF7B30F6DEB5CFA6605C549069C /* DropboxClient.swift */,
+				90AC36743F45BE2CF10708F377BE9457 /* DropboxClientsManager.swift */,
+				7AA863F0F185119D28CD505C018083B0 /* DropboxTeamClient.swift */,
+				181911378713B117BE527AAA513742F1 /* DropboxTransportClient.swift */,
+				C3E9C6E139D59653DD2A7444441B7E97 /* FileProperties.swift */,
+				89F973F44FEF7EBB537B6734A7D9E373 /* FilePropertiesRoutes.swift */,
+				2D8988A3EC137F7BDC33E1F01A1B0C23 /* FileRequests.swift */,
+				C6E34D84E5694F90E6504B5286D0BD0C /* FileRequestsRoutes.swift */,
+				784F732C4CD7E77059A131B753049DDC /* Files.swift */,
+				30F2A87C64B1047DB1BC87E2D1216F9F /* FilesRoutes.swift */,
+				B223E55D843E782A95209116AB2F50F1 /* OAuth.swift */,
+				8D3D26981646783071F96F3E7F61DB59 /* OAuthMobile.swift */,
+				2F972B4F4D9A6F2846924321A1387BAC /* Paper.swift */,
+				711D524F4FA6730D5A3D8FF8767F31F8 /* PaperRoutes.swift */,
+				02C684B8473B997780C2A6F4B59C521E /* SDKConstants.swift */,
+				33DC7A24A7DB050F51B2694AF9007DEE /* Sharing.swift */,
+				97D5D3CCF583CC96A8BFDBF666CFB546 /* SharingRoutes.swift */,
+				B421D662789BE741C93364A1F16CBC46 /* StoneBase.swift */,
+				C7ADCC6203EA77F7C07F96221349C4EE /* StoneSerializers.swift */,
+				9A554475731C618B32800AE14391A277 /* StoneValidators.swift */,
+				5602A96DF59DBE7523A7CC0B2A6E846C /* SwiftyDropbox.h */,
+				BDC0998FD769F83DECFA4DCD12510192 /* Team.swift */,
+				BFA370907C171FE42C5C3535750F4F4D /* TeamCommon.swift */,
+				DA1646B4F04ADBC0FB3A0241D321A565 /* TeamLog.swift */,
+				5006781B33E51C5C6587F0C6C9D3F9CA /* TeamLogRoutes.swift */,
+				11281FB8728278D0664C99A4FB9F42F0 /* TeamPolicies.swift */,
+				1708997166B3CF4DBBCE6B9D3527752B /* TeamRoutes.swift */,
+				37B5ABBE1921DFBF4F1EA5393D9E0D01 /* TransportConfig.swift */,
+				6AE66A0BBE0B6DB7634F9D6E3672DB1F /* Users.swift */,
+				AE433510DF6C8BDBAA8AC37516B272B8 /* UsersCommon.swift */,
+				CD27FA7DF659B9088DE60AE7A1CAC181 /* UsersRoutes.swift */,
+				C4C57E38D6DEC932EAA86FB64AF06847 /* Support Files */,
+			);
+			name = SwiftyDropbox;
+			path = SwiftyDropbox;
 			sourceTree = "<group>";
 		};
 		78200387EC822FC63C35AA441F0423E8 /* Pods-SwiftyDropDataListing */ = {
@@ -274,83 +370,32 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				7373ACB6198F1E9475AFA1E54D8EAA0A /* Frameworks */,
-				6A1992A47645215278E0DC7E638A3A68 /* Pods */,
+				14B2B6A7E9DB389739385A3FF4D40C40 /* Pods */,
 				D339D20EA065298276BFA7353D40598B /* Products */,
 				5CAF563F8090054EDDC3F7D4F9F5F72D /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		B14ECB12213C2BB4FF49C9CFF1B8CB90 /* SwiftyDropbox */ = {
+		A824FCF979BB5B8E06412E48C316F61A /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				26497E17FD08F370AEF11AC9555A96B3 /* Async.swift */,
-				DDAEA8898755715884BABD613BBAB94D /* Auth.swift */,
-				3606D57A05331514B6ADF9C65CF4DA76 /* AuthRoutes.swift */,
-				63412541C589112814CA72B4B9948E9C /* Base.swift */,
-				3DA28A169DB03664DCD977802E0E7084 /* BaseTeam.swift */,
-				A2E617D3DB1F5E49CD4B167502112644 /* Common.swift */,
-				44DF9EAC8FFDFFB5E4BE8AE20CD581D8 /* DropboxClient.swift */,
-				8C9E0AFF3B163C197E03BF741F5AEF9C /* DropboxClientsManager.swift */,
-				02F2E0C102C97E0FA7B79EC508F982A8 /* DropboxTeamClient.swift */,
-				4F32E7EDC426715864FD013F9A7F82B4 /* DropboxTransportClient.swift */,
-				FC4FFDFB1EBDDDC2D6ECC8C85214BD89 /* Files.swift */,
-				AE6A3D718039D9834251EBE612B1B6A4 /* FilesRoutes.swift */,
-				A6C7D97688E955E1850CCFB8DE67605B /* OAuth.swift */,
-				74F6E836AAC1F396423CE01AA45E9E87 /* OAuthMobile.swift */,
-				C2D21B0D75070F1D6736D3BB506EF29A /* Properties.swift */,
-				DCABD26AAF4233CC42FD1D65BBD451C6 /* Sharing.swift */,
-				F3399D8C2532503B37C7C23E70467F31 /* SharingRoutes.swift */,
-				2E34582544E42C6C83AD6CEFE0BDD146 /* StoneBase.swift */,
-				6B2A47714550BF1C1887E811B9A5DED9 /* StoneSerializers.swift */,
-				302DF9BE9C79694D787060398A3F5205 /* StoneValidators.swift */,
-				A121769A81D2C4EFE261C8126F9C6928 /* SwiftyDropbox.h */,
-				98B71060AED58F5083FB7AB10DE82289 /* Team.swift */,
-				3F22F00765D47669DEE32E95D2DF68FF /* TeamCommon.swift */,
-				6323C0D59600D74E318E1DFFD29AF67B /* TeamPolicies.swift */,
-				987814F2A7F317453BE125D36A406BAE /* TeamRoutes.swift */,
-				3FA673495CC2A1A87F9172354FE882DA /* Users.swift */,
-				8230FBE9CC6117EDE86ED53C83F4B205 /* UsersRoutes.swift */,
-				C940C70A5712D83C1A21D0827F3C5A8A /* Support Files */,
+				C73DCBB152829368D9D5B6173D2D033D /* Foundation.framework */,
+				B1740637F150936B683339C1430BD10A /* SystemConfiguration.framework */,
+				C84EC5894A7AED2CF78CEA078BE316BB /* UIKit.framework */,
+				3490E1AAF5ECB29BDFBD69276E5FD4C1 /* WebKit.framework */,
 			);
-			name = SwiftyDropbox;
-			path = SwiftyDropbox;
+			name = iOS;
 			sourceTree = "<group>";
 		};
-		C766AB7C3DF5F0577FAA586E0EA3478E /* Alamofire */ = {
+		C4C57E38D6DEC932EAA86FB64AF06847 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				BB6F100D9DEA35A125C6782186F7E22B /* AFError.swift */,
-				F80047093E875626450188DB8093A3F9 /* Alamofire.swift */,
-				311A280A535ABA319B8AD5E0879E1DBB /* DispatchQueue+Alamofire.swift */,
-				422F4C1B0D93385C566F955027DE5EC7 /* MultipartFormData.swift */,
-				D6DA5F6C1194A4C86ADF4277F0BC6CC2 /* NetworkReachabilityManager.swift */,
-				6296A6487323110EDE81484D15AF82D4 /* Notifications.swift */,
-				D554F5DF7A1E7805C576508ABF16888F /* ParameterEncoding.swift */,
-				4251A13D43D9B3725B96DC9A9D5CF67A /* Request.swift */,
-				486629176BE4F7D11F6D21B3CAB59141 /* Response.swift */,
-				0DC68D5FC7C5C65DBD9C7639FB8FBF4D /* ResponseSerialization.swift */,
-				7334EE579D956F47A9ADE158B67BE838 /* Result.swift */,
-				97E7EFD3F80E4F7A8900746922EE93C4 /* ServerTrustPolicy.swift */,
-				791D22054F53102F825DCF4BAF21C84F /* SessionDelegate.swift */,
-				E8AA192AAC09377E452860024D223926 /* SessionManager.swift */,
-				2C926461D9A81B9579A6B1E29D606DC1 /* TaskDelegate.swift */,
-				21401E83F00D4B2565585DA9D21D839F /* Timeline.swift */,
-				4DAD27CFBF2CD3EB97C955BDBE034EE0 /* Validation.swift */,
-				240D150E633E08F0EA163D4602356434 /* Support Files */,
-			);
-			name = Alamofire;
-			path = Alamofire;
-			sourceTree = "<group>";
-		};
-		C940C70A5712D83C1A21D0827F3C5A8A /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				AD867D10A327AF330854419767DEA04F /* Info.plist */,
-				DFEB5BD1C72F3A955C0143E15792075A /* SwiftyDropbox.modulemap */,
-				BB9B2D25A9CBF4903B4EE8CE50CE7C9F /* SwiftyDropbox.xcconfig */,
-				6840C02640F211161CF380DD04F7ECBA /* SwiftyDropbox-dummy.m */,
-				B2A6802E953D2D073ACA84F4926E0949 /* SwiftyDropbox-prefix.pch */,
-				16128E1D6909AEAF5A7A729123DEB38F /* SwiftyDropbox-umbrella.h */,
+				965DE5E62F989D26C51C1E6259FA7F73 /* Info.plist */,
+				089A9F0A2E520F7857DAC230E63FBD95 /* SwiftyDropbox.modulemap */,
+				5BA27BB08C3F8A84ADD2D53138B69045 /* SwiftyDropbox.xcconfig */,
+				508167B425B0DB3BAD587F213BC3F10F /* SwiftyDropbox-dummy.m */,
+				2EE0A3432F6576AFAF7BCC846EABDE82 /* SwiftyDropbox-prefix.pch */,
+				3232D3F9773F0F5150E90E6165A03D6C /* SwiftyDropbox-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SwiftyDropbox";
@@ -369,12 +414,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		966F452AE2F37E82DAE8046C8BE4EC76 /* Headers */ = {
+		1FAD77B1289D3C19283858E93C952A73 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61F325ADEF451BA48B263039174C0F71 /* SwiftyDropbox-umbrella.h in Headers */,
-				82DD7FEC8540B1A066E7A619232601B8 /* SwiftyDropbox.h in Headers */,
+				C28BB179705B001AA59C1821A40DF046 /* DBChunkInputStream.h in Headers */,
+				B8B683C26EB878C749A0323A2EADA043 /* SwiftyDropbox-umbrella.h in Headers */,
+				86C6B17F34206FACCE4E3F07FC3A801A /* SwiftyDropbox.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,9 +483,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 10694C9AA3687FBDDA0FC1B710D3D244 /* Build configuration list for PBXNativeTarget "SwiftyDropbox" */;
 			buildPhases = (
-				3BE762291BE92A4D6B5EB98AC12C3F67 /* Sources */,
-				CAD9F0A95A9DD2591C6E1E28AB294DE0 /* Frameworks */,
-				966F452AE2F37E82DAE8046C8BE4EC76 /* Headers */,
+				BD57F9F62ACA516BC7676B3D01FBBA58 /* Sources */,
+				34F7A56EA867C816C81ABA594A253B53 /* Frameworks */,
+				1FAD77B1289D3C19283858E93C952A73 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -457,7 +503,7 @@
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0700;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
@@ -488,40 +534,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3BE762291BE92A4D6B5EB98AC12C3F67 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				5891282E099F3DC27686E28BE8C8D0FC /* Async.swift in Sources */,
-				AE7689D9FDE01D32B5B841A22A143E0C /* Auth.swift in Sources */,
-				755EC7781C3FF64144851984927D004E /* AuthRoutes.swift in Sources */,
-				4F4CFCEC06EC9E9103AA9137D78520E7 /* Base.swift in Sources */,
-				BE68DD83B749F1EDFCA308684A990EE6 /* BaseTeam.swift in Sources */,
-				C410D937C4D6CEC1EB2AEE84429FFB80 /* Common.swift in Sources */,
-				9C95AF8396D21DCB8A247EC1BA182D60 /* DropboxClient.swift in Sources */,
-				ADA6D4A4D94D50FEC9584DB0A05FF45A /* DropboxClientsManager.swift in Sources */,
-				0CDE0D7E3174C5C19520006AD4FAD19C /* DropboxTeamClient.swift in Sources */,
-				7C607C85AFA2AA7E74C7ADC9D3F19FA2 /* DropboxTransportClient.swift in Sources */,
-				C39D9898B906DE7B95BEB4D3F847B6A0 /* Files.swift in Sources */,
-				F224BA1D900DD3AE166402BDD777B663 /* FilesRoutes.swift in Sources */,
-				2C4BA6A65A772D56FD0ED4C2440EE588 /* OAuth.swift in Sources */,
-				917387A3C57BB432977E10D3ECACB33C /* OAuthMobile.swift in Sources */,
-				93D8D3632C3C22387159E14C415429EC /* Properties.swift in Sources */,
-				ADCBBF7567055978EE682BF548063F52 /* Sharing.swift in Sources */,
-				C49B22FA70DED41F3F5F49C5E88B8EE4 /* SharingRoutes.swift in Sources */,
-				B5C7E8CB07003A9669421CFD6D57EA47 /* StoneBase.swift in Sources */,
-				76BD644F8CFD613BD277509B4F6EF107 /* StoneSerializers.swift in Sources */,
-				8969493CCE25F25C06DDA46EA5FCC44F /* StoneValidators.swift in Sources */,
-				694C0C45CDCF9DC435FD477A969FC51E /* SwiftyDropbox-dummy.m in Sources */,
-				2DBEEFF3ACD56B9547A1C15CCF1FFCC8 /* Team.swift in Sources */,
-				DF3F13E3CE99B7ED777004450FD6C833 /* TeamCommon.swift in Sources */,
-				349AF8BCA375316A5714AB3571AB41EC /* TeamPolicies.swift in Sources */,
-				D14B82E70D123EAD013469890D067B2B /* TeamRoutes.swift in Sources */,
-				17DCD66FB9E4936E8229F5756EAC87CB /* Users.swift in Sources */,
-				9EE35BA7730F46ACD367BCD306A3DCB4 /* UsersRoutes.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		47AA244DE0C8B2C0F0A585D845356E59 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -544,6 +556,54 @@
 				D5686072DEC1A0E14F8C100FCC873F73 /* TaskDelegate.swift in Sources */,
 				E198F398404F07805E5189165F3C1E64 /* Timeline.swift in Sources */,
 				164781197625A3149B3BDBCAA2AC8CC3 /* Validation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD57F9F62ACA516BC7676B3D01FBBA58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E539174310FA39D85F13FA1FFD107F2 /* Async.swift in Sources */,
+				F05D3DA82E1E53943DFD24DD3D3AFE20 /* Auth.swift in Sources */,
+				65A4BBF8C67DDD031ED620394A1BEC59 /* AuthRoutes.swift in Sources */,
+				2D8A558D7763452393E258AB0336C0CC /* Base.swift in Sources */,
+				C2D7BB486B825131EC14B65D6062F1FD /* BaseTeam.swift in Sources */,
+				A19C4D75D98C466666398FE17966FB7E /* Common.swift in Sources */,
+				E4D920FDF55EA4E509AD1E3F3B6D1727 /* Custom.swift in Sources */,
+				B60C8DD877A0485A0861C00E2AFA0B86 /* CustomRoutes.swift in Sources */,
+				094E1584984DC2EFEE2CBF6D1AFEC056 /* CustomTasks.swift in Sources */,
+				7CE2803C97695090BA878AA90907BBB1 /* DBChunkInputStream.m in Sources */,
+				B4FAED5DA27F1A04E4B27E95A5E812F1 /* DropboxClient.swift in Sources */,
+				7E7AEFF95FC993A2BF4DBAB3361BDA93 /* DropboxClientsManager.swift in Sources */,
+				6F4D3AE997B9023930A089D11A214A67 /* DropboxTeamClient.swift in Sources */,
+				5E828BE2B9515B2AD18902BF22BD72DC /* DropboxTransportClient.swift in Sources */,
+				04C61AA2460E4BD98B2F5D255850C02E /* FileProperties.swift in Sources */,
+				E9F8DDBFA5FEB76D2A6D20196FB3A002 /* FilePropertiesRoutes.swift in Sources */,
+				194A95A7FAC3A87C52C3A7E3CEDE9F64 /* FileRequests.swift in Sources */,
+				5014A2E1D56256D7D70BF904288D875C /* FileRequestsRoutes.swift in Sources */,
+				FACD2DDF108AF4F308A615F96830281D /* Files.swift in Sources */,
+				AB7CFC2755CA576D4E74D8A953BDB732 /* FilesRoutes.swift in Sources */,
+				392C25A995D8BA9AF6425128D69A4E6A /* OAuth.swift in Sources */,
+				00FC91B952B5B953E4DB1327FB78B1CE /* OAuthMobile.swift in Sources */,
+				1A8F24D35B2FB47C9FFE859408C4CD7A /* Paper.swift in Sources */,
+				56DDC7A018BCC8CE18903DFE1C5F52B3 /* PaperRoutes.swift in Sources */,
+				54C1FC873266501CDFCDB6301072E02E /* SDKConstants.swift in Sources */,
+				E9060F148439DA751C32FC6867A36D77 /* Sharing.swift in Sources */,
+				07FB897816FADF6C6F77F2D1B7D58C51 /* SharingRoutes.swift in Sources */,
+				41F38442CF0C03CA72B60574F4FFCEC2 /* StoneBase.swift in Sources */,
+				A09DC1377F5BB3DFCD76989D28065323 /* StoneSerializers.swift in Sources */,
+				FE47BB147400F7BB1B0E38A927C5BB65 /* StoneValidators.swift in Sources */,
+				7A1569D129CB703B73712C1A8E8F7C35 /* SwiftyDropbox-dummy.m in Sources */,
+				2B751B2F0E6C78C82EB294480D4E56A3 /* Team.swift in Sources */,
+				35ED8F5CD3B2F347DA1979D9DDBC2B35 /* TeamCommon.swift in Sources */,
+				F055E1335703FD1A0166C7805E1F0F9C /* TeamLog.swift in Sources */,
+				095CC7D3743CEECD35DD1CD7DEE84330 /* TeamLogRoutes.swift in Sources */,
+				BF9BBFC4E8EFC9FDC265B7924772080E /* TeamPolicies.swift in Sources */,
+				D1109754D74C8CE4A86418EA545CA262 /* TeamRoutes.swift in Sources */,
+				60B1CD81841EAF7F54F548E30B076575 /* TransportConfig.swift in Sources */,
+				D87F554A9978E7E4AA20ADD7EF87D171 /* Users.swift in Sources */,
+				5F5586E53031A319F5DF442A4BC35C59 /* UsersCommon.swift in Sources */,
+				7CCB3F1D2CEBF992CF163E7216AF9D23 /* UsersRoutes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -571,10 +631,11 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0712C1C3681D818FC0048BF10FDC2173 /* Debug */ = {
+		43FB2426AAA2AA428458DD4B5F10BBEA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 17E5E324ECE466F9DB73609E25B3DDFE /* Pods-SwiftyDropDataListing.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -600,18 +661,21 @@
 				PRODUCT_NAME = Pods_SwiftyDropDataListing;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */ = {
+		4E487F173E6C9664F4E9E26B9635D23C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -619,10 +683,13 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGNING_REQUIRED = NO;
@@ -651,10 +718,11 @@
 			};
 			name = Debug;
 		};
-		621A10F5C0A994B466277661C1B2C19F /* Release */ = {
+		7D072D0D174F12EAACC1862DA756E67A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECDDC18FEA0A8FDD2315933E2C59D799 /* Alamofire.xcconfig */;
+			baseConfigurationReference = 6BD1C7BD906CEFEB91511070BA113F21 /* Alamofire.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -669,13 +737,14 @@
 				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = Alamofire;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -683,10 +752,90 @@
 			};
 			name = Release;
 		};
-		7F9E05D51F5BEB50A097B259C91B7072 /* Release */ = {
+		BDD0139D6EB93FA375F887ABD62DAB2E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB9B2D25A9CBF4903B4EE8CE50CE7C9F /* SwiftyDropbox.xcconfig */;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C9660A42FEDD040185578ADA021EC8E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BD1C7BD906CEFEB91511070BA113F21 /* Alamofire.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Alamofire;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		D5C362326C9F38743B17F1FC03CFCDFE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BA27BB08C3F8A84ADD2D53138B69045 /* SwiftyDropbox.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -708,6 +857,7 @@
 				PRODUCT_NAME = SwiftyDropbox;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -715,43 +865,11 @@
 			};
 			name = Release;
 		};
-		8C48CCCB862EC56A4174F6E1715688C9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = ECDDC18FEA0A8FDD2315933E2C59D799 /* Alamofire.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/Alamofire/Alamofire-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/Alamofire/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/Alamofire/Alamofire.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = Alamofire;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		9AE956815ADC670737EE5FE23A3A5872 /* Release */ = {
+		E14832ADFE72CF399BC2857062D4C340 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FAEA91006BDCB51B99810F781DA8C497 /* Pods-SwiftyDropDataListing.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -777,16 +895,19 @@
 				PRODUCT_NAME = Pods_SwiftyDropDataListing;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		A4A364735DB060834EE6707BD7BFEEE0 /* Debug */ = {
+		F46AC10FFD314864CC915AE6AAECBEEB /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB9B2D25A9CBF4903B4EE8CE50CE7C9F /* SwiftyDropbox.xcconfig */;
+			baseConfigurationReference = 5BA27BB08C3F8A84ADD2D53138B69045 /* SwiftyDropbox.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -808,6 +929,7 @@
 				PRODUCT_NAME = SwiftyDropbox;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -816,54 +938,14 @@
 			};
 			name = Debug;
 		};
-		B7324857C38B065FEB1EEE3105C2367A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
 		10694C9AA3687FBDDA0FC1B710D3D244 /* Build configuration list for PBXNativeTarget "SwiftyDropbox" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A4A364735DB060834EE6707BD7BFEEE0 /* Debug */,
-				7F9E05D51F5BEB50A097B259C91B7072 /* Release */,
+				F46AC10FFD314864CC915AE6AAECBEEB /* Debug */,
+				D5C362326C9F38743B17F1FC03CFCDFE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -871,8 +953,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				59B042A655B7C20CBAB90E385BF4E4C7 /* Debug */,
-				B7324857C38B065FEB1EEE3105C2367A /* Release */,
+				4E487F173E6C9664F4E9E26B9635D23C /* Debug */,
+				BDD0139D6EB93FA375F887ABD62DAB2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -880,8 +962,8 @@
 		419E5D95491847CD79841B971A8A3277 /* Build configuration list for PBXNativeTarget "Alamofire" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				8C48CCCB862EC56A4174F6E1715688C9 /* Debug */,
-				621A10F5C0A994B466277661C1B2C19F /* Release */,
+				C9660A42FEDD040185578ADA021EC8E0 /* Debug */,
+				7D072D0D174F12EAACC1862DA756E67A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -889,8 +971,8 @@
 		E5DD44917A45D6B6FCD297816D38533B /* Build configuration list for PBXNativeTarget "Pods-SwiftyDropDataListing" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0712C1C3681D818FC0048BF10FDC2173 /* Debug */,
-				9AE956815ADC670737EE5FE23A3A5872 /* Release */,
+				43FB2426AAA2AA428458DD4B5F10BBEA /* Debug */,
+				E14832ADFE72CF399BC2857062D4C340 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

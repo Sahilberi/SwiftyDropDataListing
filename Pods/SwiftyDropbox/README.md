@@ -115,6 +115,8 @@ Once your project is integrated with the Dropbox Swift SDK, you can pull SDK upd
 $ pod update
 ```
 
+**Note**: SwiftyDropbox requires CocoaPods 1.0.0+ when using Alamofire 4.0.0+. Because of this requirement, the CocoaPods App (which uses CocoaPods 1.0.0) cannot be used.
+
 ---
 
 ### Carthage
@@ -130,7 +132,7 @@ To install the Dropbox Swift SDK via Carthage, you need to create a `Cartfile` i
 
 ```
 # SwiftyDropbox
-github "https://github.com/dropbox/SwiftyDropbox" ~> 4.1.1
+github "https://github.com/dropbox/SwiftyDropbox" ~> 4.2.2
 ```
 
 Then, run the following command to install the dependency to checkout and build the Dropbox Swift SDK repository:
@@ -200,27 +202,6 @@ Finally, to retrieve SwiftyDropbox's Alamofire dependency, drag the `Carthage/Ch
 
 ---
 
-## Swift 2.3
-
-SwiftyDropbox currently supports only Swift 3+. However, we have a Swift 2.3 compatible branch, if necessary. To access it, you can either pull the `swift_2_3` branch from the repo, or using one of the following distribution channels: 
-
-#### CocoaPods
-```ruby
-use_frameworks!
-
-target '<YOUR_PROJECT_NAME>' do
-    pod 'SwiftyDropbox', :git => 'https://github.com/dropbox/SwiftyDropbox', :branch => 'swift_2_3'
-end
-```
-
-#### Carthage
-```
-# SwiftyDropbox
-github "https://github.com/dropbox/SwiftyDropbox" ~> 3.4.0
-```
-
----
-
 ## Configure your project
 
 Once you have integrated the Dropbox Swift SDK into your project, there are a few additional steps to take before you can begin making API calls.
@@ -271,8 +252,8 @@ After you've made the above changes, your application's `.plist` file should loo
 There are three methods to programmatically retrieve an OAuth 2.0 access token:
 
 * **Direct auth** (iOS only): This launches the official Dropbox iOS app (if installed), authenticates via the official app, then redirects back into the SDK
-* **In-app webview auth** (iOS, macOS): This opens a pre-built in-app webview for authenticating via the Dropbox authorization page. This is convenient because the user is never redirected outside of your app.
-* **External browser auth** (iOS, macOS): This launches the platform's default browser for authenticating via the Dropbox authorization page. This is desirable because it is safer for the end-user, and pre-existing session data can be used to avoid requiring the user to re-enter their Dropbox credentials.
+* **Safari view controller auth** (iOS only): This launches a `SFSafariViewController` to facillitate the auth flow. This is desirable because it is safer for the end-user, and pre-existing session data can be used to avoid requiring the user to re-enter their Dropbox credentials.
+* **Redirect to external browser** (macOS only): This launches the user's default browser to facillitate the auth flow. This is also desirable because it is safer for the end-user, and pre-existing session data can be used to avoid requiring the user to re-enter their Dropbox credentials.
 
 To facilitate the above authorization flows, you should take the following steps:
 
@@ -307,8 +288,8 @@ func applicationDidFinishLaunching(_ aNotification: Notification) {
 
 #### Begin the authorization flow
 
-You can commence the auth flow by calling `authorizeFromController:controller:openURL:browserAuth` method in your application's
-view controller. If you wish to authenticate via the in-app webview, then set `browserAuth` to `NO`. Otherwise, authentication will be done via an external web browser.
+You can commence the auth flow by calling `authorizeFromController:controller:openURL` method in your application's
+view controller.
 
 From your view controller: 
 
@@ -403,6 +384,8 @@ func handleGetURLEvent(_ event: NSAppleEventDescriptor?, replyEvent: NSAppleEven
                     print("Error: \(description)")
                 }
             }
+            // this brings your application back the foreground on redirect
+            NSApp.activate(ignoringOtherApps: true)
         }
     }
 }
@@ -595,7 +578,7 @@ client.files.delete(path: "/test/path/in/Dropbox/account").response { response, 
         case .internalServerError(let code, let message, let requestId):
             ....
             ....
-            // a not route-specific error occured
+            // a not route-specific error occurred
         ....
         ....
         ....
@@ -618,8 +601,8 @@ client.files.delete(path: "/test/path/in/Dropbox/account").response { response, 
         print(response)
     } else if let error = error {
         switch error as CallError {
-        case .routeError(let boxed, let requestId):
-            // a route-specific error occured
+        case .routeError(let boxed, let userMessage, let errorSummary, let requestId):
+            // a route-specific error occurred
             // see handling above
             ....
             ....
@@ -628,10 +611,12 @@ client.files.delete(path: "/test/path/in/Dropbox/account").response { response, 
             print("InternalServerError[\(requestId)]: \(code): \(message)")
         case .badInputError(let message, let requestId):
             print("BadInputError[\(requestId)]: \(message)")
-        case .authError(let authError, let requestId):
-            print("AuthError[\(requestId)]: \(authError)")
-        case .rateLimitError(let rateLimitError, let requestId):
-            print("RateLimitError[\(requestId)]: \(rateLimitError)")
+        case .authError(let authError, let userMessage, let errorSummary, let requestId):
+            print("AuthError[\(requestId)]: \(userMessage) \(errorSummary) \(authError)")
+        case .accessError(let accessError, let userMessage, let errorSummary, let requestId):
+            print("AccessError[\(requestId)]: \(userMessage) \(errorSummary) \(accessError)")
+        case .rateLimitError(let rateLimitError, let userMessage, let errorSummary, let requestId):
+            print("RateLimitError[\(requestId)]: \(userMessage) \(errorSummary) \(rateLimitError)")
         case .httpError(let code, let message, let requestId):
             print("HTTPError[\(requestId)]: \(code): \(message)")
         case .clientError(let error):
@@ -667,12 +652,12 @@ client.files.delete(path: "/test/path/in/Dropbox/account").response { response, 
     } else if let error = error {
         switch error as CallError {
         case .routeError(let boxed, let requestId):
-            // a route-specific error occured
+            // a route-specific error occurred
             // see handling above
         case .internalServerError(let code, let message, let requestId):
             ....
             ....
-            // a not route-specific error occured
+            // a not route-specific error occurred
             // see handling above
         ....
         ....
@@ -814,12 +799,17 @@ If you're interested in modifying the SDK codebase, you should take the followin
 
 * clone this GitHub repository to your local filesystem
 * run `git submodule init` and then `git submodule update`
-* navigate to `TestSwifty_[iOS|macOS]` and run `pod install`
+* navigate to `TestSwifty_[iOS|macOS]`
+* check the CocoaPods version installed (via `pod --version`) is same as "locked" in `TestSwifty_[iOS|macOS]/Podfile.lock`
+* run `pod install`
 * open `TestSwifty_[iOS|macOS]/TestSwifty_[iOS|macOS].xcworkspace` in Xcode
 * implement your changes to the SDK source code.
 
-To ensure your changes have not broken any existing functionality, you can run a series of integration tests by
-following the instructions listed in the `ViewController.m` file.
+To ensure your changes have not broken any existing functionality, you can run a series of integration tests:
+* create a new app on https://www.dropbox.com/developers/apps/, with "Full Dropbox" access. Note the App key
+* open Info.plist and configure the "URL types > Item 0 (Editor) > URL Schemes > Item 0" key to db-"App key"
+* open AppDelegate.swift and replace "FULL_DROPBOX_APP_KEY" with the App key as well
+* run the test app on your device and follow the on-screen instructions
 
 ---
 
