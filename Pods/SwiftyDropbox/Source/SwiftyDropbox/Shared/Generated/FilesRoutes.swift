@@ -34,7 +34,7 @@ open class FilesRoutes {
     ///
     ///  - returns: Through the response callback, the caller will receive a `Files.FileMetadata` object on success or a
     /// `Files.UploadErrorWithProperties` object on failure.
-    @discardableResult open func alphaUpload(path: String, mode: Files.WriteMode = .add, autorename: Bool = false, clientModified: Date? = nil, mute: Bool = false, propertyGroups: Array<Properties.PropertyGroup>? = nil, input: Data) -> UploadRequest<Files.FileMetadataSerializer, Files.UploadErrorWithPropertiesSerializer> {
+    @discardableResult open func alphaUpload(path: String, mode: Files.WriteMode = .add, autorename: Bool = false, clientModified: Date? = nil, mute: Bool = false, propertyGroups: Array<FileProperties.PropertyGroup>? = nil, input: Data) -> UploadRequest<Files.FileMetadataSerializer, Files.UploadErrorWithPropertiesSerializer> {
         let route = Files.alphaUpload
         let serverArgs = Files.CommitInfoWithProperties(path: path, mode: mode, autorename: autorename, clientModified: clientModified, mute: mute, propertyGroups: propertyGroups)
         return client.request(route, serverArgs: serverArgs, input: .data(input))
@@ -49,7 +49,7 @@ open class FilesRoutes {
     ///
     ///  - returns: Through the response callback, the caller will receive a `Files.FileMetadata` object on success or a
     /// `Files.UploadErrorWithProperties` object on failure.
-    @discardableResult open func alphaUpload(path: String, mode: Files.WriteMode = .add, autorename: Bool = false, clientModified: Date? = nil, mute: Bool = false, propertyGroups: Array<Properties.PropertyGroup>? = nil, input: URL) -> UploadRequest<Files.FileMetadataSerializer, Files.UploadErrorWithPropertiesSerializer> {
+    @discardableResult open func alphaUpload(path: String, mode: Files.WriteMode = .add, autorename: Bool = false, clientModified: Date? = nil, mute: Bool = false, propertyGroups: Array<FileProperties.PropertyGroup>? = nil, input: URL) -> UploadRequest<Files.FileMetadataSerializer, Files.UploadErrorWithPropertiesSerializer> {
         let route = Files.alphaUpload
         let serverArgs = Files.CommitInfoWithProperties(path: path, mode: mode, autorename: autorename, clientModified: clientModified, mute: mute, propertyGroups: propertyGroups)
         return client.request(route, serverArgs: serverArgs, input: .file(input))
@@ -64,7 +64,7 @@ open class FilesRoutes {
     ///
     ///  - returns: Through the response callback, the caller will receive a `Files.FileMetadata` object on success or a
     /// `Files.UploadErrorWithProperties` object on failure.
-    @discardableResult open func alphaUpload(path: String, mode: Files.WriteMode = .add, autorename: Bool = false, clientModified: Date? = nil, mute: Bool = false, propertyGroups: Array<Properties.PropertyGroup>? = nil, input: InputStream) -> UploadRequest<Files.FileMetadataSerializer, Files.UploadErrorWithPropertiesSerializer> {
+    @discardableResult open func alphaUpload(path: String, mode: Files.WriteMode = .add, autorename: Bool = false, clientModified: Date? = nil, mute: Bool = false, propertyGroups: Array<FileProperties.PropertyGroup>? = nil, input: InputStream) -> UploadRequest<Files.FileMetadataSerializer, Files.UploadErrorWithPropertiesSerializer> {
         let route = Files.alphaUpload
         let serverArgs = Files.CommitInfoWithProperties(path: path, mode: mode, autorename: autorename, clientModified: clientModified, mute: mute, propertyGroups: propertyGroups)
         return client.request(route, serverArgs: serverArgs, input: .stream(input))
@@ -77,12 +77,15 @@ open class FilesRoutes {
     /// in RelocationError will be returned if fromPath contains shared folder. This field is always true for move.
     /// - parameter autorename: If there's a conflict, have the Dropbox server try to autorename the file to avoid the
     /// conflict.
+    /// - parameter allowOwnershipTransfer: Allow moves by owner even if it would result in an ownership transfer for
+    /// the content being moved. This does not apply to copies.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Files.Metadata` object on success or a
     /// `Files.RelocationError` object on failure.
-    @discardableResult open func copy(fromPath: String, toPath: String, allowSharedFolder: Bool = false, autorename: Bool = false) -> RpcRequest<Files.MetadataSerializer, Files.RelocationErrorSerializer> {
+    @available(*, unavailable, message:"copy is deprecated. Use copy_v2.")
+    @discardableResult open func copy(fromPath: String, toPath: String, allowSharedFolder: Bool = false, autorename: Bool = false, allowOwnershipTransfer: Bool = false) -> RpcRequest<Files.MetadataSerializer, Files.RelocationErrorSerializer> {
         let route = Files.copy
-        let serverArgs = Files.RelocationArg(fromPath: fromPath, toPath: toPath, allowSharedFolder: allowSharedFolder, autorename: autorename)
+        let serverArgs = Files.RelocationArg(fromPath: fromPath, toPath: toPath, allowSharedFolder: allowSharedFolder, autorename: autorename, allowOwnershipTransfer: allowOwnershipTransfer)
         return client.request(route, serverArgs: serverArgs)
     }
 
@@ -98,12 +101,14 @@ open class FilesRoutes {
     /// This field is always true for moveBatch.
     /// - parameter autorename: If there's a conflict with any file, have the Dropbox server try to autorename that file
     /// to avoid the conflict.
+    /// - parameter allowOwnershipTransfer: Allow moves by owner even if it would result in an ownership transfer for
+    /// the content being moved. This does not apply to copies.
     ///
-    ///  - returns: Through the response callback, the caller will receive a `Async.LaunchEmptyResult` object on success
-    /// or a `Void` object on failure.
-    @discardableResult open func copyBatch(entries: Array<Files.RelocationPath>, allowSharedFolder: Bool = false, autorename: Bool = false) -> RpcRequest<Async.LaunchEmptyResultSerializer, VoidSerializer> {
+    ///  - returns: Through the response callback, the caller will receive a `Files.RelocationBatchLaunch` object on
+    /// success or a `Void` object on failure.
+    @discardableResult open func copyBatch(entries: Array<Files.RelocationPath>, allowSharedFolder: Bool = false, autorename: Bool = false, allowOwnershipTransfer: Bool = false) -> RpcRequest<Files.RelocationBatchLaunchSerializer, VoidSerializer> {
         let route = Files.copyBatch
-        let serverArgs = Files.RelocationBatchArg(entries: entries, allowSharedFolder: allowSharedFolder, autorename: autorename)
+        let serverArgs = Files.RelocationBatchArg(entries: entries, allowSharedFolder: allowSharedFolder, autorename: autorename, allowOwnershipTransfer: allowOwnershipTransfer)
         return client.request(route, serverArgs: serverArgs)
     }
 
@@ -146,6 +151,24 @@ open class FilesRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
+    /// Copy a file or folder to a different location in the user's Dropbox. If the source path is a folder all its
+    /// contents will be copied.
+    ///
+    /// - parameter allowSharedFolder: If true, copy will copy contents in shared folder, otherwise cantCopySharedFolder
+    /// in RelocationError will be returned if fromPath contains shared folder. This field is always true for move.
+    /// - parameter autorename: If there's a conflict, have the Dropbox server try to autorename the file to avoid the
+    /// conflict.
+    /// - parameter allowOwnershipTransfer: Allow moves by owner even if it would result in an ownership transfer for
+    /// the content being moved. This does not apply to copies.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Files.RelocationResult` object on success
+    /// or a `Files.RelocationError` object on failure.
+    @discardableResult open func copyV2(fromPath: String, toPath: String, allowSharedFolder: Bool = false, autorename: Bool = false, allowOwnershipTransfer: Bool = false) -> RpcRequest<Files.RelocationResultSerializer, Files.RelocationErrorSerializer> {
+        let route = Files.copyV2
+        let serverArgs = Files.RelocationArg(fromPath: fromPath, toPath: toPath, allowSharedFolder: allowSharedFolder, autorename: autorename, allowOwnershipTransfer: allowOwnershipTransfer)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
     /// Create a folder at a given path.
     ///
     /// - parameter path: Path in the user's Dropbox to create.
@@ -154,8 +177,23 @@ open class FilesRoutes {
     ///
     ///  - returns: Through the response callback, the caller will receive a `Files.FolderMetadata` object on success or
     /// a `Files.CreateFolderError` object on failure.
+    @available(*, unavailable, message:"create_folder is deprecated. Use create_folder_v2.")
     @discardableResult open func createFolder(path: String, autorename: Bool = false) -> RpcRequest<Files.FolderMetadataSerializer, Files.CreateFolderErrorSerializer> {
         let route = Files.createFolder
+        let serverArgs = Files.CreateFolderArg(path: path, autorename: autorename)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
+    /// Create a folder at a given path.
+    ///
+    /// - parameter path: Path in the user's Dropbox to create.
+    /// - parameter autorename: If there's a conflict, have the Dropbox server try to autorename the folder to avoid the
+    /// conflict.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Files.CreateFolderResult` object on
+    /// success or a `Files.CreateFolderError` object on failure.
+    @discardableResult open func createFolderV2(path: String, autorename: Bool = false) -> RpcRequest<Files.CreateFolderResultSerializer, Files.CreateFolderErrorSerializer> {
+        let route = Files.createFolderV2
         let serverArgs = Files.CreateFolderArg(path: path, autorename: autorename)
         return client.request(route, serverArgs: serverArgs)
     }
@@ -168,6 +206,7 @@ open class FilesRoutes {
     ///
     ///  - returns: Through the response callback, the caller will receive a `Files.Metadata` object on success or a
     /// `Files.DeleteError` object on failure.
+    @available(*, unavailable, message:"delete is deprecated. Use delete_v2.")
     @discardableResult open func delete(path: String) -> RpcRequest<Files.MetadataSerializer, Files.DeleteErrorSerializer> {
         let route = Files.delete
         let serverArgs = Files.DeleteArg(path: path)
@@ -178,9 +217,9 @@ open class FilesRoutes {
     /// the delete batch asynchronously. Use deleteBatchCheck to check the job status.
     ///
     ///
-    ///  - returns: Through the response callback, the caller will receive a `Async.LaunchEmptyResult` object on success
+    ///  - returns: Through the response callback, the caller will receive a `Files.DeleteBatchLaunch` object on success
     /// or a `Void` object on failure.
-    @discardableResult open func deleteBatch(entries: Array<Files.DeleteArg>) -> RpcRequest<Async.LaunchEmptyResultSerializer, VoidSerializer> {
+    @discardableResult open func deleteBatch(entries: Array<Files.DeleteArg>) -> RpcRequest<Files.DeleteBatchLaunchSerializer, VoidSerializer> {
         let route = Files.deleteBatch
         let serverArgs = Files.DeleteBatchArg(entries: entries)
         return client.request(route, serverArgs: serverArgs)
@@ -199,10 +238,24 @@ open class FilesRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
+    /// Delete the file or folder at a given path. If the path is a folder, all its contents will be deleted too. A
+    /// successful response indicates that the file or folder was deleted. The returned metadata will be the
+    /// corresponding FileMetadata or FolderMetadata for the item at time of deletion, and not a DeletedMetadata object.
+    ///
+    /// - parameter path: Path in the user's Dropbox to delete.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Files.DeleteResult` object on success or a
+    /// `Files.DeleteError` object on failure.
+    @discardableResult open func deleteV2(path: String) -> RpcRequest<Files.DeleteResultSerializer, Files.DeleteErrorSerializer> {
+        let route = Files.deleteV2
+        let serverArgs = Files.DeleteArg(path: path)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
     /// Download a file from a user's Dropbox.
     ///
     /// - parameter path: The path of the file to download.
-    /// - parameter rev: Deprecated. Please specify revision in path instead.
+    /// - parameter rev: Please specify revision in path instead.
     /// - parameter overwrite: A boolean to set behavior in the event of a naming conflict. `True` will overwrite
     /// conflicting file at destination. `False` will take no action (but if left unhandled in destination closure, an
     /// NSError will be thrown).
@@ -220,7 +273,7 @@ open class FilesRoutes {
     /// Download a file from a user's Dropbox.
     ///
     /// - parameter path: The path of the file to download.
-    /// - parameter rev: Deprecated. Please specify revision in path instead.
+    /// - parameter rev: Please specify revision in path instead.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Files.FileMetadata` object on success or a
     /// `Files.DownloadError` object on failure.
@@ -247,11 +300,13 @@ open class FilesRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Get a preview for a file. Currently previews are only generated for the files with  the following extensions:
-    /// .doc, .docx, .docm, .ppt, .pps, .ppsx, .ppsm, .pptx, .pptm,  .xls, .xlsx, .xlsm, .rtf.
+    /// Get a preview for a file. Currently, PDF previews are generated for files with the following extensions: .ai,
+    /// .doc, .docm, .docx, .eps, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are generated
+    /// for files with the following extensions: .csv, .ods, .xls, .xlsm, .xlsx. Other formats will return an
+    /// unsupported extension error.
     ///
     /// - parameter path: The path of the file to preview.
-    /// - parameter rev: Deprecated. Please specify revision in path instead.
+    /// - parameter rev: Please specify revision in path instead.
     /// - parameter overwrite: A boolean to set behavior in the event of a naming conflict. `True` will overwrite
     /// conflicting file at destination. `False` will take no action (but if left unhandled in destination closure, an
     /// NSError will be thrown).
@@ -266,11 +321,13 @@ open class FilesRoutes {
         return client.request(route, serverArgs: serverArgs, overwrite: overwrite, destination: destination)
     }
 
-    /// Get a preview for a file. Currently previews are only generated for the files with  the following extensions:
-    /// .doc, .docx, .docm, .ppt, .pps, .ppsx, .ppsm, .pptx, .pptm,  .xls, .xlsx, .xlsm, .rtf.
+    /// Get a preview for a file. Currently, PDF previews are generated for files with the following extensions: .ai,
+    /// .doc, .docm, .docx, .eps, .odp, .odt, .pps, .ppsm, .ppsx, .ppt, .pptm, .pptx, .rtf. HTML previews are generated
+    /// for files with the following extensions: .csv, .ods, .xls, .xlsm, .xlsx. Other formats will return an
+    /// unsupported extension error.
     ///
     /// - parameter path: The path of the file to preview.
-    /// - parameter rev: Deprecated. Please specify revision in path instead.
+    /// - parameter rev: Please specify revision in path instead.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Files.FileMetadata` object on success or a
     /// `Files.PreviewError` object on failure.
@@ -330,6 +387,20 @@ open class FilesRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
+    /// Get thumbnails for a list of images. We allow up to 25 thumbnails in a single batch. This method currently
+    /// supports files with the following file extensions: jpg, jpeg, png, tiff, tif, gif and bmp. Photos that are
+    /// larger than 20MB in size won't be converted to a thumbnail.
+    ///
+    /// - parameter entries: List of files to get thumbnails.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Files.GetThumbnailBatchResult` object on
+    /// success or a `Files.GetThumbnailBatchError` object on failure.
+    @discardableResult open func getThumbnailBatch(entries: Array<Files.ThumbnailArg>) -> RpcRequest<Files.GetThumbnailBatchResultSerializer, Files.GetThumbnailBatchErrorSerializer> {
+        let route = Files.getThumbnailBatch
+        let serverArgs = Files.GetThumbnailBatchArg(entries: entries)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
     /// Starts returning the contents of a folder. If the result's hasMore in ListFolderResult field is true, call
     /// listFolderContinue with the returned cursor in ListFolderResult to retrieve more entries. If you're using
     /// recursive in ListFolderArg set to true to keep a local cache of the contents of a Dropbox account, iterate
@@ -340,9 +411,12 @@ open class FilesRoutes {
     /// don't exist yet, create them. If there's already something else at the given path, replace it but leave the
     /// children as they are. Check the new entry's readOnly in FolderSharingInfo and set all its children's read-only
     /// statuses to match. For each DeletedMetadata, if your local state has something at the given path, remove it and
-    /// all its children. If there's nothing at the given path, ignore this entry.
+    /// all its children. If there's nothing at the given path, ignore this entry. Note: auth.RateLimitError may be
+    /// returned if multiple listFolder or listFolderContinue calls with same parameters are made simultaneously by same
+    /// API app for same user. If your app implements retry logic, please hold off the retry until the previous request
+    /// finishes.
     ///
-    /// - parameter path: The path to the folder you want to see the contents of.
+    /// - parameter path: A unique identifier for the file.
     /// - parameter recursive: If true, the list folder operation will be applied recursively to all subfolders and the
     /// response will contain contents of all subfolders.
     /// - parameter includeMediaInfo: If true, mediaInfo in FileMetadata is set for photo and video.
@@ -350,12 +424,19 @@ open class FilesRoutes {
     /// but were deleted.
     /// - parameter includeHasExplicitSharedMembers: If true, the results will include a flag for each file indicating
     /// whether or not  that file has any explicit members.
+    /// - parameter includeMountedFolders: If true, the results will include entries under mounted folders which
+    /// includes app folder, shared folder and team folder.
+    /// - parameter limit: The maximum number of results to return per request. Note: This is an approximate number and
+    /// there can be slightly more entries returned in some cases.
+    /// - parameter sharedLink: A shared link to list the contents of. If the link is password-protected, the password
+    /// must be provided. If this field is present, path in ListFolderArg will be relative to root of the shared link.
+    /// Only non-recursive mode is supported for shared link.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Files.ListFolderResult` object on success
     /// or a `Files.ListFolderError` object on failure.
-    @discardableResult open func listFolder(path: String, recursive: Bool = false, includeMediaInfo: Bool = false, includeDeleted: Bool = false, includeHasExplicitSharedMembers: Bool = false) -> RpcRequest<Files.ListFolderResultSerializer, Files.ListFolderErrorSerializer> {
+    @discardableResult open func listFolder(path: String, recursive: Bool = false, includeMediaInfo: Bool = false, includeDeleted: Bool = false, includeHasExplicitSharedMembers: Bool = false, includeMountedFolders: Bool = true, limit: UInt32? = nil, sharedLink: Files.SharedLink? = nil) -> RpcRequest<Files.ListFolderResultSerializer, Files.ListFolderErrorSerializer> {
         let route = Files.listFolder
-        let serverArgs = Files.ListFolderArg(path: path, recursive: recursive, includeMediaInfo: includeMediaInfo, includeDeleted: includeDeleted, includeHasExplicitSharedMembers: includeHasExplicitSharedMembers)
+        let serverArgs = Files.ListFolderArg(path: path, recursive: recursive, includeMediaInfo: includeMediaInfo, includeDeleted: includeDeleted, includeHasExplicitSharedMembers: includeHasExplicitSharedMembers, includeMountedFolders: includeMountedFolders, limit: limit, sharedLink: sharedLink)
         return client.request(route, serverArgs: serverArgs)
     }
 
@@ -376,7 +457,7 @@ open class FilesRoutes {
     /// return any entries. This endpoint is for app which only needs to know about new files and modifications and
     /// doesn't need to know about files that already exist in Dropbox.
     ///
-    /// - parameter path: The path to the folder you want to see the contents of.
+    /// - parameter path: A unique identifier for the file.
     /// - parameter recursive: If true, the list folder operation will be applied recursively to all subfolders and the
     /// response will contain contents of all subfolders.
     /// - parameter includeMediaInfo: If true, mediaInfo in FileMetadata is set for photo and video.
@@ -384,12 +465,19 @@ open class FilesRoutes {
     /// but were deleted.
     /// - parameter includeHasExplicitSharedMembers: If true, the results will include a flag for each file indicating
     /// whether or not  that file has any explicit members.
+    /// - parameter includeMountedFolders: If true, the results will include entries under mounted folders which
+    /// includes app folder, shared folder and team folder.
+    /// - parameter limit: The maximum number of results to return per request. Note: This is an approximate number and
+    /// there can be slightly more entries returned in some cases.
+    /// - parameter sharedLink: A shared link to list the contents of. If the link is password-protected, the password
+    /// must be provided. If this field is present, path in ListFolderArg will be relative to root of the shared link.
+    /// Only non-recursive mode is supported for shared link.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Files.ListFolderGetLatestCursorResult`
     /// object on success or a `Files.ListFolderError` object on failure.
-    @discardableResult open func listFolderGetLatestCursor(path: String, recursive: Bool = false, includeMediaInfo: Bool = false, includeDeleted: Bool = false, includeHasExplicitSharedMembers: Bool = false) -> RpcRequest<Files.ListFolderGetLatestCursorResultSerializer, Files.ListFolderErrorSerializer> {
+    @discardableResult open func listFolderGetLatestCursor(path: String, recursive: Bool = false, includeMediaInfo: Bool = false, includeDeleted: Bool = false, includeHasExplicitSharedMembers: Bool = false, includeMountedFolders: Bool = true, limit: UInt32? = nil, sharedLink: Files.SharedLink? = nil) -> RpcRequest<Files.ListFolderGetLatestCursorResultSerializer, Files.ListFolderErrorSerializer> {
         let route = Files.listFolderGetLatestCursor
-        let serverArgs = Files.ListFolderArg(path: path, recursive: recursive, includeMediaInfo: includeMediaInfo, includeDeleted: includeDeleted, includeHasExplicitSharedMembers: includeHasExplicitSharedMembers)
+        let serverArgs = Files.ListFolderArg(path: path, recursive: recursive, includeMediaInfo: includeMediaInfo, includeDeleted: includeDeleted, includeHasExplicitSharedMembers: includeHasExplicitSharedMembers, includeMountedFolders: includeMountedFolders, limit: limit, sharedLink: sharedLink)
         return client.request(route, serverArgs: serverArgs)
     }
 
@@ -413,16 +501,22 @@ open class FilesRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Return revisions of a file.
+    /// Returns revisions for files based on a file path or a file id. The file path or file id is identified from the
+    /// latest file entry at the given file path or id. This end point allows your app to query either by file path or
+    /// file id by setting the mode parameter appropriately. In the path in ListRevisionsMode (default) mode, all
+    /// revisions at the same file path as the latest file entry are returned. If revisions with the same file id are
+    /// desired, then mode must be set to id in ListRevisionsMode. The id in ListRevisionsMode mode is useful to
+    /// retrieve revisions for a given file across moves or renames.
     ///
     /// - parameter path: The path to the file you want to see the revisions of.
+    /// - parameter mode: Determines the behavior of the API in listing the revisions for a given file path or id.
     /// - parameter limit: The maximum number of revision entries returned.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Files.ListRevisionsResult` object on
     /// success or a `Files.ListRevisionsError` object on failure.
-    @discardableResult open func listRevisions(path: String, limit: UInt64 = 10) -> RpcRequest<Files.ListRevisionsResultSerializer, Files.ListRevisionsErrorSerializer> {
+    @discardableResult open func listRevisions(path: String, mode: Files.ListRevisionsMode = .path, limit: UInt64 = 10) -> RpcRequest<Files.ListRevisionsResultSerializer, Files.ListRevisionsErrorSerializer> {
         let route = Files.listRevisions
-        let serverArgs = Files.ListRevisionsArg(path: path, limit: limit)
+        let serverArgs = Files.ListRevisionsArg(path: path, mode: mode, limit: limit)
         return client.request(route, serverArgs: serverArgs)
     }
 
@@ -433,12 +527,15 @@ open class FilesRoutes {
     /// in RelocationError will be returned if fromPath contains shared folder. This field is always true for move.
     /// - parameter autorename: If there's a conflict, have the Dropbox server try to autorename the file to avoid the
     /// conflict.
+    /// - parameter allowOwnershipTransfer: Allow moves by owner even if it would result in an ownership transfer for
+    /// the content being moved. This does not apply to copies.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Files.Metadata` object on success or a
     /// `Files.RelocationError` object on failure.
-    @discardableResult open func move(fromPath: String, toPath: String, allowSharedFolder: Bool = false, autorename: Bool = false) -> RpcRequest<Files.MetadataSerializer, Files.RelocationErrorSerializer> {
+    @available(*, unavailable, message:"move is deprecated. Use move_v2.")
+    @discardableResult open func move(fromPath: String, toPath: String, allowSharedFolder: Bool = false, autorename: Bool = false, allowOwnershipTransfer: Bool = false) -> RpcRequest<Files.MetadataSerializer, Files.RelocationErrorSerializer> {
         let route = Files.move
-        let serverArgs = Files.RelocationArg(fromPath: fromPath, toPath: toPath, allowSharedFolder: allowSharedFolder, autorename: autorename)
+        let serverArgs = Files.RelocationArg(fromPath: fromPath, toPath: toPath, allowSharedFolder: allowSharedFolder, autorename: autorename, allowOwnershipTransfer: allowOwnershipTransfer)
         return client.request(route, serverArgs: serverArgs)
     }
 
@@ -452,12 +549,14 @@ open class FilesRoutes {
     /// This field is always true for moveBatch.
     /// - parameter autorename: If there's a conflict with any file, have the Dropbox server try to autorename that file
     /// to avoid the conflict.
+    /// - parameter allowOwnershipTransfer: Allow moves by owner even if it would result in an ownership transfer for
+    /// the content being moved. This does not apply to copies.
     ///
-    ///  - returns: Through the response callback, the caller will receive a `Async.LaunchEmptyResult` object on success
-    /// or a `Void` object on failure.
-    @discardableResult open func moveBatch(entries: Array<Files.RelocationPath>, allowSharedFolder: Bool = false, autorename: Bool = false) -> RpcRequest<Async.LaunchEmptyResultSerializer, VoidSerializer> {
+    ///  - returns: Through the response callback, the caller will receive a `Files.RelocationBatchLaunch` object on
+    /// success or a `Void` object on failure.
+    @discardableResult open func moveBatch(entries: Array<Files.RelocationPath>, allowSharedFolder: Bool = false, autorename: Bool = false, allowOwnershipTransfer: Bool = false) -> RpcRequest<Files.RelocationBatchLaunchSerializer, VoidSerializer> {
         let route = Files.moveBatch
-        let serverArgs = Files.RelocationBatchArg(entries: entries, allowSharedFolder: allowSharedFolder, autorename: autorename)
+        let serverArgs = Files.RelocationBatchArg(entries: entries, allowSharedFolder: allowSharedFolder, autorename: autorename, allowOwnershipTransfer: allowOwnershipTransfer)
         return client.request(route, serverArgs: serverArgs)
     }
 
@@ -474,6 +573,24 @@ open class FilesRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
+    /// Move a file or folder to a different location in the user's Dropbox. If the source path is a folder all its
+    /// contents will be moved.
+    ///
+    /// - parameter allowSharedFolder: If true, copy will copy contents in shared folder, otherwise cantCopySharedFolder
+    /// in RelocationError will be returned if fromPath contains shared folder. This field is always true for move.
+    /// - parameter autorename: If there's a conflict, have the Dropbox server try to autorename the file to avoid the
+    /// conflict.
+    /// - parameter allowOwnershipTransfer: Allow moves by owner even if it would result in an ownership transfer for
+    /// the content being moved. This does not apply to copies.
+    ///
+    ///  - returns: Through the response callback, the caller will receive a `Files.RelocationResult` object on success
+    /// or a `Files.RelocationError` object on failure.
+    @discardableResult open func moveV2(fromPath: String, toPath: String, allowSharedFolder: Bool = false, autorename: Bool = false, allowOwnershipTransfer: Bool = false) -> RpcRequest<Files.RelocationResultSerializer, Files.RelocationErrorSerializer> {
+        let route = Files.moveV2
+        let serverArgs = Files.RelocationArg(fromPath: fromPath, toPath: toPath, allowSharedFolder: allowSharedFolder, autorename: autorename, allowOwnershipTransfer: allowOwnershipTransfer)
+        return client.request(route, serverArgs: serverArgs)
+    }
+
     /// Permanently delete the file or folder at a given path (see https://www.dropbox.com/en/help/40). Note: This
     /// endpoint is only available for Dropbox Business apps.
     ///
@@ -487,82 +604,85 @@ open class FilesRoutes {
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Add custom properties to a file using a filled property template. See properties/template/add to create new
-    /// property templates.
+    /// The propertiesAdd route
     ///
-    /// - parameter path: A unique identifier for the file.
-    /// - parameter propertyGroups: Filled custom property templates associated with a file.
+    /// - parameter path: A unique identifier for the file or folder.
+    /// - parameter propertyGroups: The property groups which are to be added to a Dropbox file.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Void` object on success or a
-    /// `Files.AddPropertiesError` object on failure.
-    @discardableResult open func propertiesAdd(path: String, propertyGroups: Array<Properties.PropertyGroup>) -> RpcRequest<VoidSerializer, Files.AddPropertiesErrorSerializer> {
+    /// `FileProperties.AddPropertiesError` object on failure.
+    @available(*, unavailable, message:"properties/add is deprecated.")
+    @discardableResult open func propertiesAdd(path: String, propertyGroups: Array<FileProperties.PropertyGroup>) -> RpcRequest<VoidSerializer, FileProperties.AddPropertiesErrorSerializer> {
         let route = Files.propertiesAdd
-        let serverArgs = Files.PropertyGroupWithPath(path: path, propertyGroups: propertyGroups)
+        let serverArgs = FileProperties.AddPropertiesArg(path: path, propertyGroups: propertyGroups)
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Overwrite custom properties from a specified template associated with a file.
+    /// The propertiesOverwrite route
     ///
-    /// - parameter path: A unique identifier for the file.
-    /// - parameter propertyGroups: Filled custom property templates associated with a file.
+    /// - parameter path: A unique identifier for the file or folder.
+    /// - parameter propertyGroups: The property groups "snapshot" updates to force apply.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Void` object on success or a
-    /// `Files.InvalidPropertyGroupError` object on failure.
-    @discardableResult open func propertiesOverwrite(path: String, propertyGroups: Array<Properties.PropertyGroup>) -> RpcRequest<VoidSerializer, Files.InvalidPropertyGroupErrorSerializer> {
+    /// `FileProperties.InvalidPropertyGroupError` object on failure.
+    @available(*, unavailable, message:"properties/overwrite is deprecated.")
+    @discardableResult open func propertiesOverwrite(path: String, propertyGroups: Array<FileProperties.PropertyGroup>) -> RpcRequest<VoidSerializer, FileProperties.InvalidPropertyGroupErrorSerializer> {
         let route = Files.propertiesOverwrite
-        let serverArgs = Files.PropertyGroupWithPath(path: path, propertyGroups: propertyGroups)
+        let serverArgs = FileProperties.OverwritePropertyGroupArg(path: path, propertyGroups: propertyGroups)
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Remove all custom properties from a specified template associated with a file. To remove specific property key
-    /// value pairs, see propertiesUpdate. To update a property template, see properties/template/update. Property
-    /// templates can't be removed once created.
+    /// The propertiesRemove route
     ///
-    /// - parameter path: A unique identifier for the file.
-    /// - parameter propertyTemplateIds: A list of identifiers for a property template created by route
-    /// properties/template/add.
+    /// - parameter path: A unique identifier for the file or folder.
+    /// - parameter propertyTemplateIds: A list of identifiers for a template created by templatesAddForUser or
+    /// templatesAddForTeam.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Void` object on success or a
-    /// `Files.RemovePropertiesError` object on failure.
-    @discardableResult open func propertiesRemove(path: String, propertyTemplateIds: Array<String>) -> RpcRequest<VoidSerializer, Files.RemovePropertiesErrorSerializer> {
+    /// `FileProperties.RemovePropertiesError` object on failure.
+    @available(*, unavailable, message:"properties/remove is deprecated.")
+    @discardableResult open func propertiesRemove(path: String, propertyTemplateIds: Array<String>) -> RpcRequest<VoidSerializer, FileProperties.RemovePropertiesErrorSerializer> {
         let route = Files.propertiesRemove
-        let serverArgs = Files.RemovePropertiesArg(path: path, propertyTemplateIds: propertyTemplateIds)
+        let serverArgs = FileProperties.RemovePropertiesArg(path: path, propertyTemplateIds: propertyTemplateIds)
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Get the schema for a specified template.
+    /// The propertiesTemplateGet route
     ///
-    /// - parameter templateId: An identifier for property template added by route properties/template/add.
+    /// - parameter templateId: An identifier for template added by route  See templatesAddForUser or
+    /// templatesAddForTeam.
     ///
-    ///  - returns: Through the response callback, the caller will receive a `Properties.GetPropertyTemplateResult`
-    /// object on success or a `Properties.PropertyTemplateError` object on failure.
-    @discardableResult open func propertiesTemplateGet(templateId: String) -> RpcRequest<Properties.GetPropertyTemplateResultSerializer, Properties.PropertyTemplateErrorSerializer> {
+    ///  - returns: Through the response callback, the caller will receive a `FileProperties.GetTemplateResult` object
+    /// on success or a `FileProperties.TemplateError` object on failure.
+    @available(*, unavailable, message:"properties/template/get is deprecated.")
+    @discardableResult open func propertiesTemplateGet(templateId: String) -> RpcRequest<FileProperties.GetTemplateResultSerializer, FileProperties.TemplateErrorSerializer> {
         let route = Files.propertiesTemplateGet
-        let serverArgs = Properties.GetPropertyTemplateArg(templateId: templateId)
+        let serverArgs = FileProperties.GetTemplateArg(templateId: templateId)
         return client.request(route, serverArgs: serverArgs)
     }
 
-    /// Get the property template identifiers for a user. To get the schema of each template use propertiesTemplateGet.
+    /// The propertiesTemplateList route
     ///
     ///
-    ///  - returns: Through the response callback, the caller will receive a `Properties.ListPropertyTemplateIds` object
-    /// on success or a `Properties.PropertyTemplateError` object on failure.
-    @discardableResult open func propertiesTemplateList() -> RpcRequest<Properties.ListPropertyTemplateIdsSerializer, Properties.PropertyTemplateErrorSerializer> {
+    ///  - returns: Through the response callback, the caller will receive a `FileProperties.ListTemplateResult` object
+    /// on success or a `FileProperties.TemplateError` object on failure.
+    @available(*, unavailable, message:"properties/template/list is deprecated.")
+    @discardableResult open func propertiesTemplateList() -> RpcRequest<FileProperties.ListTemplateResultSerializer, FileProperties.TemplateErrorSerializer> {
         let route = Files.propertiesTemplateList
         return client.request(route)
     }
 
-    /// Add, update or remove custom properties from a specified template associated with a file. Fields that already
-    /// exist and not described in the request will not be modified.
+    /// The propertiesUpdate route
     ///
-    /// - parameter path: A unique identifier for the file.
-    /// - parameter updatePropertyGroups: Filled custom property templates associated with a file.
+    /// - parameter path: A unique identifier for the file or folder.
+    /// - parameter updatePropertyGroups: The property groups "delta" updates to apply.
     ///
     ///  - returns: Through the response callback, the caller will receive a `Void` object on success or a
-    /// `Files.UpdatePropertiesError` object on failure.
-    @discardableResult open func propertiesUpdate(path: String, updatePropertyGroups: Array<Files.PropertyGroupUpdate>) -> RpcRequest<VoidSerializer, Files.UpdatePropertiesErrorSerializer> {
+    /// `FileProperties.UpdatePropertiesError` object on failure.
+    @available(*, unavailable, message:"properties/update is deprecated.")
+    @discardableResult open func propertiesUpdate(path: String, updatePropertyGroups: Array<FileProperties.PropertyGroupUpdate>) -> RpcRequest<VoidSerializer, FileProperties.UpdatePropertiesErrorSerializer> {
         let route = Files.propertiesUpdate
-        let serverArgs = Files.UpdatePropertyGroupArg(path: path, updatePropertyGroups: updatePropertyGroups)
+        let serverArgs = FileProperties.UpdatePropertiesArg(path: path, updatePropertyGroups: updatePropertyGroups)
         return client.request(route, serverArgs: serverArgs)
     }
 
@@ -698,7 +818,7 @@ open class FilesRoutes {
         return client.request(route, serverArgs: serverArgs, input: .stream(input))
     }
 
-    /// Append more data to an upload session. A single request should not upload more than 150 MB of file contents.
+    /// Append more data to an upload session. A single request should not upload more than 150 MB.
     ///
     /// - parameter sessionId: The upload session ID (returned by uploadSessionStart).
     /// - parameter offset: The amount of data that has been uploaded so far. We use this to make sure upload data isn't
@@ -714,7 +834,7 @@ open class FilesRoutes {
         return client.request(route, serverArgs: serverArgs, input: .data(input))
     }
 
-    /// Append more data to an upload session. A single request should not upload more than 150 MB of file contents.
+    /// Append more data to an upload session. A single request should not upload more than 150 MB.
     ///
     /// - parameter sessionId: The upload session ID (returned by uploadSessionStart).
     /// - parameter offset: The amount of data that has been uploaded so far. We use this to make sure upload data isn't
@@ -730,7 +850,7 @@ open class FilesRoutes {
         return client.request(route, serverArgs: serverArgs, input: .file(input))
     }
 
-    /// Append more data to an upload session. A single request should not upload more than 150 MB of file contents.
+    /// Append more data to an upload session. A single request should not upload more than 150 MB.
     ///
     /// - parameter sessionId: The upload session ID (returned by uploadSessionStart).
     /// - parameter offset: The amount of data that has been uploaded so far. We use this to make sure upload data isn't
@@ -747,7 +867,7 @@ open class FilesRoutes {
     }
 
     /// Append more data to an upload session. When the parameter close is set, this call will close the session. A
-    /// single request should not upload more than 150 MB of file contents.
+    /// single request should not upload more than 150 MB.
     ///
     /// - parameter cursor: Contains the upload session ID and the offset.
     /// - parameter close: If true, the current session will be closed, at which point you won't be able to call
@@ -763,7 +883,7 @@ open class FilesRoutes {
     }
 
     /// Append more data to an upload session. When the parameter close is set, this call will close the session. A
-    /// single request should not upload more than 150 MB of file contents.
+    /// single request should not upload more than 150 MB.
     ///
     /// - parameter cursor: Contains the upload session ID and the offset.
     /// - parameter close: If true, the current session will be closed, at which point you won't be able to call
@@ -779,7 +899,7 @@ open class FilesRoutes {
     }
 
     /// Append more data to an upload session. When the parameter close is set, this call will close the session. A
-    /// single request should not upload more than 150 MB of file contents.
+    /// single request should not upload more than 150 MB.
     ///
     /// - parameter cursor: Contains the upload session ID and the offset.
     /// - parameter close: If true, the current session will be closed, at which point you won't be able to call
@@ -795,7 +915,7 @@ open class FilesRoutes {
     }
 
     /// Finish an upload session and save the uploaded data to the given file path. A single request should not upload
-    /// more than 150 MB of file contents.
+    /// more than 150 MB.
     ///
     /// - parameter cursor: Contains the upload session ID and the offset.
     /// - parameter commit: Contains the path and other optional modifiers for the commit.
@@ -810,7 +930,7 @@ open class FilesRoutes {
     }
 
     /// Finish an upload session and save the uploaded data to the given file path. A single request should not upload
-    /// more than 150 MB of file contents.
+    /// more than 150 MB.
     ///
     /// - parameter cursor: Contains the upload session ID and the offset.
     /// - parameter commit: Contains the path and other optional modifiers for the commit.
@@ -825,7 +945,7 @@ open class FilesRoutes {
     }
 
     /// Finish an upload session and save the uploaded data to the given file path. A single request should not upload
-    /// more than 150 MB of file contents.
+    /// more than 150 MB.
     ///
     /// - parameter cursor: Contains the upload session ID and the offset.
     /// - parameter commit: Contains the path and other optional modifiers for the commit.
@@ -851,9 +971,9 @@ open class FilesRoutes {
     ///
     /// - parameter entries: Commit information for each file in the batch.
     ///
-    ///  - returns: Through the response callback, the caller will receive a `Async.LaunchEmptyResult` object on success
-    /// or a `Void` object on failure.
-    @discardableResult open func uploadSessionFinishBatch(entries: Array<Files.UploadSessionFinishArg>) -> RpcRequest<Async.LaunchEmptyResultSerializer, VoidSerializer> {
+    ///  - returns: Through the response callback, the caller will receive a `Files.UploadSessionFinishBatchLaunch`
+    /// object on success or a `Void` object on failure.
+    @discardableResult open func uploadSessionFinishBatch(entries: Array<Files.UploadSessionFinishArg>) -> RpcRequest<Files.UploadSessionFinishBatchLaunchSerializer, VoidSerializer> {
         let route = Files.uploadSessionFinishBatch
         let serverArgs = Files.UploadSessionFinishBatchArg(entries: entries)
         return client.request(route, serverArgs: serverArgs)
@@ -876,7 +996,9 @@ open class FilesRoutes {
     /// Upload sessions allow you to upload a single file in one or more requests, for example where the size of the
     /// file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use
     /// uploadSessionAppendV2 to add more data and uploadSessionFinish to save all the data to a file in Dropbox. A
-    /// single request should not upload more than 150 MB of file contents.
+    /// single request should not upload more than 150 MB. An upload session can be used for a maximum of 48 hours.
+    /// Attempting to use an sessionId in UploadSessionStartResult with uploadSessionAppendV2 or uploadSessionFinish
+    /// more than 48 hours after its creation will return a notFound in UploadSessionLookupError.
     ///
     /// - parameter close: If true, the current session will be closed, at which point you won't be able to call
     /// uploadSessionAppendV2 anymore with the current session.
@@ -893,7 +1015,9 @@ open class FilesRoutes {
     /// Upload sessions allow you to upload a single file in one or more requests, for example where the size of the
     /// file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use
     /// uploadSessionAppendV2 to add more data and uploadSessionFinish to save all the data to a file in Dropbox. A
-    /// single request should not upload more than 150 MB of file contents.
+    /// single request should not upload more than 150 MB. An upload session can be used for a maximum of 48 hours.
+    /// Attempting to use an sessionId in UploadSessionStartResult with uploadSessionAppendV2 or uploadSessionFinish
+    /// more than 48 hours after its creation will return a notFound in UploadSessionLookupError.
     ///
     /// - parameter close: If true, the current session will be closed, at which point you won't be able to call
     /// uploadSessionAppendV2 anymore with the current session.
@@ -910,7 +1034,9 @@ open class FilesRoutes {
     /// Upload sessions allow you to upload a single file in one or more requests, for example where the size of the
     /// file is greater than 150 MB.  This call starts a new upload session with the given data. You can then use
     /// uploadSessionAppendV2 to add more data and uploadSessionFinish to save all the data to a file in Dropbox. A
-    /// single request should not upload more than 150 MB of file contents.
+    /// single request should not upload more than 150 MB. An upload session can be used for a maximum of 48 hours.
+    /// Attempting to use an sessionId in UploadSessionStartResult with uploadSessionAppendV2 or uploadSessionFinish
+    /// more than 48 hours after its creation will return a notFound in UploadSessionLookupError.
     ///
     /// - parameter close: If true, the current session will be closed, at which point you won't be able to call
     /// uploadSessionAppendV2 anymore with the current session.

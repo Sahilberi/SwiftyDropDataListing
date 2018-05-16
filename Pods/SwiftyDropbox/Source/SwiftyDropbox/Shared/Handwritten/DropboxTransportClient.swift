@@ -6,10 +6,9 @@ import Foundation
 import Alamofire
 
 open class DropboxTransportClient {
-    static let version = "4.1.0"
-
     open let manager: SessionManager
     open let backgroundManager: SessionManager
+    open let longpollManager: SessionManager
     open var accessToken: String
     open var selectUser: String?
     var baseHosts: [String: String]
@@ -19,7 +18,7 @@ open class DropboxTransportClient {
         self.init(accessToken: accessToken, baseHosts: nil, userAgent: nil, selectUser: selectUser)
     }
 
-    public init(accessToken: String, baseHosts: [String: String]?, userAgent: String?, selectUser: String?, sessionDelegate: SessionDelegate? = nil, backgroundSessionDelegate: SessionDelegate? = nil, serverTrustPolicyManager: ServerTrustPolicyManager? = nil) {
+  public init(accessToken: String, baseHosts: [String: String]?, userAgent: String?, selectUser: String?, sessionDelegate: SessionDelegate? = nil, backgroundSessionDelegate: SessionDelegate? = nil, longpollSessionDelegate: SessionDelegate? = nil, serverTrustPolicyManager: ServerTrustPolicyManager? = nil, sharedContainerIdentifier: String? = nil) {
         let config = URLSessionConfiguration.default
         let delegate = sessionDelegate ?? SessionDelegate()
         let serverTrustPolicyManager = serverTrustPolicyManager ?? nil
@@ -27,10 +26,24 @@ open class DropboxTransportClient {
         let manager = SessionManager(configuration: config, delegate: delegate, serverTrustPolicyManager: serverTrustPolicyManager)
         manager.startRequestsImmediately = false
 
-        let backgroundConfig = URLSessionConfiguration.background(withIdentifier: "com.dropbox.SwiftyDropbox." + UUID().uuidString)
-        let backgroundDelegate = backgroundSessionDelegate ?? SessionDelegate()
-        let backgroundManager = SessionManager(configuration: backgroundConfig, delegate: backgroundDelegate, serverTrustPolicyManager: serverTrustPolicyManager)
+        let backgroundManager = { () -> SessionManager in
+            let backgroundConfig = URLSessionConfiguration.background(withIdentifier: "com.dropbox.SwiftyDropbox." + UUID().uuidString)
+            if let sharedContainerIdentifier = sharedContainerIdentifier{
+                backgroundConfig.sharedContainerIdentifier = sharedContainerIdentifier
+            }
+            if let backgroundSessionDelegate = backgroundSessionDelegate {
+                return SessionManager(configuration: backgroundConfig, delegate: backgroundSessionDelegate, serverTrustPolicyManager: serverTrustPolicyManager)
+            }
+            return SessionManager(configuration: backgroundConfig, serverTrustPolicyManager: serverTrustPolicyManager)
+        }()
         backgroundManager.startRequestsImmediately = false
+
+        let longpollConfig = URLSessionConfiguration.default
+        longpollConfig.timeoutIntervalForRequest = 480.0
+
+        let longpollSessionDelegate = longpollSessionDelegate ?? SessionDelegate()
+
+        let longpollManager = SessionManager(configuration: longpollConfig, delegate: longpollSessionDelegate, serverTrustPolicyManager: serverTrustPolicyManager)
 
         let defaultBaseHosts = [
             "api": "https://api.dropbox.com/2",
@@ -38,10 +51,11 @@ open class DropboxTransportClient {
             "notify": "https://notify.dropboxapi.com/2",
             ]
 
-        let defaultUserAgent = "OfficialDropboxSwiftSDKv2/\(DropboxTransportClient.version)"
+        let defaultUserAgent = "OfficialDropboxSwiftSDKv2/\(Constants.versionSDK)"
 
         self.manager = manager
         self.backgroundManager = backgroundManager
+        self.longpollManager = longpollManager
         self.accessToken = accessToken
         self.selectUser = selectUser
         self.baseHosts = baseHosts ?? defaultBaseHosts
@@ -53,7 +67,7 @@ open class DropboxTransportClient {
         }
     }
 
-    open func request<ASerial: JSONSerializer, RSerial: JSONSerializer, ESerial: JSONSerializer>(_ route: Route<ASerial, RSerial, ESerial>,
+    open func request<ASerial, RSerial, ESerial>(_ route: Route<ASerial, RSerial, ESerial>,
                         serverArgs: ASerial.ValueType? = nil) -> RpcRequest<RSerial, ESerial> {
         let host = route.attrs["host"]! ?? "api"
         let url = "\(self.baseHosts[host]!)/\(route.namespace)/\(route.name)"
@@ -67,14 +81,23 @@ open class DropboxTransportClient {
             rawJsonRequest = SerializeUtil.dumpJSON(jsonRequestObj)
         } else {
             let voidSerializer = route.argSerializer as! VoidSerializer
-            let jsonRequestObj = voidSerializer.serialize()
+            let jsonRequestObj = voidSerializer.serialize(())
             rawJsonRequest = SerializeUtil.dumpJSON(jsonRequestObj)
         }
 
         let headers = getHeaders(routeStyle, jsonRequest: rawJsonRequest, host: host)
 
         let customEncoding = SwiftyArgEncoding(rawJsonRequest: rawJsonRequest!)
-        let request = self.manager.request(url, method: .post, parameters: ["jsonRequest": rawJsonRequest!], encoding: customEncoding, headers: headers)
+
+        let managerToUse = { () -> SessionManager in
+            // longpoll requests have a much longer timeout period than other requests
+            if type(of: route) ==  type(of: Files.listFolderLongpoll) {
+				return self.longpollManager
+            }
+			return self.manager
+        }()
+
+        let request = managerToUse.request(url, method: .post, parameters: ["jsonRequest": rawJsonRequest!], encoding: customEncoding, headers: headers)
         request.task?.priority = URLSessionTask.highPriority
         let rpcRequestObj = RpcRequest(request: request, responseSerializer: route.responseSerializer, errorSerializer: route.errorSerializer)
 
@@ -97,7 +120,7 @@ open class DropboxTransportClient {
         }
     }
 
-    open func request<ASerial: JSONSerializer, RSerial: JSONSerializer, ESerial: JSONSerializer>(_ route: Route<ASerial, RSerial, ESerial>,
+    open func request<ASerial, RSerial, ESerial>(_ route: Route<ASerial, RSerial, ESerial>,
                         serverArgs: ASerial.ValueType, input: UploadBody) -> UploadRequest<RSerial, ESerial> {
         let host = route.attrs["host"]! ?? "api"
         let url = "\(self.baseHosts[host]!)/\(route.namespace)/\(route.name)"
@@ -124,7 +147,7 @@ open class DropboxTransportClient {
         return uploadRequestObj
     }
 
-    open func request<ASerial: JSONSerializer, RSerial: JSONSerializer, ESerial: JSONSerializer>(_ route: Route<ASerial, RSerial, ESerial>,
+    open func request<ASerial, RSerial, ESerial>(_ route: Route<ASerial, RSerial, ESerial>,
                         serverArgs: ASerial.ValueType, overwrite: Bool, destination: @escaping (URL, HTTPURLResponse) -> URL) -> DownloadRequestFile<RSerial, ESerial> {
         let host = route.attrs["host"]! ?? "api"
         let url = "\(self.baseHosts[host]!)/\(route.namespace)/\(route.name)"
@@ -174,7 +197,7 @@ open class DropboxTransportClient {
         return downloadRequestObj
     }
 
-    public func request<ASerial: JSONSerializer, RSerial: JSONSerializer, ESerial: JSONSerializer>(_ route: Route<ASerial, RSerial, ESerial>,
+    public func request<ASerial, RSerial, ESerial>(_ route: Route<ASerial, RSerial, ESerial>,
                         serverArgs: ASerial.ValueType) -> DownloadRequestMemory<RSerial, ESerial> {
         let host = route.attrs["host"]! ?? "api"
         let url = "\(self.baseHosts[host]!)/\(route.namespace)/\(route.name)"
@@ -231,10 +254,11 @@ open class Box<T> {
 public enum CallError<EType>: CustomStringConvertible {
     case internalServerError(Int, String?, String?)
     case badInputError(String?, String?)
-    case rateLimitError(Auth.RateLimitError, String?)
+    case rateLimitError(Auth.RateLimitError, String?, String?, String?)
     case httpError(Int?, String?, String?)
-    case authError(Auth.AuthError, String?)
-    case routeError(Box<EType>, String?)
+    case authError(Auth.AuthError, String?, String?, String?)
+    case accessError(Auth.AccessError, String?, String?, String?)
+    case routeError(Box<EType>, String?, String?, String?)
     case clientError(Error?)
 
     public var description: String {
@@ -259,12 +283,19 @@ public enum CallError<EType>: CustomStringConvertible {
                 ret += ": \(m)"
             }
             return ret
-        case let .authError(error, requestId):
+        case let .authError(error, _, _, requestId):
             var ret = ""
             if let r = requestId {
                 ret += "[request-id \(r)] "
             }
             ret += "API auth error - \(error)"
+            return ret
+        case let .accessError(error, _, _, requestId):
+            var ret = ""
+            if let r = requestId {
+                ret += "[request-id \(r)] "
+            }
+            ret += "API access error - \(error)"
             return ret
         case let .httpError(code, message, requestId):
             var ret = ""
@@ -279,14 +310,14 @@ public enum CallError<EType>: CustomStringConvertible {
                 ret += ": \(m)"
             }
             return ret
-        case let .routeError(box, requestId):
+        case let .routeError(box, _, _, requestId):
             var ret = ""
             if let r = requestId {
                 ret += "[request-id \(r)] "
             }
             ret += "API route error - \(box.unboxed)"
             return ret
-        case let .rateLimitError(error, requestId):
+        case let .rateLimitError(error, _, _, requestId):
             var ret = ""
             if let r = requestId {
                 ret += "[request-id \(r)] "
@@ -367,15 +398,23 @@ open class Request<RSerial: JSONSerializer, ESerial: JSONSerializer> {
                 let json = SerializeUtil.parseJSON(data!)
                 switch json {
                 case .dictionary(let d):
-                    return .authError(Auth.AuthErrorSerializer().deserialize(d["error"]!), requestId)
+                    return .authError(Auth.AuthErrorSerializer().deserialize(d["error"]!), getStringFromJson(json: d, key: "user_message"), getStringFromJson(json: d, key: "error_summary"), requestId)
                 default:
                     fatalError("Failed to parse error type")
                 }
-            case 403, 404, 409:
+            case 403:
                 let json = SerializeUtil.parseJSON(data!)
                 switch json {
                 case .dictionary(let d):
-                    return .routeError(Box(self.errorSerializer.deserialize(d["error"]!)), requestId)
+                    return .accessError(Auth.AccessErrorSerializer().deserialize(d["error"]!), getStringFromJson(json: d, key: "user_message"), getStringFromJson(json: d, key: "error_summary"),requestId)
+                default:
+                    fatalError("Failed to parse error type")
+                }
+            case 409:
+                let json = SerializeUtil.parseJSON(data!)
+                switch json {
+                case .dictionary(let d):
+                    return .routeError(Box(self.errorSerializer.deserialize(d["error"]!)), getStringFromJson(json: d, key: "user_message"), getStringFromJson(json: d, key: "error_summary"), requestId)
                 default:
                     fatalError("Failed to parse error type")
                 }
@@ -383,7 +422,7 @@ open class Request<RSerial: JSONSerializer, ESerial: JSONSerializer> {
                 let json = SerializeUtil.parseJSON(data!)
                 switch json {
                 case .dictionary(let d):
-                    return .rateLimitError(Auth.RateLimitErrorSerializer().deserialize(d["error"]!), requestId)
+                    return .rateLimitError(Auth.RateLimitErrorSerializer().deserialize(d["error"]!), getStringFromJson(json: d, key: "user_message"), getStringFromJson(json: d, key: "error_summary"), requestId)
                 default:
                     fatalError("Failed to parse error type")
                 }
@@ -401,6 +440,19 @@ open class Request<RSerial: JSONSerializer, ESerial: JSONSerializer> {
             }
             return .httpError(nil, message, requestId)
         }
+    }
+    
+    func getStringFromJson(json: [String : JSON], key: String) -> String {
+        if let jsonStr = json[key] {
+            switch jsonStr {
+            case .str(let str):
+                return str;
+            default:
+                break;
+            }
+        }
+
+        return "";
     }
 }
 

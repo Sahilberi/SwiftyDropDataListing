@@ -11,12 +11,11 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
-    s.author             = { "Sahil" => "Sahilberi97@gmail.com" }
+  s.author = { "Sahil" => "Sahilberi97@gmail.com" }
   s.source = { :git => 'https://github.com/Sahilberi/SwiftyDropDataListing.git', :tag => s.version }
   s.platform     = :ios
-
   s.ios.deployment_target = "9.0"
   s.source_files = "Source/**/*.{swift,bundle}"
    s.dependency "SwiftyDropbox"
-
+  s.requires_arc = true
 end

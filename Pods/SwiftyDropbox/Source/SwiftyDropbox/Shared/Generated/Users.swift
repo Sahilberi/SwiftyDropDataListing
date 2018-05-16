@@ -41,7 +41,7 @@ open class Users {
     open class AccountSerializer: JSONSerializer {
         public init() { }
         open func serialize(_ value: Account) -> JSON {
-            let output = [
+            let output = [ 
             "account_id": Serialization._StringSerializer.serialize(value.accountId),
             "name": Users.NameSerializer().serialize(value.name),
             "email": Serialization._StringSerializer.serialize(value.email),
@@ -67,57 +67,6 @@ open class Users {
         }
     }
 
-    /// What type of account this user has.
-    public enum AccountType: CustomStringConvertible {
-        /// The basic account type.
-        case basic
-        /// The Dropbox Pro account type.
-        case pro
-        /// The Dropbox Business account type.
-        case business
-
-        public var description: String {
-            return "\(SerializeUtil.prepareJSONForSerialization(AccountTypeSerializer().serialize(self)))"
-        }
-    }
-    open class AccountTypeSerializer: JSONSerializer {
-        public init() { }
-        open func serialize(_ value: AccountType) -> JSON {
-            switch value {
-                case .basic:
-                    var d = [String: JSON]()
-                    d[".tag"] = .str("basic")
-                    return .dictionary(d)
-                case .pro:
-                    var d = [String: JSON]()
-                    d[".tag"] = .str("pro")
-                    return .dictionary(d)
-                case .business:
-                    var d = [String: JSON]()
-                    d[".tag"] = .str("business")
-                    return .dictionary(d)
-            }
-        }
-        open func deserialize(_ json: JSON) -> AccountType {
-            switch json {
-                case .dictionary(let d):
-                    let tag = Serialization.getTag(d)
-                    switch tag {
-                        case "basic":
-                            return AccountType.basic
-                        case "pro":
-                            return AccountType.pro
-                        case "business":
-                            return AccountType.business
-                        default:
-                            fatalError("Unknown tag \(tag)")
-                    }
-                default:
-                    fatalError("Failed to deserialize")
-            }
-        }
-    }
-
     /// Basic information about any account.
     open class BasicAccount: Users.Account {
         /// Whether this user is a teammate of the current user. If this account is the current user's account, then
@@ -139,7 +88,7 @@ open class Users {
     open class BasicAccountSerializer: JSONSerializer {
         public init() { }
         open func serialize(_ value: BasicAccount) -> JSON {
-            let output = [
+            let output = [ 
             "account_id": Serialization._StringSerializer.serialize(value.accountId),
             "name": Users.NameSerializer().serialize(value.name),
             "email": Serialization._StringSerializer.serialize(value.email),
@@ -187,8 +136,8 @@ open class Users {
         /// be null, but isPaired will indicate if a work account is linked.
         open let isPaired: Bool
         /// What type of account this user has.
-        open let accountType: Users.AccountType
-        public init(accountId: String, name: Users.Name, email: String, emailVerified: Bool, disabled: Bool, locale: String, referralLink: String, isPaired: Bool, accountType: Users.AccountType, profilePhotoUrl: String? = nil, country: String? = nil, team: Users.FullTeam? = nil, teamMemberId: String? = nil) {
+        open let accountType: UsersCommon.AccountType
+        public init(accountId: String, name: Users.Name, email: String, emailVerified: Bool, disabled: Bool, locale: String, referralLink: String, isPaired: Bool, accountType: UsersCommon.AccountType, profilePhotoUrl: String? = nil, country: String? = nil, team: Users.FullTeam? = nil, teamMemberId: String? = nil) {
             nullableValidator(stringValidator(minLength: 2, maxLength: 2))(country)
             self.country = country
             stringValidator(minLength: 2)(locale)
@@ -209,7 +158,7 @@ open class Users {
     open class FullAccountSerializer: JSONSerializer {
         public init() { }
         open func serialize(_ value: FullAccount) -> JSON {
-            let output = [
+            let output = [ 
             "account_id": Serialization._StringSerializer.serialize(value.accountId),
             "name": Users.NameSerializer().serialize(value.name),
             "email": Serialization._StringSerializer.serialize(value.email),
@@ -218,7 +167,7 @@ open class Users {
             "locale": Serialization._StringSerializer.serialize(value.locale),
             "referral_link": Serialization._StringSerializer.serialize(value.referralLink),
             "is_paired": Serialization._BoolSerializer.serialize(value.isPaired),
-            "account_type": Users.AccountTypeSerializer().serialize(value.accountType),
+            "account_type": UsersCommon.AccountTypeSerializer().serialize(value.accountType),
             "profile_photo_url": NullableSerializer(Serialization._StringSerializer).serialize(value.profilePhotoUrl),
             "country": NullableSerializer(Serialization._StringSerializer).serialize(value.country),
             "team": NullableSerializer(Users.FullTeamSerializer()).serialize(value.team),
@@ -237,7 +186,7 @@ open class Users {
                     let locale = Serialization._StringSerializer.deserialize(dict["locale"] ?? .null)
                     let referralLink = Serialization._StringSerializer.deserialize(dict["referral_link"] ?? .null)
                     let isPaired = Serialization._BoolSerializer.deserialize(dict["is_paired"] ?? .null)
-                    let accountType = Users.AccountTypeSerializer().deserialize(dict["account_type"] ?? .null)
+                    let accountType = UsersCommon.AccountTypeSerializer().deserialize(dict["account_type"] ?? .null)
                     let profilePhotoUrl = NullableSerializer(Serialization._StringSerializer).deserialize(dict["profile_photo_url"] ?? .null)
                     let country = NullableSerializer(Serialization._StringSerializer).deserialize(dict["country"] ?? .null)
                     let team = NullableSerializer(Users.FullTeamSerializer()).deserialize(dict["team"] ?? .null)
@@ -268,7 +217,7 @@ open class Users {
     open class TeamSerializer: JSONSerializer {
         public init() { }
         open func serialize(_ value: Team) -> JSON {
-            let output = [
+            let output = [ 
             "id": Serialization._StringSerializer.serialize(value.id),
             "name": Serialization._StringSerializer.serialize(value.name),
             ]
@@ -290,8 +239,11 @@ open class Users {
     open class FullTeam: Users.Team {
         /// Team policies governing sharing.
         open let sharingPolicies: TeamPolicies.TeamSharingPolicies
-        public init(id: String, name: String, sharingPolicies: TeamPolicies.TeamSharingPolicies) {
+        /// Team policy governing the use of the Office Add-In.
+        open let officeAddinPolicy: TeamPolicies.OfficeAddInPolicy
+        public init(id: String, name: String, sharingPolicies: TeamPolicies.TeamSharingPolicies, officeAddinPolicy: TeamPolicies.OfficeAddInPolicy) {
             self.sharingPolicies = sharingPolicies
+            self.officeAddinPolicy = officeAddinPolicy
             super.init(id: id, name: name)
         }
         open override var description: String {
@@ -301,10 +253,11 @@ open class Users {
     open class FullTeamSerializer: JSONSerializer {
         public init() { }
         open func serialize(_ value: FullTeam) -> JSON {
-            let output = [
+            let output = [ 
             "id": Serialization._StringSerializer.serialize(value.id),
             "name": Serialization._StringSerializer.serialize(value.name),
             "sharing_policies": TeamPolicies.TeamSharingPoliciesSerializer().serialize(value.sharingPolicies),
+            "office_addin_policy": TeamPolicies.OfficeAddInPolicySerializer().serialize(value.officeAddinPolicy),
             ]
             return .dictionary(output)
         }
@@ -314,7 +267,8 @@ open class Users {
                     let id = Serialization._StringSerializer.deserialize(dict["id"] ?? .null)
                     let name = Serialization._StringSerializer.deserialize(dict["name"] ?? .null)
                     let sharingPolicies = TeamPolicies.TeamSharingPoliciesSerializer().deserialize(dict["sharing_policies"] ?? .null)
-                    return FullTeam(id: id, name: name, sharingPolicies: sharingPolicies)
+                    let officeAddinPolicy = TeamPolicies.OfficeAddInPolicySerializer().deserialize(dict["office_addin_policy"] ?? .null)
+                    return FullTeam(id: id, name: name, sharingPolicies: sharingPolicies, officeAddinPolicy: officeAddinPolicy)
                 default:
                     fatalError("Type error deserializing")
             }
@@ -336,7 +290,7 @@ open class Users {
     open class GetAccountArgSerializer: JSONSerializer {
         public init() { }
         open func serialize(_ value: GetAccountArg) -> JSON {
-            let output = [
+            let output = [ 
             "account_id": Serialization._StringSerializer.serialize(value.accountId),
             ]
             return .dictionary(output)
@@ -367,7 +321,7 @@ open class Users {
     open class GetAccountBatchArgSerializer: JSONSerializer {
         public init() { }
         open func serialize(_ value: GetAccountBatchArg) -> JSON {
-            let output = [
+            let output = [ 
             "account_ids": ArraySerializer(Serialization._StringSerializer).serialize(value.accountIds),
             ]
             return .dictionary(output)
@@ -485,7 +439,7 @@ open class Users {
     open class IndividualSpaceAllocationSerializer: JSONSerializer {
         public init() { }
         open func serialize(_ value: IndividualSpaceAllocation) -> JSON {
-            let output = [
+            let output = [ 
             "allocated": Serialization._UInt64Serializer.serialize(value.allocated),
             ]
             return .dictionary(output)
@@ -533,7 +487,7 @@ open class Users {
     open class NameSerializer: JSONSerializer {
         public init() { }
         open func serialize(_ value: Name) -> JSON {
-            let output = [
+            let output = [ 
             "given_name": Serialization._StringSerializer.serialize(value.givenName),
             "surname": Serialization._StringSerializer.serialize(value.surname),
             "familiar_name": Serialization._StringSerializer.serialize(value.familiarName),
@@ -628,7 +582,7 @@ open class Users {
     open class SpaceUsageSerializer: JSONSerializer {
         public init() { }
         open func serialize(_ value: SpaceUsage) -> JSON {
-            let output = [
+            let output = [ 
             "used": Serialization._UInt64Serializer.serialize(value.used),
             "allocation": Users.SpaceAllocationSerializer().serialize(value.allocation),
             ]
@@ -665,7 +619,7 @@ open class Users {
     open class TeamSpaceAllocationSerializer: JSONSerializer {
         public init() { }
         open func serialize(_ value: TeamSpaceAllocation) -> JSON {
-            let output = [
+            let output = [ 
             "used": Serialization._UInt64Serializer.serialize(value.used),
             "allocated": Serialization._UInt64Serializer.serialize(value.allocated),
             ]
